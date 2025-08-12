@@ -1,5 +1,5 @@
 
-import { ArrowDown, Download, ExternalLink, Mail, Github, Linkedin, FileText, GraduationCap } from 'lucide-react';
+import { ArrowDown, Download, ExternalLink, Mail, Github, Linkedin, FileText, GraduationCap, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
@@ -36,9 +36,22 @@ const Hero = () => {
             <p className="text-xl md:text-2xl mb-4 text-white/90 font-light">
               Coastal and Civil Engineer
             </p>
-            <p className="text-lg md:text-xl mb-8 text-white/80">
+            <p className="text-lg md:text-xl mb-6 text-white/80">
               Specialized in Fluid Mechanics & Numerical Modeling
             </p>
+            
+            {/* Watch Research Video Button */}
+            <div className="mb-8">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => scrollToSection('spotlight')}
+                className="text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 px-4 py-2"
+              >
+                <Play size={16} className="mr-2" />
+                ▶ Watch my research explained in few minutes
+              </Button>
+            </div>
           </div>
 
           {/* Social Icons */}
