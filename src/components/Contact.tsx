@@ -1,7 +1,7 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Mail, Phone, MapPin, ExternalLink, Award } from 'lucide-react';
+import { Mail, MapPin, ExternalLink, Award } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -33,17 +33,9 @@ const Contact = () => {
                     <span>traboulsimohamed@gmail.com</span>
                   </a>
                   
-                  <a 
-                    href="tel:+33772435745"
-                    className="flex items-center space-x-4 text-white/90 hover:text-accent-light transition-colors group"
-                  >
-                    <Phone className="group-hover:scale-110 transition-transform" size={24} />
-                    <span>+33 7 72 43 57 45</span>
-                  </a>
-                  
                   <div className="flex items-center space-x-4 text-white/90">
                     <MapPin size={24} />
-                    <span>Orléans, France</span>
+                    <span>France</span>
                   </div>
                 </div>
 

@@ -37,7 +37,7 @@ const About = () => {
 
             <div className="flex items-center space-x-4 text-muted-foreground">
               <MapPin className="text-accent" size={20} />
-              <span>Based in Orléans, France</span>
+              <span>Based in France</span>
             </div>
           </div>
 

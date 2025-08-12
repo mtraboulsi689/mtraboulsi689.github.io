@@ -17,7 +17,7 @@ const experienceData: ExperienceItem[] = [
   {
     title: "Coastal Modelling Engineer",
     organization: "BRGM",
-    location: "Orléans, France",
+    location: "France",
     period: "Nov 2022 – Present",
     type: "Fixed-term Contract",
     description: "Development and application of advanced coastal morphodynamic models for long-term shoreline evolution under climate change scenarios.",
@@ -32,7 +32,7 @@ const experienceData: ExperienceItem[] = [
   {
     title: "Numerical Modeling of Coastline & Sandy Beaches under Sea-Level Rise",
     organization: "BRGM",
-    location: "Orléans, France",
+    location: "France",
     period: "02/2022 – 08/2022",
     type: "Internship",
     description: "Enhanced coastal modeling capabilities for climate change impact assessment on sandy coastlines.",

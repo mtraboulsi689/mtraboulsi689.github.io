@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Mail, Phone, MapPin } from 'lucide-react';
+import { Menu, X, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
@@ -29,11 +29,6 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className={`text-xl font-bold transition-colors ${
-            isScrolled ? 'text-gradient-ocean' : 'text-white'
-          }`}>
-            Mohammad Traboulsi
-          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -86,16 +81,11 @@ const Header = () => {
             }`}>
               <Mail size={20} />
             </a>
-            <a href="tel:+33772435745" className={`transition-colors ${
-              isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
-            }`}>
-              <Phone size={20} />
-            </a>
             <span className={`flex items-center ${
               isScrolled ? 'text-muted-foreground' : 'text-white/70'
             }`}>
               <MapPin size={16} className="mr-1" />
-              Orléans, France
+              France
             </span>
           </div>
 
@@ -147,9 +137,6 @@ const Header = () => {
               <div className="flex items-center space-x-4 pt-4 border-t border-border">
                 <a href="mailto:traboulsimohamed@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">
                   <Mail size={20} />
-                </a>
-                <a href="tel:+33772435745" className="text-muted-foreground hover:text-accent transition-colors">
-                  <Phone size={20} />
                 </a>
               </div>
             </nav>

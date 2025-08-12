@@ -1,5 +1,5 @@
 
-import { ArrowDown, Download, ExternalLink, Mail, Phone, Github, Linkedin, FileText, GraduationCap } from 'lucide-react';
+import { ArrowDown, Download, ExternalLink, Mail, Github, Linkedin, FileText, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
@@ -49,13 +49,6 @@ const Hero = () => {
               title="Email"
             >
               <Mail size={20} />
-            </a>
-            <a 
-              href="tel:+33772435745" 
-              className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
-              title="Phone"
-            >
-              <Phone size={20} />
             </a>
             <a 
               href="https://scholar.google.com/citations?user=2sx0LHgAAAAJ" 
