@@ -323,7 +323,6 @@ const Publications = () => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Research contributions in coastal engineering, fluid mechanics, and climate change impact assessment.
-            Data automatically updated from OpenAlex.
           </p>
           {lastUpdated && (
             <p className="text-sm text-muted-foreground mt-2">
