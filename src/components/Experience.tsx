@@ -1,78 +1,86 @@
 
+import { useState, useEffect } from 'react';
 import VerticalTimeline, { TimelineItem } from '@/components/VerticalTimeline';
 import { useLanguage } from '@/components/language-provider';
+import { Loader2 } from 'lucide-react';
 
-const experienceData: TimelineItem[] = [
-  {
-    id: "brgm-coastal-engineer",
-    category: "experience",
-    start_date: "2022-11",
-    end_date: null,
-    title: "Coastal Modelling Engineer",
-    role: "Fixed-term Contract",
-    organization: "BRGM",
-    location: "France",
-    summary: "Development and application of advanced coastal morphodynamic models for long-term shoreline evolution under climate change scenarios.",
-    bullets: [
-      "Developed the coupled LX-ST model to simulate long-term shoreline morphological evolution",
-      "Integrated longitudinal and cross-shore sediment transport for comprehensive coastal modeling",
-      "Conducted multi-scenario simulations (SSP2-4.5, SSP5-8.5, High-End) for climate impact assessment",
-      "Applied the model to the Lacanau site (5 km) with sensitivity tests and varying erosion rates"
-    ],
-    links: [
-      {
-        label: "LX-ST Publication",
-        url: "https://doi.org/10.1016/j.envsoft.2025.106624"
-      }
-    ]
-  },
-  {
-    id: "brgm-internship",
-    category: "experience",
-    start_date: "2022-02",
-    end_date: "2022-08",
-    title: "Numerical Modeling of Coastline & Sandy Beaches under Sea-Level Rise",
-    role: "Internship",
-    organization: "BRGM",
-    location: "France", 
-    summary: "Enhanced coastal modeling capabilities for climate change impact assessment on sandy coastlines.",
-    bullets: [
-      "Enhanced LX-Shore code with ShoreTrans module for improved accuracy",
-      "Developed 2D modeling capabilities for complex coastal geometries",
-      "Implemented sediment transport algorithms for long-term predictions",
-      "Validated models against observed coastal evolution data"
-    ]
-  },
-  {
-    id: "cerema-ecclipse",
-    category: "experience", 
-    start_date: "2021-03",
-    end_date: "2021-09",
-    title: "Impact of Climate Change on Gironde Estuary Hydrodynamics",
-    role: "Internship - ECCLIPSE Project",
-    organization: "Cerema",
-    location: "Margny-lès-Compiègne, France",
-    summary: "Comprehensive hydrodynamic modeling study assessing climate change impacts on France's largest estuary.",
-    bullets: [
-      "Developed Telemac3D & Telemac2D models for flood and drought scenarios",
-      "Analyzed dredging impacts on estuarine circulation patterns", 
-      "Performed hydrological modeling of Garonne & Dordogne rivers",
-      "Generated climate scenarios projections up to 2100",
-      "Contributed to national climate adaptation strategies"
-    ],
-    links: [
-      {
-        label: "DOI: 10.5150/jngcgc.2022.020",
-        url: "https://doi.org/10.5150/jngcgc.2022.020"
-      }
-    ]
-  }
-];
-
+interface ExperienceData {
+  updated_at: string;
+  items: TimelineItem[];
+}
 
 const Experience = () => {
   const { t } = useLanguage();
+  const [experienceData, setExperienceData] = useState<TimelineItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchExperience = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/data/experience.json');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch experience data: ${response.status}`);
+        }
+        
+        const data: ExperienceData = await response.json();
+        setExperienceData(data.items);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching experience:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load experience data');
+        setExperienceData([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchExperience();
+  }, []);
   
+  if (loading) {
+    return (
+      <section id="experience" className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
+              {t('experience.title')}
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              {t('experience.description')}
+            </p>
+          </div>
+          <div className="flex items-center justify-center">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            <span className="ml-2 text-muted-foreground">Loading experience...</span>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="experience" className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
+              {t('experience.title')}
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              {t('experience.description')}
+            </p>
+          </div>
+          <div className="text-center text-red-600">
+            <p>Error loading experience data: {error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="experience" className="py-16 bg-background">
       <div className="container mx-auto px-4">
