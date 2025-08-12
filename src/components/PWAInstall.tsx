@@ -11,8 +11,22 @@ const PWAInstall = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallBanner, setShowInstallBanner] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if device is mobile (tablets and phones)
+    const checkIsMobile = () => {
+      const isMobileDevice = window.matchMedia('(max-width: 1024px)').matches;
+      setIsMobile(isMobileDevice);
+    };
+
+    // Initial check
+    checkIsMobile();
+
+    // Listen for screen size changes
+    const mediaQuery = window.matchMedia('(max-width: 1024px)');
+    mediaQuery.addEventListener('change', checkIsMobile);
+
     // Check if app is already installed
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
     const isIOSStandalone = (window.navigator as any).standalone === true;
@@ -47,6 +61,7 @@ const PWAInstall = () => {
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('appinstalled', handleAppInstalled);
+      mediaQuery.removeEventListener('change', checkIsMobile);
     };
   }, []);
 
@@ -72,8 +87,8 @@ const PWAInstall = () => {
     sessionStorage.setItem('pwa-install-dismissed', 'true');
   };
 
-  // Don't show if already installed or dismissed this session
-  if (isInstalled || !showInstallBanner || sessionStorage.getItem('pwa-install-dismissed')) {
+  // Don't show if already installed, dismissed this session, or on desktop
+  if (isInstalled || !showInstallBanner || !isMobile || sessionStorage.getItem('pwa-install-dismissed')) {
     return null;
   }
 
