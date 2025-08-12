@@ -206,12 +206,12 @@ const Projects = () => {
               asChild
             >
               <a 
-                href="https://mtraboulsi689.github.io/projects"
+                href="https://github.com/user689/Data-Analysis-Projects"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <BarChart3 size={20} className="mr-2" />
-                View All Projects
+                View All Projects on GitHub
                 <ExternalLink size={16} className="ml-2" />
               </a>
             </Button>
