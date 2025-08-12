@@ -68,7 +68,7 @@ const Experience = () => {
           </p>
         </div>
 
-        <Timeline items={experienceData} />
+        <Timeline items={experienceData} category="work" />
       </div>
     </section>
   );

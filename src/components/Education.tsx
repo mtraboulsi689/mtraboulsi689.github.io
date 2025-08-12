@@ -95,7 +95,7 @@ const Education = () => {
           </p>
         </div>
 
-        <Timeline items={educationData} />
+        <Timeline items={educationData} category="education" />
       </div>
     </section>
   );
