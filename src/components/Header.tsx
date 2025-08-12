@@ -27,6 +27,11 @@ const Header = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-background/95 backdrop-blur-md shadow-coastal' : 'bg-transparent'
@@ -36,6 +41,15 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
+            <button 
+              onClick={scrollToTop}
+              className={`transition-all duration-300 font-bold text-lg hover:scale-110 ${
+                isScrolled ? 'text-primary hover:text-accent' : 'text-white hover:text-accent'
+              }`}
+              aria-label="Scroll to top"
+            >
+              MT
+            </button>
             <button 
               onClick={() => scrollToSection('skills')}
               className={`transition-colors font-medium ${
@@ -129,6 +143,7 @@ const Header = () => {
           <div className="bg-background/95 backdrop-blur-md border-t border-border">
             <nav className="flex flex-col space-y-1 p-4">
               {[
+                { key: 'top', label: 'MT', isSpecial: true },
                 { key: 'skills', label: t('nav.skills') },
                 { key: 'projects', label: t('nav.projects') },
                 { key: 'publications', label: t('nav.publications') },
@@ -138,7 +153,7 @@ const Header = () => {
               ].map((item, index) => (
                 <button 
                   key={item.key}
-                  onClick={() => scrollToSection(item.key)}
+                  onClick={() => item.key === 'top' ? scrollToTop() : scrollToSection(item.key)}
                   className={`text-left text-muted-foreground hover:text-primary transition-all duration-300 py-2 px-3 rounded-md hover:bg-muted/50 transform ${
                     isMenuOpen 
                       ? 'translate-x-0 opacity-100' 
