@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, BarChart3 } from 'lucide-react';
+import { ExternalLink, Github, BarChart3, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface Project {
   title: string;
@@ -205,15 +206,11 @@ const Projects = () => {
               className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
               asChild
             >
-              <a 
-                href="https://github.com/user689/Data-Analysis-Projects"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link to="/projects">
                 <BarChart3 size={20} className="mr-2" />
-                View All Projects on GitHub
-                <ExternalLink size={16} className="ml-2" />
-              </a>
+                View All Projects
+                <ArrowRight size={16} className="ml-2" />
+              </Link>
             </Button>
           </div>
         )}
