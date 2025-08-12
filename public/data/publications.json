@@ -1,5 +1,5 @@
 {
-  "updated_at": "2025-08-12T21:50:29.034Z",
+  "updated_at": "2025-08-12T22:09:54.913Z",
   "total_count": 4,
   "items": [
     {
@@ -12,6 +12,7 @@
       "isOpenAccess": true,
       "openAccessUrl": "https://doi.org/10.1016/j.envsoft.2025.106624",
       "type": "article",
+      "category": "article",
       "authors": [
         "Mohammad Traboulsi",
         "Déborah Idier",
@@ -21,7 +22,9 @@
         "E. Durand",
         "R. Jak McCarroll"
       ],
-      "citedByCount": 0
+      "citedByCount": 0,
+      "abstract": null,
+      "abstractTeaser": null
     },
     {
       "id": "https://openalex.org/W4410871952",
@@ -32,7 +35,8 @@
       "url": "https://doi.org/10.9753/icce.v38.currents.6",
       "isOpenAccess": true,
       "openAccessUrl": "https://doi.org/10.9753/icce.v38.currents.6",
-      "type": "article",
+      "type": "conference-paper",
+      "category": "conference",
       "authors": [
         "Mohammad Traboulsi",
         "Déborah Idier",
@@ -40,7 +44,9 @@
         "Arthur Robinet",
         "Vincent Marieu"
       ],
-      "citedByCount": 0
+      "citedByCount": 0,
+      "abstract": "In the context of climate change and growing anthropogenic influence on coastal regions, the need for reliable models for long-term (decadal to centennial) shoreline evolution is paramount (Nicholls et al., 2014). Process-based 2D and 3D models incorporate a wide array of physical processes; however, their high computational cost (Zhang et al., 2012) and cascading errors due to their strongly nonlinear nature prevent them from being used to address the long-term morphological changes of wave-dominated beaches, including the effects of climate change. We present LX-ST, which is a coupling between the LX-Shore and ShoreTrans models, aimed at simulating medium- to long-term shoreline and nearshore 3D morphology under the effects of sea level rise, coastal structures and longshore processes.",
+      "abstractTeaser": "In the context of climate change and growing anthropogenic influence on coastal regions, the need for reliable models for long-term..."
     },
     {
       "id": "https://openalex.org/W4403148010",
@@ -52,6 +58,7 @@
       "isOpenAccess": false,
       "openAccessUrl": null,
       "type": "article",
+      "category": "article",
       "authors": [
         "Mohammad Traboulsi",
         "Déborah Idier",
@@ -59,7 +66,9 @@
         "Arthur Robinet",
         "Vincent Marieu"
       ],
-      "citedByCount": 0
+      "citedByCount": 0,
+      "abstract": null,
+      "abstractTeaser": null
     },
     {
       "id": "https://openalex.org/W4318064295",
@@ -71,12 +80,15 @@
       "isOpenAccess": true,
       "openAccessUrl": "https://doi.org/10.5150/jngcgc.2022.020",
       "type": "article",
+      "category": "article",
       "authors": [
         "Mohammad Traboulsi",
         "Vanessya LABORIE",
         "Nicolas HUYBRECHTS"
       ],
-      "citedByCount": 0
+      "citedByCount": 0,
+      "abstract": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the influence of climate change inside the Gironde estuary.The meteorological forcings come from 3 Global Climate Models (GCMs) combined with 2 emission scenarios (RCPs 4.5 and 8.5).Upstream of the Dordogne and Garonne rivers, the discharges time-dependent chronicles are predicted using both the meteo inputs (precipitations and temperatures), and a hydrological model based on GR4J software (PERRIN, 2007).Offshore, a Telemac 2D surge levels numerical model (LABORIE et al., 2015), supplied by meteorological forcings (winds and pressure fields) and contributions of the mean sea level rise (MSLR) provides the predicted surge levels' chronicles at the maritime boundary of the estuary.The impact due to the evolution of external forcings (rivers and sea) on the hydrodynamic pattern (salinity) are then analysed for short and middle-term horizons 2050 and 2070 using a Telemac 3D model",
+      "abstractTeaser": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the..."
     }
   ]
 }

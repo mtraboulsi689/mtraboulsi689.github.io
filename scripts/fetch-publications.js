@@ -101,6 +101,15 @@ class OpenAlexFetcher {
       ?.map(authorship => authorship.author?.display_name)
       .filter(name => name) || [];
 
+    // Extract and process abstract
+    const abstractText = work.abstract_inverted_index ? 
+      this.reconstructAbstract(work.abstract_inverted_index) : null;
+    const abstractTeaser = abstractText ? 
+      this.createAbstractTeaser(abstractText) : null;
+
+    // Determine publication type and category
+    const typeInfo = this.categorizePublication(work);
+
     const publication = {
       id: openAlexId,
       title: work.display_name || 'Untitled',
@@ -110,12 +119,95 @@ class OpenAlexFetcher {
       url: primaryUrl,
       isOpenAccess: work.open_access?.is_oa || false,
       openAccessUrl: work.open_access?.oa_url || null,
-      type: work.type || 'article',
+      type: typeInfo.type,
+      category: typeInfo.category,
       authors: authors,
-      citedByCount: work.cited_by_count || 0
+      citedByCount: work.cited_by_count || 0,
+      abstract: abstractText,
+      abstractTeaser: abstractTeaser
     };
 
     this.allWorks.push(publication);
+  }
+
+  /**
+   * Reconstruct abstract from inverted index
+   */
+  reconstructAbstract(invertedIndex) {
+    if (!invertedIndex || Object.keys(invertedIndex).length === 0) {
+      return null;
+    }
+
+    const words = [];
+    for (const [word, positions] of Object.entries(invertedIndex)) {
+      for (const pos of positions) {
+        words[pos] = word;
+      }
+    }
+
+    return words.filter(word => word !== undefined).join(' ');
+  }
+
+  /**
+   * Create abstract teaser (first ~140 characters)
+   */
+  createAbstractTeaser(abstract) {
+    if (!abstract || abstract.length <= 140) {
+      return abstract;
+    }
+
+    let teaser = abstract.substring(0, 140);
+    const lastSpace = teaser.lastIndexOf(' ');
+    if (lastSpace > 100) { // Ensure we don't cut too short
+      teaser = teaser.substring(0, lastSpace);
+    }
+    return teaser + '...';
+  }
+
+  /**
+   * Categorize publication based on OpenAlex data
+   */
+  categorizePublication(work) {
+    const workType = (work.type || '').toLowerCase();
+    const venue = work.host_venue?.display_name || '';
+    const source = work.primary_location?.source?.display_name || '';
+    
+    // Check if it's a conference based on venue/source names
+    const conferenceKeywords = [
+      'conference', 'proceedings', 'symposium', 'workshop', 
+      'congress', 'meeting', 'icce', 'coastal engineering'
+    ];
+    
+    const isConference = conferenceKeywords.some(keyword => 
+      venue.toLowerCase().includes(keyword) || 
+      source.toLowerCase().includes(keyword)
+    );
+
+    // Determine if it's a preprint
+    const preprintKeywords = ['arxiv', 'biorxiv', 'preprint', 'ssrn'];
+    const isPreprint = preprintKeywords.some(keyword => 
+      venue.toLowerCase().includes(keyword) || 
+      source.toLowerCase().includes(keyword)
+    ) || workType.includes('preprint');
+
+    let category, type;
+    
+    if (isPreprint) {
+      category = 'preprint';
+      type = 'preprint';
+    } else if (isConference) {
+      category = 'conference';
+      type = 'conference-paper';
+    } else if (workType.includes('book') || workType.includes('monograph')) {
+      category = 'book';
+      type = workType;
+    } else {
+      // Default to article
+      category = 'article';
+      type = workType || 'article';
+    }
+
+    return { type, category };
   }
 
   /**

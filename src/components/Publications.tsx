@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, FileText, Calendar, Users, Award, Quote, BookOpen, Loader2 } from 'lucide-react';
+import { FileText, Loader2, Copy, ChevronDown, ChevronUp, Users } from 'lucide-react';
 
 interface Publication {
   id: string;
@@ -13,8 +13,11 @@ interface Publication {
   isOpenAccess: boolean;
   openAccessUrl: string | null;
   type: string;
+  category: string;
   authors: string[];
   citedByCount: number;
+  abstract: string | null;
+  abstractTeaser: string | null;
 }
 
 interface PublicationsData {
@@ -25,115 +28,197 @@ interface PublicationsData {
 
 
 const PublicationCard = ({ publication }: { publication: Publication }) => {
-  const getTypeIcon = (type: string) => {
-    const lowerType = type.toLowerCase();
-    if (lowerType.includes('article')) return <FileText className="text-primary" size={20} />;
-    if (lowerType.includes('book')) return <BookOpen className="text-purple-600" size={20} />;
-    if (lowerType.includes('thesis') || lowerType.includes('dissertation')) return <Award className="text-purple-600" size={20} />;
-    if (lowerType.includes('preprint')) return <Quote className="text-orange-600" size={20} />;
-    return <FileText className="text-gray-600" size={20} />;
+  const [showFullAbstract, setShowFullAbstract] = useState(false);
+  const [showAllAuthors, setShowAllAuthors] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const getCategoryColor = (category: string) => {
+    switch (category.toLowerCase()) {
+      case 'article': return 'bg-blue-50 text-blue-700 border-blue-200';
+      case 'conference': return 'bg-purple-50 text-purple-700 border-purple-200';
+      case 'preprint': return 'bg-orange-50 text-orange-700 border-orange-200';
+      case 'book': return 'bg-indigo-50 text-indigo-700 border-indigo-200';
+      default: return 'bg-gray-50 text-gray-700 border-gray-200';
+    }
   };
 
-  const formatType = (type: string) => {
-    return type.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  const formatCategory = (category: string) => {
+    switch (category.toLowerCase()) {
+      case 'conference': return 'Conference';
+      case 'preprint': return 'Preprint';
+      case 'article': return 'Article';
+      case 'book': return 'Book';
+      default: return category.charAt(0).toUpperCase() + category.slice(1);
+    }
+  };
+
+  const copyDOI = async () => {
+    if (!publication.doi) return;
+    
+    try {
+      await navigator.clipboard.writeText(publication.doi);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy DOI:', err);
+    }
+  };
+
+  const openDOI = () => {
+    if (!publication.doi) return;
+    window.open(`https://doi.org/${publication.doi}`, '_blank');
+  };
+
+  const handleDOIClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    copyDOI();
+  };
+
+  const handleDOILongPress = (e: React.MouseEvent) => {
+    e.preventDefault();
+    openDOI();
+  };
+
+  const getDisplayAuthors = () => {
+    if (showAllAuthors || publication.authors.length <= 3) {
+      return publication.authors;
+    }
+    return publication.authors.slice(0, 3);
+  };
+
+  const getRemainingAuthorsCount = () => {
+    return publication.authors.length - 3;
   };
 
   return (
-    <Card className="shadow-coastal hover:shadow-ocean transition-all duration-300 group">
-      <CardHeader>
-        <CardTitle className="flex items-start justify-between">
-          <div className="flex items-start space-x-3">
-            {getTypeIcon(publication.type)}
-            <div className="flex-1">
-              <h3 className="text-lg font-semibold text-primary leading-tight group-hover:text-accent transition-colors">
+    <Card className="shadow-coastal hover:shadow-ocean transition-all duration-300 group border-0">
+      <CardContent className="p-6">
+        <div className="space-y-4">
+          {/* Title as primary clickable area */}
+          <div>
+            <a 
+              href={publication.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <h3 className="text-lg font-semibold text-primary leading-tight hover:text-accent transition-colors cursor-pointer">
                 {publication.title}
               </h3>
-              <p className="text-sm text-muted-foreground mt-1">
-                {publication.authors.join(', ')}
-              </p>
-            </div>
+            </a>
           </div>
-          <div className="flex flex-col items-end space-y-1">
-            {publication.isOpenAccess && (
-              <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                Open Access
-              </span>
+
+          {/* Venue and Year line */}
+          <div className="text-sm text-muted-foreground">
+            {publication.year && (
+              <>
+                {publication.year}
+                {publication.venue && publication.venue !== 'Unknown Venue' && (
+                  <> • {publication.venue}</>
+                )}
+              </>
             )}
-            <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-              {formatType(publication.type)}
+          </div>
+
+          {/* Authors */}
+          <div className="text-sm">
+            <span className="text-muted-foreground">
+              {getDisplayAuthors().join(', ')}
+              {!showAllAuthors && publication.authors.length > 3 && (
+                <>
+                  {' '}
+                  <button 
+                    onClick={() => setShowAllAuthors(true)}
+                    className="text-accent hover:text-accent-light font-medium"
+                  >
+                    +{getRemainingAuthorsCount()} more
+                  </button>
+                </>
+              )}
+              {showAllAuthors && publication.authors.length > 3 && (
+                <>
+                  {' '}
+                  <button 
+                    onClick={() => setShowAllAuthors(false)}
+                    className="text-accent hover:text-accent-light font-medium"
+                  >
+                    show less
+                  </button>
+                </>
+              )}
             </span>
           </div>
-        </CardTitle>
-      </CardHeader>
-      
-      <CardContent>
-        <div className="space-y-4">
-          {/* Publication Details */}
-          <div className="flex items-center flex-wrap gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center space-x-1">
-              <Calendar size={16} />
-              <span>{publication.year || 'Year not specified'}</span>
+
+          {/* Abstract teaser and expander */}
+          {publication.abstractTeaser && (
+            <div className="text-sm text-muted-foreground">
+              <p className="leading-relaxed">
+                {showFullAbstract ? publication.abstract : publication.abstractTeaser}
+                {publication.abstract && publication.abstract !== publication.abstractTeaser && (
+                  <>
+                    {' '}
+                    <button 
+                      onClick={() => setShowFullAbstract(!showFullAbstract)}
+                      className="text-accent hover:text-accent-light font-medium inline-flex items-center gap-1"
+                    >
+                      {showFullAbstract ? (
+                        <>
+                          Show less
+                          <ChevronUp size={14} />
+                        </>
+                      ) : (
+                        <>
+                          Show abstract
+                          <ChevronDown size={14} />
+                        </>
+                      )}
+                    </button>
+                  </>
+                )}
+              </p>
             </div>
-            {publication.venue && publication.venue !== 'Unknown Venue' && (
-              <span className="font-medium text-primary">{publication.venue}</span>
-            )}
-            {publication.citedByCount > 0 && (
-              <span className="font-medium text-accent">
-                {publication.citedByCount} citation{publication.citedByCount !== 1 ? 's' : ''}
+          )}
+
+          {/* Badges and DOI */}
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-2 flex-wrap">
+              {/* Category badge */}
+              <span className={`px-2 py-1 rounded-md text-xs font-medium border ${getCategoryColor(publication.category)}`}>
+                {formatCategory(publication.category)}
               </span>
-            )}
-          </div>
 
-          {/* Actions */}
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Button 
-              variant="default"
-              size="sm"
-              className="bg-accent hover:bg-accent-light"
-              asChild
-            >
-              <a 
-                href={publication.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ExternalLink size={16} className="mr-2" />
-                View Publication
-              </a>
-            </Button>
-            
+              {/* Open Access badge */}
+              {publication.isOpenAccess && (
+                <span className="px-2 py-1 rounded-md text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                  OA
+                </span>
+              )}
+
+              {/* Citation count */}
+              {publication.citedByCount > 0 && (
+                <span className="px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-700 border border-gray-200 flex items-center gap-1">
+                  <Users size={12} />
+                  {publication.citedByCount}
+                </span>
+              )}
+            </div>
+
+            {/* DOI pill */}
             {publication.doi && (
-              <Button 
-                variant="outline"
-                size="sm"
-                asChild
+              <button
+                onClick={handleDOIClick}
+                onContextMenu={handleDOILongPress}
+                className="px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-700 border border-gray-200 hover:bg-gray-100 transition-colors flex items-center gap-1 group"
+                title={copied ? 'DOI copied!' : 'Click to copy DOI, right-click to open'}
               >
-                <a 
-                  href={`https://doi.org/${publication.doi}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  DOI: {publication.doi.length > 20 ? `${publication.doi.substring(0, 20)}...` : publication.doi}
-                </a>
-              </Button>
-            )}
-
-            {publication.isOpenAccess && publication.openAccessUrl && (
-              <Button 
-                variant="outline"
-                size="sm"
-                className="border-green-200 text-green-700 hover:bg-green-50"
-                asChild
-              >
-                <a 
-                  href={publication.openAccessUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FileText size={16} className="mr-2" />
-                  Open Access
-                </a>
-              </Button>
+                <span className="font-mono">
+                  {publication.doi.length > 25 ? 
+                    `${publication.doi.split('/')[0]}/...` : 
+                    publication.doi
+                  }
+                </span>
+                <Copy size={12} className={`transition-colors ${copied ? 'text-green-600' : 'text-gray-500 group-hover:text-gray-700'}`} />
+              </button>
             )}
           </div>
         </div>
@@ -146,7 +231,6 @@ const Publications = () => {
   const [publications, setPublications] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<string>('all');
   const [lastUpdated, setLastUpdated] = useState<string>('');
 
   useEffect(() => {
@@ -175,20 +259,16 @@ const Publications = () => {
     fetchPublications();
   }, []);
 
-  const filteredPublications = filter === 'all' 
-    ? publications 
-    : publications.filter(pub => pub.type.toLowerCase().includes(filter.toLowerCase()));
-
-  const typeCount = (type: string) => publications.filter(pub => 
-    pub.type.toLowerCase().includes(type.toLowerCase())
-  ).length;
-
   const totalCitations = publications.reduce((sum, pub) => sum + pub.citedByCount, 0);
   const openAccessCount = publications.filter(pub => pub.isOpenAccess).length;
   const recentYears = publications.map(p => p.year).filter(y => y !== null);
   const yearRange = recentYears.length > 0 ? 
     `${Math.min(...recentYears)}-${Math.max(...recentYears)}` : 
     'N/A';
+  const categoryCounts = publications.reduce((acc, pub) => {
+    acc[pub.category] = (acc[pub.category] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
 
   if (loading) {
     return (
@@ -254,41 +334,9 @@ const Publications = () => {
 
         {publications.length > 0 && (
           <>
-            {/* Filter Buttons */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
-              <Button
-                variant={filter === 'all' ? 'default' : 'outline'}
-                onClick={() => setFilter('all')}
-                className="min-w-fit"
-              >
-                All ({publications.length})
-              </Button>
-              <Button
-                variant={filter === 'article' ? 'default' : 'outline'}
-                onClick={() => setFilter('article')}
-                className="min-w-fit"
-              >
-                Articles ({typeCount('article')})
-              </Button>
-              <Button
-                variant={filter === 'book' ? 'default' : 'outline'}
-                onClick={() => setFilter('book')}
-                className="min-w-fit"
-              >
-                Books ({typeCount('book')})
-              </Button>
-              <Button
-                variant={filter === 'preprint' ? 'default' : 'outline'}
-                onClick={() => setFilter('preprint')}
-                className="min-w-fit"
-              >
-                Preprints ({typeCount('preprint')})
-              </Button>
-            </div>
-
-            {/* Publications Grid */}
-            <div className="max-w-4xl mx-auto space-y-6">
-              {filteredPublications.map((publication, index) => (
+            {/* Publications List */}
+            <div className="max-w-4xl mx-auto space-y-4">
+              {publications.map((publication, index) => (
                 <div 
                   key={publication.id}
                   className="animate-fade-up"
@@ -297,18 +345,11 @@ const Publications = () => {
                   <PublicationCard publication={publication} />
                 </div>
               ))}
-              
-              {filteredPublications.length === 0 && (
-                <div className="text-center py-12">
-                  <FileText size={48} className="mx-auto mb-4 text-muted-foreground" />
-                  <p className="text-lg text-muted-foreground">No publications found for this filter.</p>
-                </div>
-              )}
             </div>
 
             {/* Research Metrics */}
             <div className="mt-16 text-center">
-              <Card className="max-w-4xl mx-auto shadow-coastal">
+              <Card className="max-w-4xl mx-auto shadow-coastal border-0">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-semibold mb-6 text-primary">Research Impact</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -318,16 +359,28 @@ const Publications = () => {
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-bold text-accent mb-2">{totalCitations}</div>
-                      <div className="text-sm text-muted-foreground">Total Citations</div>
+                      <div className="text-sm text-muted-foreground">Citations</div>
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-bold text-accent mb-2">{openAccessCount}</div>
                       <div className="text-sm text-muted-foreground">Open Access</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-accent mb-2">{yearRange}</div>
-                      <div className="text-sm text-muted-foreground">Publication Years</div>
+                      <div className="text-3xl font-bold text-accent mb-2">{Object.keys(categoryCounts).length}</div>
+                      <div className="text-sm text-muted-foreground">Categories</div>
                     </div>
+                  </div>
+                  
+                  {/* Category breakdown */}
+                  <div className="mt-6 flex flex-wrap justify-center gap-2">
+                    {Object.entries(categoryCounts).map(([category, count]) => (
+                      <span 
+                        key={category}
+                        className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary"
+                      >
+                        {category}: {count}
+                      </span>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
