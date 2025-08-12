@@ -151,31 +151,30 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
 
           {/* Abstract teaser and expander */}
           {publication.abstractTeaser && (
-            <div className="text-sm text-muted-foreground">
-              <p className="leading-relaxed">
-                {showFullAbstract ? publication.abstract : publication.abstractTeaser}
+            <div className="mt-3 p-3 bg-gray-50 rounded-md border-l-4 border-accent/30">
+              <div className="text-sm text-gray-700">
+                <p className="leading-relaxed">
+                  {showFullAbstract ? publication.abstract : publication.abstractTeaser}
+                </p>
                 {publication.abstract && publication.abstract !== publication.abstractTeaser && (
-                  <>
-                    {' '}
-                    <button 
-                      onClick={() => setShowFullAbstract(!showFullAbstract)}
-                      className="text-accent hover:text-accent-light font-medium inline-flex items-center gap-1"
-                    >
-                      {showFullAbstract ? (
-                        <>
-                          Show less
-                          <ChevronUp size={14} />
-                        </>
-                      ) : (
-                        <>
-                          Show abstract
-                          <ChevronDown size={14} />
-                        </>
-                      )}
-                    </button>
-                  </>
+                  <button 
+                    onClick={() => setShowFullAbstract(!showFullAbstract)}
+                    className="mt-2 text-accent hover:text-accent-light font-medium inline-flex items-center gap-1 text-xs transition-colors"
+                  >
+                    {showFullAbstract ? (
+                      <>
+                        <ChevronUp size={12} />
+                        Show less
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown size={12} />
+                        Read full abstract
+                      </>
+                    )}
+                  </button>
                 )}
-              </p>
+              </div>
             </div>
           )}
 
