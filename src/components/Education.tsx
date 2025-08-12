@@ -1,20 +1,11 @@
 
-import { Card, CardContent } from '@/components/ui/card';
-import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
+import Timeline, { TimelineItem } from '@/components/Timeline';
+import { useLanguage } from '@/components/language-provider';
 
-interface EducationItem {
-  degree: string;
-  institution: string;
-  location: string;
-  period: string;
-  grade?: string;
-  description: string;
-  highlights?: string[];
-}
-
-const educationData: EducationItem[] = [
+const educationData: TimelineItem[] = [
   {
-    degree: "PhD in Coastal Engineering",
+    title: "PhD in Coastal Engineering",
     institution: "University of Bordeaux, BRGM",
     location: "Bordeaux, France",
     period: "Nov 2022 – Present",
@@ -24,10 +15,11 @@ const educationData: EducationItem[] = [
       "Development of coupled coastal evolution models",
       "Climate change impact assessment on coastal systems",
       "Long-term shoreline prediction methodologies"
-    ]
+    ],
+    icon: <GraduationCap className="text-white" size={24} />
   },
   {
-    degree: "Master 2 — Environmental Fluid Mechanics",
+    title: "Master 2 — Environmental Fluid Mechanics",
     institution: "Université Grenoble Alpes (UGA)",
     location: "Grenoble, France",
     period: "09/2021 – Present",
@@ -37,10 +29,11 @@ const educationData: EducationItem[] = [
       "Turbulence analysis and signal processing",
       "Machine learning applications in fluid mechanics",
       "Wave dynamics and marine energy systems"
-    ]
+    ],
+    icon: <GraduationCap className="text-white" size={24} />
   },
   {
-    degree: "Master 2 — Computations in Coastal & Civil Engineering",
+    title: "Master 2 — Computations in Coastal & Civil Engineering",
     institution: "Université de Pau et des Pays de l'Adour (UPPA)",
     location: "Anglet, France",
     period: "10/2020 – 09/2021",
@@ -51,10 +44,11 @@ const educationData: EducationItem[] = [
       "Advanced modeling with Artemis, OPENFOAM, SWAN",
       "Structural analysis using BOSZ and Cast3M",
       "Coastal engineering and wave modeling"
-    ]
+    ],
+    icon: <GraduationCap className="text-white" size={24} />
   },
   {
-    degree: "MSc — Civil & Environmental Engineering",
+    title: "MSc — Civil & Environmental Engineering",
     institution: "Rafik Hariri University",
     location: "Damour, Lebanon",
     period: "10/2016 – 01/2019",
@@ -65,10 +59,11 @@ const educationData: EducationItem[] = [
       "Soil mechanics and geotechnical analysis",
       "Numerical analysis and non-linear methods",
       "Environmental impact assessment"
-    ]
+    ],
+    icon: <GraduationCap className="text-white" size={24} />
   },
   {
-    degree: "BSc — Civil Engineering (Building & Public Works)",
+    title: "BSc — Civil Engineering (Building & Public Works)",
     institution: "Lebanese University",
     location: "Saida, Lebanon",
     period: "10/2013 – 08/2016",
@@ -79,94 +74,28 @@ const educationData: EducationItem[] = [
       "Construction management and materials",
       "Hydraulics and water resources",
       "Surveying and geomatics"
-    ]
+    ],
+    icon: <GraduationCap className="text-white" size={24} />
   }
 ];
 
-const EducationCard = ({ education, index }: { education: EducationItem; index: number }) => (
-  <Card className="shadow-coastal hover:shadow-ocean transition-all duration-300 group">
-    <CardContent className="p-6">
-      <div className="flex items-start space-x-4">
-        <div className="flex-shrink-0">
-          <div className="w-12 h-12 bg-gradient-ocean rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-            <GraduationCap className="text-white" size={24} />
-          </div>
-        </div>
-        
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold text-primary mb-2">
-            {education.degree}
-          </h3>
-          
-          <div className="space-y-2 mb-4">
-            <div className="flex items-center text-muted-foreground">
-              <MapPin size={16} className="mr-2" />
-              <span className="font-medium">{education.institution}</span>
-              <span className="mx-2">•</span>
-              <span>{education.location}</span>
-            </div>
-            
-            <div className="flex items-center text-muted-foreground">
-              <Calendar size={16} className="mr-2" />
-              <span>{education.period}</span>
-              {education.grade && (
-                <>
-                  <span className="mx-2">•</span>
-                  <Award size={16} className="mr-1" />
-                  <span className="text-accent font-medium">{education.grade}</span>
-                </>
-              )}
-            </div>
-          </div>
-          
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            {education.description}
-          </p>
-          
-          {education.highlights && (
-            <div className="space-y-1">
-              <h4 className="font-medium text-sm text-primary mb-2">Key Areas:</h4>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                {education.highlights.map((highlight, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <span className="text-accent mr-2">•</span>
-                    {highlight}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      </div>
-    </CardContent>
-  </Card>
-);
 
 const Education = () => {
+  const { t } = useLanguage();
+  
   return (
-    <section id="education" className="py-20 bg-gradient-coastal">
+    <section id="education" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            Education
+            {t('education.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A progressive academic journey through specialized programs in coastal engineering, 
-            fluid mechanics, and computational methods across multiple international institutions.
+            {t('education.description')}
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-8">
-          {educationData.map((education, index) => (
-            <div 
-              key={index}
-              className="animate-fade-up"
-              style={{animationDelay: `${index * 0.2}s`}}
-            >
-              <EducationCard education={education} index={index} />
-            </div>
-          ))}
-        </div>
+        <Timeline items={educationData} />
       </div>
     </section>
   );

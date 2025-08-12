@@ -37,7 +37,7 @@ const translations = {
     "hero.title": "Mohammad Traboulsi",
     "hero.subtitle": "Coastal and Civil Engineer",
     "hero.specialization": "Specialized in Fluid Mechanics & Numerical Modeling",
-    "hero.watchVideo": "▶ Watch my research explained in few minutes",
+    "hero.watchVideo": "Watch my research explained in few minutes",
     "hero.getInTouch": "Get In Touch",
     "hero.viewWork": "View Work",
 
@@ -141,7 +141,7 @@ const translations = {
     "hero.title": "Mohammad Traboulsi",
     "hero.subtitle": "Ingénieur Côtier et Civil",
     "hero.specialization": "Spécialisé en Mécanique des Fluides et Modélisation Numérique",
-    "hero.watchVideo": "▶ Regarder ma recherche expliquée en quelques minutes",
+    "hero.watchVideo": "Regarder ma recherche expliquée en quelques minutes",
     "hero.getInTouch": "Me Contacter",
     "hero.viewWork": "Voir Mon Travail",
 

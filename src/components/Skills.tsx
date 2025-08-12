@@ -1,6 +1,9 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Database, Wrench, TrendingUp } from 'lucide-react';
+import { useLoading } from '@/components/loading-provider';
+import SkillsSkeleton from '@/components/skeletons/SkillsSkeleton';
+import { useLanguage } from '@/components/language-provider';
 
 interface SkillData {
   name: string;
@@ -62,6 +65,8 @@ const SkillCard = ({ title, icon: Icon, skillList, color }: {
 );
 
 const Skills = () => {
+  const { loading } = useLoading();
+  const { t } = useLanguage();
   const programmingSkills = skills.filter(skill => skill.category === 'programming');
   const analysisSkills = skills.filter(skill => skill.category === 'analysis');
   const toolSkills = skills.filter(skill => skill.category === 'tools');
@@ -71,47 +76,51 @@ const Skills = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            Technical Skills
+            {t('skills.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive expertise across programming languages, analytical tools, 
-            and specialized engineering software for coastal and environmental modeling.
+            {t('skills.description')}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="animate-fade-up">
-            <SkillCard
-              title="Programming"
-              icon={Code}
-              skillList={programmingSkills}
-              color="text-primary"
-            />
+        {loading.skills ? (
+          <SkillsSkeleton />
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="animate-fade-up">
+              <SkillCard
+                title={t('skills.programming')}
+                icon={Code}
+                skillList={programmingSkills}
+                color="text-primary"
+              />
+            </div>
+            
+            <div className="animate-fade-up" style={{animationDelay: '0.2s'}}>
+              <SkillCard
+                title={t('skills.analysis')}
+                icon={TrendingUp}
+                skillList={analysisSkills}
+                color="text-accent"
+              />
+            </div>
+            
+            <div className="animate-fade-up" style={{animationDelay: '0.4s'}}>
+              <SkillCard
+                title={t('skills.tools')}
+                icon={Wrench}
+                skillList={toolSkills}
+                color="text-primary-light"
+              />
+            </div>
           </div>
-          
-          <div className="animate-fade-up" style={{animationDelay: '0.2s'}}>
-            <SkillCard
-              title="Analysis & Modeling"
-              icon={TrendingUp}
-              skillList={analysisSkills}
-              color="text-accent"
-            />
-          </div>
-          
-          <div className="animate-fade-up" style={{animationDelay: '0.4s'}}>
-            <SkillCard
-              title="Tools & Technologies"
-              icon={Wrench}
-              skillList={toolSkills}
-              color="text-primary-light"
-            />
-          </div>
-        </div>
+        )}
 
-        <div className="mt-16 text-center">
-          <Card className="max-w-4xl mx-auto shadow-coastal">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-semibold mb-6 text-primary">Research Keywords</h3>
+        {!loading.skills && (
+          <div className="mt-16 text-center">
+            <Card className="max-w-4xl mx-auto shadow-coastal">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-semibold mb-6 text-primary">{t('skills.keywords')}</h3>
               <div className="flex flex-wrap justify-center gap-3">
                 {['Research', 'Modelling', 'Lab Experiments', 'Sediment Transport', 'Turbulence', 'Signal Processing', 'Machine Learning', 'Wave Dynamics', 'Marine Energy', 'Climate Change Impact'].map((keyword, index) => (
                   <span 
@@ -124,7 +133,8 @@ const Skills = () => {
               </div>
             </CardContent>
           </Card>
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -61,6 +61,14 @@ const Header = () => {
               {t('nav.publications')}
             </button>
             <button 
+              onClick={() => scrollToSection('presentations')}
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
+            >
+              Presentations
+            </button>
+            <button 
               onClick={() => scrollToSection('experience')}
               className={`transition-colors font-medium ${
                 isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
@@ -102,60 +110,70 @@ const Header = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden"
+            className="md:hidden relative"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            <div className="relative w-5 h-5">
+              <Menu 
+                size={20} 
+                className={`absolute transition-all duration-300 transform ${
+                  isMenuOpen ? 'rotate-45 opacity-0 scale-0' : 'rotate-0 opacity-100 scale-100'
+                }`} 
+              />
+              <X 
+                size={20} 
+                className={`absolute transition-all duration-300 transform ${
+                  isMenuOpen ? 'rotate-0 opacity-100 scale-100' : '-rotate-45 opacity-0 scale-0'
+                }`} 
+              />
+            </div>
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border">
-            <nav className="flex flex-col space-y-4 p-4">
-              <button 
-                onClick={() => scrollToSection('skills')}
-                className="text-left text-muted-foreground hover:text-primary transition-colors"
-              >
-                {t('nav.skills')}
-              </button>
-              <button 
-                onClick={() => scrollToSection('projects')}
-                className="text-left text-muted-foreground hover:text-primary transition-colors"
-              >
-                {t('nav.projects')}
-              </button>
-              <button 
-                onClick={() => scrollToSection('publications')}
-                className="text-left text-muted-foreground hover:text-primary transition-colors"
-              >
-                {t('nav.publications')}
-              </button>
-              <button 
-                onClick={() => scrollToSection('experience')}
-                className="text-left text-muted-foreground hover:text-primary transition-colors"
-              >
-                {t('nav.experience')}
-              </button>
-              <button 
-                onClick={() => scrollToSection('education')}
-                className="text-left text-muted-foreground hover:text-primary transition-colors"
-              >
-                {t('nav.education')}
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="text-left text-muted-foreground hover:text-primary transition-colors"
-              >
-                {t('nav.contact')}
-              </button>
-              <div className="flex justify-end space-x-2 pt-4 border-t border-border">
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="bg-background/95 backdrop-blur-md border-t border-border">
+            <nav className="flex flex-col space-y-1 p-4">
+              {[
+                { key: 'skills', label: t('nav.skills') },
+                { key: 'projects', label: t('nav.projects') },
+                { key: 'publications', label: t('nav.publications') },
+                { key: 'presentations', label: 'Presentations' },
+                { key: 'experience', label: t('nav.experience') },
+                { key: 'education', label: t('nav.education') },
+                { key: 'contact', label: t('nav.contact') }
+              ].map((item, index) => (
+                <button 
+                  key={item.key}
+                  onClick={() => scrollToSection(item.key)}
+                  className={`text-left text-muted-foreground hover:text-primary transition-all duration-300 py-2 px-3 rounded-md hover:bg-muted/50 transform ${
+                    isMenuOpen 
+                      ? 'translate-x-0 opacity-100' 
+                      : 'translate-x-4 opacity-0'
+                  }`}
+                  style={{
+                    transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms'
+                  }}
+                >
+                  {item.label}
+                </button>
+              ))}
+              <div className={`flex justify-end space-x-2 pt-4 border-t border-border transform transition-all duration-300 ${
+                isMenuOpen 
+                  ? 'translate-y-0 opacity-100' 
+                  : 'translate-y-4 opacity-0'
+              }`}
+              style={{
+                transitionDelay: isMenuOpen ? '300ms' : '0ms'
+              }}>
                 <LanguageToggle />
                 <ThemeToggle />
               </div>
             </nav>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
