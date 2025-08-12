@@ -61,14 +61,6 @@ const Header = () => {
               {t('nav.publications')}
             </button>
             <button 
-              onClick={() => scrollToSection('presentations')}
-              className={`transition-colors font-medium ${
-                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Presentations
-            </button>
-            <button 
               onClick={() => scrollToSection('experience')}
               className={`transition-colors font-medium ${
                 isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
@@ -140,7 +132,6 @@ const Header = () => {
                 { key: 'skills', label: t('nav.skills') },
                 { key: 'projects', label: t('nav.projects') },
                 { key: 'publications', label: t('nav.publications') },
-                { key: 'presentations', label: 'Presentations' },
                 { key: 'experience', label: t('nav.experience') },
                 { key: 'education', label: t('nav.education') },
                 { key: 'contact', label: t('nav.contact') }
