@@ -251,7 +251,7 @@ const ContactForm = () => {
                   <p className="font-medium mb-4">{t('contact.followMe')}</p>
                   <div className="flex space-x-4">
                     <a 
-                      href="https://github.com/user689" 
+                      href="https://github.com/mtraboulsi689" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center justify-center w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
