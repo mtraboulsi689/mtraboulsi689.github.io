@@ -126,7 +126,7 @@ const Projects = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.slice(0, 3).map((project, index) => (
             <div key={index} className="animate-fade-up" style={{animationDelay: `${index * 0.1}s`}}>
               <Card className="h-full shadow-coastal hover:shadow-ocean transition-all duration-300 group">
                 {project.image && (
@@ -196,24 +196,25 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Link to more projects */}
-        <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-            asChild
-          >
-            <a 
-              href="https://github.com/user689/Data-Analysis-Projects"
-              target="_blank"
-              rel="noopener noreferrer"
+        {/* Link to all projects section */}
+        {projects.length > 3 && (
+          <div className="text-center mt-12">
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+              onClick={() => {
+                const element = document.getElementById('all-projects');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
-              <Github size={20} className="mr-2" />
-              View All Projects on GitHub
-            </a>
-          </Button>
-        </div>
+              <BarChart3 size={20} className="mr-2" />
+              View All Projects
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

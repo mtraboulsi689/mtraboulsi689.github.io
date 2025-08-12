@@ -9,15 +9,15 @@ const Spotlight = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="relative bg-black rounded-lg overflow-hidden shadow-ocean">
-            <video
-              className="w-full h-auto"
-              controls
-              poster="/placeholder.svg"
-            >
-              <source src="/lxst_explainer.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          <div className="relative bg-black rounded-lg overflow-hidden shadow-ocean aspect-video">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/wZBNd7qW7dA"
+              title="Research Explanation Video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </div>
