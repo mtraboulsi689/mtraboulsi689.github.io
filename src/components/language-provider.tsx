@@ -103,6 +103,10 @@ const translations = {
     // Contact Section
     "contact.title": "Get In Touch",
     "contact.description": "Interested in collaboration, research opportunities, or discussing coastal engineering projects? I'd love to hear from you.",
+    "contact.getInTouch": "Get In Touch",
+    "contact.location": "Location",
+    "contact.locationDetail": "Grenoble, France",
+    "contact.followMe": "Follow Me",
     "contact.information": "Contact Information",
     "contact.researchAreas": "Research Areas",
     "contact.availableFor": "Available For",
@@ -207,6 +211,10 @@ const translations = {
     // Contact Section
     "contact.title": "Me Contacter",
     "contact.description": "Intéressé par une collaboration, des opportunités de recherche ou pour discuter de projets d'ingénierie côtière ? J'aimerais avoir de vos nouvelles.",
+    "contact.getInTouch": "Me Contacter",
+    "contact.location": "Localisation",
+    "contact.locationDetail": "Grenoble, France",
+    "contact.followMe": "Me Suivre",
     "contact.information": "Informations de Contact",
     "contact.researchAreas": "Domaines de Recherche",
     "contact.availableFor": "Disponible Pour",
