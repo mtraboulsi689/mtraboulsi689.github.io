@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,6 +50,14 @@ const Header = () => {
               Projects
             </button>
             <button 
+              onClick={() => scrollToSection('publications')}
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
+            >
+              Publications
+            </button>
+            <button 
               onClick={() => scrollToSection('experience')}
               className={`transition-colors font-medium ${
                 isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
@@ -74,8 +83,9 @@ const Header = () => {
             </button>
           </nav>
 
-          {/* Contact Icons */}
+          {/* Contact Icons & Theme Toggle */}
           <div className="hidden lg:flex items-center space-x-4">
+            <ThemeToggle />
             <a href="mailto:traboulsimohamed@gmail.com" className={`transition-colors ${
               isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
             }`}>
@@ -117,6 +127,12 @@ const Header = () => {
                 Projects
               </button>
               <button 
+                onClick={() => scrollToSection('publications')}
+                className="text-left text-muted-foreground hover:text-primary transition-colors"
+              >
+                Publications
+              </button>
+              <button 
                 onClick={() => scrollToSection('experience')}
                 className="text-left text-muted-foreground hover:text-primary transition-colors"
               >
@@ -134,10 +150,13 @@ const Header = () => {
               >
                 Contact
               </button>
-              <div className="flex items-center space-x-4 pt-4 border-t border-border">
-                <a href="mailto:traboulsimohamed@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">
-                  <Mail size={20} />
-                </a>
+              <div className="flex items-center justify-between pt-4 border-t border-border">
+                <div className="flex items-center space-x-4">
+                  <a href="mailto:traboulsimohamed@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">
+                    <Mail size={20} />
+                  </a>
+                </div>
+                <ThemeToggle />
               </div>
             </nav>
           </div>
