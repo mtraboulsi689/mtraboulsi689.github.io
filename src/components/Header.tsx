@@ -104,12 +104,6 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <LanguageToggle />
             <ThemeToggle />
-            <span className={`flex items-center ${
-              isScrolled ? 'text-muted-foreground' : 'text-white/70'
-            }`}>
-              <MapPin size={16} className="mr-1" />
-              {t('common.france')}
-            </span>
           </div>
 
           {/* Mobile Menu Button */}
