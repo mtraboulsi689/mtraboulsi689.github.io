@@ -19,6 +19,22 @@ const Spotlight = () => {
               allowFullScreen
             ></iframe>
           </div>
+          
+          {/* Video Description */}
+          <div className="mt-8 text-center max-w-3xl mx-auto">
+            <h3 className="text-2xl font-semibold text-primary mb-4">
+              Explainer Video: LX-ST Coupled Model Development
+            </h3>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+              Watch this comprehensive explanation of my recent publication on the LX-ST coupled model development. 
+              This video breaks down the complex methodologies and findings from our research on long-term 
+              shoreline morphological evolution under climate change scenarios.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Published in <span className="font-medium text-primary">Environmental Modelling & Software</span> (2025) • 
+              Research conducted at <span className="font-medium text-primary">BRGM & Université Grenoble Alpes</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>
