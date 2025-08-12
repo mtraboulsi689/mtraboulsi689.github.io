@@ -1,0 +1,82 @@
+{
+  "updated_at": "2025-08-12T21:50:29.034Z",
+  "total_count": 4,
+  "items": [
+    {
+      "id": "https://openalex.org/W4412602958",
+      "title": "A coupling approach for long-term 3D morphological evolution of sandy coasts under sea-level rise",
+      "year": 2025,
+      "venue": "Environmental Modelling & Software",
+      "doi": "10.1016/j.envsoft.2025.106624",
+      "url": "https://doi.org/10.1016/j.envsoft.2025.106624",
+      "isOpenAccess": true,
+      "openAccessUrl": "https://doi.org/10.1016/j.envsoft.2025.106624",
+      "type": "article",
+      "authors": [
+        "Mohammad Traboulsi",
+        "Déborah Idier",
+        "Bruno Castelle",
+        "Arthur Robinet",
+        "Vincent Marieu",
+        "E. Durand",
+        "R. Jak McCarroll"
+      ],
+      "citedByCount": 0
+    },
+    {
+      "id": "https://openalex.org/W4410871952",
+      "title": "LX-ST: INTEGRATED SHORELINE AND TOPO-BATHYMETRIC ANALYSIS MODEL",
+      "year": 2025,
+      "venue": "Coastal Engineering Proceedings",
+      "doi": "10.9753/icce.v38.currents.6",
+      "url": "https://doi.org/10.9753/icce.v38.currents.6",
+      "isOpenAccess": true,
+      "openAccessUrl": "https://doi.org/10.9753/icce.v38.currents.6",
+      "type": "article",
+      "authors": [
+        "Mohammad Traboulsi",
+        "Déborah Idier",
+        "Bruno Castelle",
+        "Arthur Robinet",
+        "Vincent Marieu"
+      ],
+      "citedByCount": 0
+    },
+    {
+      "id": "https://openalex.org/W4403148010",
+      "title": "LX-ST: INTEGRATED SHORELINE  TOPO-BATHYMETRIC ANALYSIS MODEL",
+      "year": 2024,
+      "venue": "Unknown Venue",
+      "doi": null,
+      "url": "https://brgm.hal.science/hal-04542836",
+      "isOpenAccess": false,
+      "openAccessUrl": null,
+      "type": "article",
+      "authors": [
+        "Mohammad Traboulsi",
+        "Déborah Idier",
+        "Bruno Castelle",
+        "Arthur Robinet",
+        "Vincent Marieu"
+      ],
+      "citedByCount": 0
+    },
+    {
+      "id": "https://openalex.org/W4318064295",
+      "title": "Impact of climate change on the hydrodynamic patterns of the Gironde estuary",
+      "year": 2022,
+      "venue": "Unknown Venue",
+      "doi": "10.5150/jngcgc.2022.020",
+      "url": "https://doi.org/10.5150/jngcgc.2022.020",
+      "isOpenAccess": true,
+      "openAccessUrl": "https://doi.org/10.5150/jngcgc.2022.020",
+      "type": "article",
+      "authors": [
+        "Mohammad Traboulsi",
+        "Vanessya LABORIE",
+        "Nicolas HUYBRECHTS"
+      ],
+      "citedByCount": 0
+    }
+  ]
+}

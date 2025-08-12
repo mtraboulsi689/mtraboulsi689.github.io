@@ -1,88 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, FileText, Calendar, Users, Award, Quote } from 'lucide-react';
+import { ExternalLink, FileText, Calendar, Users, Award, Quote, BookOpen, Loader2 } from 'lucide-react';
 
 interface Publication {
   id: string;
   title: string;
+  year: number | null;
+  venue: string;
+  doi: string | null;
+  url: string;
+  isOpenAccess: boolean;
+  openAccessUrl: string | null;
+  type: string;
   authors: string[];
-  journal?: string;
-  conference?: string;
-  year: number;
-  type: 'journal' | 'conference' | 'thesis' | 'preprint' | 'blog';
-  abstract: string;
-  doi?: string;
-  url?: string;
-  citations?: number;
-  tags: string[];
-  status?: 'published' | 'accepted' | 'under-review' | 'draft';
+  citedByCount: number;
 }
 
-const publicationsData: Publication[] = [
-  {
-    id: "1",
-    title: "Morphodynamic modelling of shoreline change under sea-level rise",
-    authors: ["Mohammad Traboulsi"],
-    type: "thesis",
-    year: 2025,
-    abstract: "This PhD thesis investigates the morphodynamic processes governing shoreline evolution under climate change scenarios, with particular focus on sea-level rise impacts. The research develops and validates coupled numerical models (LX-ST) to predict long-term coastal changes.",
-    tags: ["Coastal Engineering", "Climate Change", "Numerical Modeling", "Morphodynamics"],
-    status: "draft"
-  },
-  {
-    id: "2",
-    title: "Correlations between Dynamic and Static Mechanical Properties of Clayey Soils",
-    authors: ["Mohammad Traboulsi", "R. Al Wardany"],
-    journal: "International Journal of Civil Engineering and Technology",
-    year: 2019,
-    abstract: "This research investigates the relationships between dynamic and static mechanical properties of clayey soils, contributing to improved understanding of soil behavior under varying loading conditions for civil engineering applications.",
-    doi: "10.34218/IJCET.10.1.2019.260",
-    url: "https://iaeme.com/Home/article_id/IJCET_10_01_260",
-    tags: ["Soil Mechanics", "Geotechnical Engineering", "Material Properties"],
-    status: "published"
-  },
-  {
-    id: "3",
-    title: "Enhanced LX-Shore Model for Long-term Coastal Evolution Assessment",
-    authors: ["Mohammad Traboulsi", "BRGM Research Team"],
-    type: "preprint",
-    year: 2024,
-    abstract: "Development of enhanced coastal modeling capabilities through integration of the ShoreTrans module with LX-Shore code. The study presents improved accuracy in predicting long-term shoreline evolution under climate change scenarios.",
-    tags: ["Coastal Modeling", "LX-Shore", "Climate Impact", "Sediment Transport"],
-    status: "under-review"
-  },
-  {
-    id: "4",
-    title: "Multi-scenario Climate Impact Assessment on Gironde Estuary Hydrodynamics",
-    authors: ["Mohammad Traboulsi", "Cerema Research Team"],
-    conference: "European Conference on Coastal Engineering",
-    year: 2022,
-    abstract: "Comprehensive hydrodynamic modeling study using Telemac3D & Telemac2D to assess climate change impacts on France's largest estuary. The study analyzes flood and drought scenarios with projections up to 2100.",
-    tags: ["Estuarine Dynamics", "Telemac", "Climate Scenarios", "Hydrodynamic Modeling"],
-    status: "published"
-  }
-];
+interface PublicationsData {
+  updated_at: string;
+  total_count: number;
+  items: Publication[];
+}
+
 
 const PublicationCard = ({ publication }: { publication: Publication }) => {
   const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'journal': return <FileText className="text-primary" size={20} />;
-      case 'conference': return <Users className="text-accent" size={20} />;
-      case 'thesis': return <Award className="text-purple-600" size={20} />;
-      case 'preprint': return <Quote className="text-orange-600" size={20} />;
-      default: return <FileText className="text-gray-600" size={20} />;
-    }
+    const lowerType = type.toLowerCase();
+    if (lowerType.includes('article')) return <FileText className="text-primary" size={20} />;
+    if (lowerType.includes('book')) return <BookOpen className="text-purple-600" size={20} />;
+    if (lowerType.includes('thesis') || lowerType.includes('dissertation')) return <Award className="text-purple-600" size={20} />;
+    if (lowerType.includes('preprint')) return <Quote className="text-orange-600" size={20} />;
+    return <FileText className="text-gray-600" size={20} />;
   };
 
-  const getStatusColor = (status?: string) => {
-    switch (status) {
-      case 'published': return 'bg-green-100 text-green-800';
-      case 'accepted': return 'bg-blue-100 text-blue-800';
-      case 'under-review': return 'bg-yellow-100 text-yellow-800';
-      case 'draft': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
+  const formatType = (type: string) => {
+    return type.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   };
 
   return (
@@ -100,66 +53,54 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
               </p>
             </div>
           </div>
-          {publication.status && (
-            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(publication.status)}`}>
-              {publication.status.replace('-', ' ')}
+          <div className="flex flex-col items-end space-y-1">
+            {publication.isOpenAccess && (
+              <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                Open Access
+              </span>
+            )}
+            <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+              {formatType(publication.type)}
             </span>
-          )}
+          </div>
         </CardTitle>
       </CardHeader>
       
       <CardContent>
         <div className="space-y-4">
           {/* Publication Details */}
-          <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+          <div className="flex items-center flex-wrap gap-4 text-sm text-muted-foreground">
             <div className="flex items-center space-x-1">
               <Calendar size={16} />
-              <span>{publication.year}</span>
+              <span>{publication.year || 'Year not specified'}</span>
             </div>
-            {publication.journal && (
-              <span className="font-medium text-primary">{publication.journal}</span>
+            {publication.venue && publication.venue !== 'Unknown Venue' && (
+              <span className="font-medium text-primary">{publication.venue}</span>
             )}
-            {publication.conference && (
-              <span className="font-medium text-accent">{publication.conference}</span>
-            )}
-          </div>
-
-          {/* Abstract */}
-          <p className="text-muted-foreground leading-relaxed">
-            {publication.abstract}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {publication.tags.map((tag, index) => (
-              <span 
-                key={index}
-                className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium"
-              >
-                {tag}
+            {publication.citedByCount > 0 && (
+              <span className="font-medium text-accent">
+                {publication.citedByCount} citation{publication.citedByCount !== 1 ? 's' : ''}
               </span>
-            ))}
+            )}
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3 pt-2">
-            {publication.url && (
-              <Button 
-                variant="default"
-                size="sm"
-                className="bg-accent hover:bg-accent-light"
-                asChild
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Button 
+              variant="default"
+              size="sm"
+              className="bg-accent hover:bg-accent-light"
+              asChild
+            >
+              <a 
+                href={publication.url}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <a 
-                  href={publication.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink size={16} className="mr-2" />
-                  View Publication
-                </a>
-              </Button>
-            )}
+                <ExternalLink size={16} className="mr-2" />
+                View Publication
+              </a>
+            </Button>
             
             {publication.doi && (
               <Button 
@@ -172,7 +113,25 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  DOI: {publication.doi}
+                  DOI: {publication.doi.length > 20 ? `${publication.doi.substring(0, 20)}...` : publication.doi}
+                </a>
+              </Button>
+            )}
+
+            {publication.isOpenAccess && publication.openAccessUrl && (
+              <Button 
+                variant="outline"
+                size="sm"
+                className="border-green-200 text-green-700 hover:bg-green-50"
+                asChild
+              >
+                <a 
+                  href={publication.openAccessUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FileText size={16} className="mr-2" />
+                  Open Access
                 </a>
               </Button>
             )}
@@ -184,13 +143,96 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
 };
 
 const Publications = () => {
+  const [publications, setPublications] = useState<Publication[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>('all');
-  
-  const filteredPublications = filter === 'all' 
-    ? publicationsData 
-    : publicationsData.filter(pub => pub.type === filter);
+  const [lastUpdated, setLastUpdated] = useState<string>('');
 
-  const typeCount = (type: string) => publicationsData.filter(pub => pub.type === type).length;
+  useEffect(() => {
+    const fetchPublications = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/data/publications.json');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch publications: ${response.status}`);
+        }
+        
+        const data: PublicationsData = await response.json();
+        setPublications(data.items);
+        setLastUpdated(data.updated_at);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching publications:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load publications');
+        setPublications([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPublications();
+  }, []);
+
+  const filteredPublications = filter === 'all' 
+    ? publications 
+    : publications.filter(pub => pub.type.toLowerCase().includes(filter.toLowerCase()));
+
+  const typeCount = (type: string) => publications.filter(pub => 
+    pub.type.toLowerCase().includes(type.toLowerCase())
+  ).length;
+
+  const totalCitations = publications.reduce((sum, pub) => sum + pub.citedByCount, 0);
+  const openAccessCount = publications.filter(pub => pub.isOpenAccess).length;
+  const recentYears = publications.map(p => p.year).filter(y => y !== null);
+  const yearRange = recentYears.length > 0 ? 
+    `${Math.min(...recentYears)}-${Math.max(...recentYears)}` : 
+    'N/A';
+
+  if (loading) {
+    return (
+      <section id="publications" className="py-20 bg-gradient-coastal">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient-ocean">
+              Publications & Research
+            </h2>
+            <div className="flex items-center justify-center space-x-2">
+              <Loader2 className="h-6 w-6 animate-spin text-primary" />
+              <span className="text-lg text-muted-foreground">Loading publications from OpenAlex...</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="publications" className="py-20 bg-gradient-coastal">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient-ocean">
+              Publications & Research
+            </h2>
+            <Card className="max-w-2xl mx-auto shadow-coastal">
+              <CardContent className="p-8">
+                <div className="text-red-600 mb-4">
+                  <FileText size={48} className="mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">Unable to Load Publications</h3>
+                  <p className="text-sm">{error}</p>
+                </div>
+                <p className="text-muted-foreground text-sm">
+                  Publications data is automatically updated weekly from OpenAlex. Please try again later.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="publications" className="py-20 bg-gradient-coastal">
@@ -200,89 +242,98 @@ const Publications = () => {
             Publications & Research
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Research contributions in coastal engineering, fluid mechanics, and climate change impact assessment 
-            across international journals, conferences, and technical reports.
+            Research contributions in coastal engineering, fluid mechanics, and climate change impact assessment.
+            Data automatically updated from OpenAlex.
           </p>
+          {lastUpdated && (
+            <p className="text-sm text-muted-foreground mt-2">
+              Last updated: {new Date(lastUpdated).toLocaleDateString()}
+            </p>
+          )}
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          <Button
-            variant={filter === 'all' ? 'default' : 'outline'}
-            onClick={() => setFilter('all')}
-            className="min-w-fit"
-          >
-            All ({publicationsData.length})
-          </Button>
-          <Button
-            variant={filter === 'journal' ? 'default' : 'outline'}
-            onClick={() => setFilter('journal')}
-            className="min-w-fit"
-          >
-            Journal Papers ({typeCount('journal')})
-          </Button>
-          <Button
-            variant={filter === 'conference' ? 'default' : 'outline'}
-            onClick={() => setFilter('conference')}
-            className="min-w-fit"
-          >
-            Conference Papers ({typeCount('conference')})
-          </Button>
-          <Button
-            variant={filter === 'thesis' ? 'default' : 'outline'}
-            onClick={() => setFilter('thesis')}
-            className="min-w-fit"
-          >
-            Thesis ({typeCount('thesis')})
-          </Button>
-          <Button
-            variant={filter === 'preprint' ? 'default' : 'outline'}
-            onClick={() => setFilter('preprint')}
-            className="min-w-fit"
-          >
-            Preprints ({typeCount('preprint')})
-          </Button>
-        </div>
-
-        {/* Publications Grid */}
-        <div className="max-w-4xl mx-auto space-y-6">
-          {filteredPublications.map((publication, index) => (
-            <div 
-              key={publication.id}
-              className="animate-fade-up"
-              style={{animationDelay: `${index * 0.1}s`}}
-            >
-              <PublicationCard publication={publication} />
+        {publications.length > 0 && (
+          <>
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              <Button
+                variant={filter === 'all' ? 'default' : 'outline'}
+                onClick={() => setFilter('all')}
+                className="min-w-fit"
+              >
+                All ({publications.length})
+              </Button>
+              <Button
+                variant={filter === 'article' ? 'default' : 'outline'}
+                onClick={() => setFilter('article')}
+                className="min-w-fit"
+              >
+                Articles ({typeCount('article')})
+              </Button>
+              <Button
+                variant={filter === 'book' ? 'default' : 'outline'}
+                onClick={() => setFilter('book')}
+                className="min-w-fit"
+              >
+                Books ({typeCount('book')})
+              </Button>
+              <Button
+                variant={filter === 'preprint' ? 'default' : 'outline'}
+                onClick={() => setFilter('preprint')}
+                className="min-w-fit"
+              >
+                Preprints ({typeCount('preprint')})
+              </Button>
             </div>
-          ))}
-        </div>
 
-        {/* Research Metrics */}
-        <div className="mt-16 text-center">
-          <Card className="max-w-2xl mx-auto shadow-coastal">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-semibold mb-6 text-primary">Research Impact</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">{publicationsData.length}</div>
-                  <div className="text-sm text-muted-foreground">Publications</div>
+            {/* Publications Grid */}
+            <div className="max-w-4xl mx-auto space-y-6">
+              {filteredPublications.map((publication, index) => (
+                <div 
+                  key={publication.id}
+                  className="animate-fade-up"
+                  style={{animationDelay: `${index * 0.1}s`}}
+                >
+                  <PublicationCard publication={publication} />
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">2</div>
-                  <div className="text-sm text-muted-foreground">Research Projects</div>
+              ))}
+              
+              {filteredPublications.length === 0 && (
+                <div className="text-center py-12">
+                  <FileText size={48} className="mx-auto mb-4 text-muted-foreground" />
+                  <p className="text-lg text-muted-foreground">No publications found for this filter.</p>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">3</div>
-                  <div className="text-sm text-muted-foreground">Institutions</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">2022</div>
-                  <div className="text-sm text-muted-foreground">Started PhD</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+              )}
+            </div>
+
+            {/* Research Metrics */}
+            <div className="mt-16 text-center">
+              <Card className="max-w-4xl mx-auto shadow-coastal">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-semibold mb-6 text-primary">Research Impact</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-accent mb-2">{publications.length}</div>
+                      <div className="text-sm text-muted-foreground">Publications</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-accent mb-2">{totalCitations}</div>
+                      <div className="text-sm text-muted-foreground">Total Citations</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-accent mb-2">{openAccessCount}</div>
+                      <div className="text-sm text-muted-foreground">Open Access</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-accent mb-2">{yearRange}</div>
+                      <div className="text-sm text-muted-foreground">Publication Years</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
