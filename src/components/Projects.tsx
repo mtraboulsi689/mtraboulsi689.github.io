@@ -196,22 +196,24 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Link to all projects section */}
+        {/* Link to external projects page */}
         {projects.length > 3 && (
           <div className="text-center mt-12">
             <Button 
               variant="outline" 
               size="lg"
               className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-              onClick={() => {
-                const element = document.getElementById('all-projects');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
+              asChild
             >
-              <BarChart3 size={20} className="mr-2" />
-              View All Projects
+              <a 
+                href="https://mtraboulsi689.github.io/projects"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BarChart3 size={20} className="mr-2" />
+                View All Projects
+                <ExternalLink size={16} className="ml-2" />
+              </a>
             </Button>
           </div>
         )}
