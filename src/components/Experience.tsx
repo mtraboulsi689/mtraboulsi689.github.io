@@ -15,6 +15,21 @@ interface ExperienceItem {
 
 const experienceData: ExperienceItem[] = [
   {
+    title: "Coastal Modelling Engineer",
+    organization: "BRGM",
+    location: "Orléans, France",
+    period: "Nov 2022 – Present",
+    type: "Fixed-term Contract",
+    description: "Development and application of advanced coastal morphodynamic models for long-term shoreline evolution under climate change scenarios.",
+    achievements: [
+      "Developed the coupled LX-ST model to simulate long-term shoreline morphological evolution",
+      "Integrated longitudinal and cross-shore sediment transport for comprehensive coastal modeling",
+      "Conducted multi-scenario simulations (SSP2-4.5, SSP5-8.5, High-End) for climate impact assessment",
+      "Applied the model to the Lacanau site (5 km) with sensitivity tests and varying erosion rates"
+    ],
+    technologies: ["LX-ST", "LX-Shore", "Python", "MATLAB", "GIS", "Climate Modeling"]
+  },
+  {
     title: "Numerical Modeling of Coastline & Sandy Beaches under Sea-Level Rise",
     organization: "BRGM",
     location: "Orléans, France",

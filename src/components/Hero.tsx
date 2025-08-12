@@ -1,5 +1,5 @@
 
-import { ArrowDown, Download, ExternalLink } from 'lucide-react';
+import { ArrowDown, Download, ExternalLink, Mail, Phone, Github, Linkedin, FileText, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
@@ -41,6 +41,68 @@ const Hero = () => {
             </p>
           </div>
 
+          {/* Social Icons */}
+          <div className="animate-fade-up flex justify-center items-center space-x-6 mb-10" style={{animationDelay: '0.3s'}}>
+            <a 
+              href="mailto:traboulsimohamed@gmail.com" 
+              className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
+              title="Email"
+            >
+              <Mail size={20} />
+            </a>
+            <a 
+              href="tel:+33772435745" 
+              className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
+              title="Phone"
+            >
+              <Phone size={20} />
+            </a>
+            <a 
+              href="https://scholar.google.com/citations?user=2sx0LHgAAAAJ" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
+              title="Google Scholar"
+            >
+              <GraduationCap size={20} />
+            </a>
+            <a 
+              href="https://github.com/user689" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
+              title="GitHub"
+            >
+              <Github size={20} />
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/mtraboulsi/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
+              title="LinkedIn"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a 
+              href="https://www.researchgate.net/profile/Mohammad-Traboulsi" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
+              title="ResearchGate"
+            >
+              <ExternalLink size={20} />
+            </a>
+            <a 
+              href="/CV_2025.pdf" 
+              download="Mohammad_Traboulsi_CV_2025.pdf"
+              className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
+              title="Download CV"
+            >
+              <FileText size={20} />
+            </a>
+          </div>
+
           <div className="animate-fade-up flex flex-col sm:flex-row gap-4 justify-center mb-12" style={{animationDelay: '0.4s'}}>
             <Button 
               size="lg" 
@@ -73,7 +135,7 @@ const Hero = () => {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <button 
-          onClick={() => scrollToSection('about')}
+          onClick={() => scrollToSection('skills')}
           className="text-white/70 hover:text-white transition-colors"
         >
           <ArrowDown size={24} />

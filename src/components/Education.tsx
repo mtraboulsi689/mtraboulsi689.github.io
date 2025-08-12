@@ -14,6 +14,19 @@ interface EducationItem {
 
 const educationData: EducationItem[] = [
   {
+    degree: "PhD in Coastal Engineering",
+    institution: "University of Bordeaux, BRGM",
+    location: "Bordeaux / Orléans, France",
+    period: "Nov 2022 – Present",
+    description: "Doctoral research focused on morphodynamic modelling of shoreline change under sea-level rise.",
+    highlights: [
+      "Thesis: Morphodynamic modelling of shoreline change under sea-level rise",
+      "Development of coupled coastal evolution models",
+      "Climate change impact assessment on coastal systems",
+      "Long-term shoreline prediction methodologies"
+    ]
+  },
+  {
     degree: "Master 2 — Environmental Fluid Mechanics",
     institution: "Université Grenoble Alpes (UGA)",
     location: "Grenoble, France",
