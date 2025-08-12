@@ -1,54 +1,71 @@
 
-import { Briefcase } from 'lucide-react';
-import Timeline, { TimelineItem } from '@/components/Timeline';
+import VerticalTimeline, { TimelineItem } from '@/components/VerticalTimeline';
 import { useLanguage } from '@/components/language-provider';
 
 const experienceData: TimelineItem[] = [
   {
+    id: "brgm-coastal-engineer",
+    category: "experience",
+    start_date: "2022-11",
+    end_date: null,
     title: "Coastal Modelling Engineer",
-    subtitle: "Fixed-term Contract",
-    institution: "BRGM",
+    role: "Fixed-term Contract",
+    organization: "BRGM",
     location: "France",
-    period: "Nov 2022 – Present",
-    description: "Development and application of advanced coastal morphodynamic models for long-term shoreline evolution under climate change scenarios.",
-    highlights: [
+    summary: "Development and application of advanced coastal morphodynamic models for long-term shoreline evolution under climate change scenarios.",
+    bullets: [
       "Developed the coupled LX-ST model to simulate long-term shoreline morphological evolution",
       "Integrated longitudinal and cross-shore sediment transport for comprehensive coastal modeling",
       "Conducted multi-scenario simulations (SSP2-4.5, SSP5-8.5, High-End) for climate impact assessment",
       "Applied the model to the Lacanau site (5 km) with sensitivity tests and varying erosion rates"
     ],
-    icon: <Briefcase className="text-white" size={24} />
+    links: [
+      {
+        label: "LX-ST Publication",
+        url: "https://doi.org/10.1016/j.envsoft.2025.106624"
+      }
+    ]
   },
   {
+    id: "brgm-internship",
+    category: "experience",
+    start_date: "2022-02",
+    end_date: "2022-08",
     title: "Numerical Modeling of Coastline & Sandy Beaches under Sea-Level Rise",
-    subtitle: "Internship",
-    institution: "BRGM",
-    location: "France",
-    period: "02/2022 – 08/2022",
-    description: "Enhanced coastal modeling capabilities for climate change impact assessment on sandy coastlines.",
-    highlights: [
+    role: "Internship",
+    organization: "BRGM",
+    location: "France", 
+    summary: "Enhanced coastal modeling capabilities for climate change impact assessment on sandy coastlines.",
+    bullets: [
       "Enhanced LX-Shore code with ShoreTrans module for improved accuracy",
       "Developed 2D modeling capabilities for complex coastal geometries",
       "Implemented sediment transport algorithms for long-term predictions",
       "Validated models against observed coastal evolution data"
-    ],
-    icon: <Briefcase className="text-white" size={24} />
+    ]
   },
   {
-    title: "Impact of Climate Change on Gironde Estuary Hydrodynamics (ECCLIPSE Project)",
-    subtitle: "Internship",
-    institution: "Cerema",
+    id: "cerema-ecclipse",
+    category: "experience", 
+    start_date: "2021-03",
+    end_date: "2021-09",
+    title: "Impact of Climate Change on Gironde Estuary Hydrodynamics",
+    role: "Internship - ECCLIPSE Project",
+    organization: "Cerema",
     location: "Margny-lès-Compiègne, France",
-    period: "03/2021 – 09/2021",
-    description: "Comprehensive hydrodynamic modeling study assessing climate change impacts on France's largest estuary.",
-    highlights: [
+    summary: "Comprehensive hydrodynamic modeling study assessing climate change impacts on France's largest estuary.",
+    bullets: [
       "Developed Telemac3D & Telemac2D models for flood and drought scenarios",
-      "Analyzed dredging impacts on estuarine circulation patterns",
+      "Analyzed dredging impacts on estuarine circulation patterns", 
       "Performed hydrological modeling of Garonne & Dordogne rivers",
       "Generated climate scenarios projections up to 2100",
       "Contributed to national climate adaptation strategies"
     ],
-    icon: <Briefcase className="text-white" size={24} />
+    links: [
+      {
+        label: "DOI: 10.5150/jngcgc.2022.020",
+        url: "https://doi.org/10.5150/jngcgc.2022.020"
+      }
+    ]
   }
 ];
 
@@ -57,18 +74,18 @@ const Experience = () => {
   const { t } = useLanguage();
   
   return (
-    <section id="experience" className="py-20 bg-background">
+    <section id="experience" className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
             {t('experience.title')}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t('experience.description')}
           </p>
         </div>
 
-        <Timeline items={experienceData} category="work" />
+        <VerticalTimeline items={experienceData} category="experience" />
       </div>
     </section>
   );
