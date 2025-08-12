@@ -51,8 +51,8 @@ const Hero = () => {
             </Button>
             <Button 
               size="lg" 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 text-lg"
+              variant="secondary" 
+              className="bg-white/95 text-primary hover:bg-white hover:shadow-ocean transition-all duration-300 px-8 py-4 text-lg font-semibold"
               onClick={() => scrollToSection('experience')}
             >
               View Work
