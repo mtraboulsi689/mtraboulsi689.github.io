@@ -51,8 +51,8 @@ const Contact = () => {
                   <h4 className="font-semibold text-white mb-4">Professional Links</h4>
                   <div className="space-y-3">
                     <Button 
-                      variant="outline" 
-                      className="w-full justify-start border-white/30 text-white hover:bg-white/10"
+                      variant="secondary" 
+                      className="w-full justify-start bg-white/95 text-primary hover:bg-white hover:shadow-ocean transition-all duration-300"
                       asChild
                     >
                       <a href="#" target="_blank" rel="noopener noreferrer">
@@ -62,8 +62,8 @@ const Contact = () => {
                     </Button>
                     
                     <Button 
-                      variant="outline" 
-                      className="w-full justify-start border-white/30 text-white hover:bg-white/10"
+                      variant="secondary" 
+                      className="w-full justify-start bg-white/95 text-primary hover:bg-white hover:shadow-ocean transition-all duration-300"
                       asChild
                     >
                       <a href="#" target="_blank" rel="noopener noreferrer">
@@ -73,8 +73,8 @@ const Contact = () => {
                     </Button>
                     
                     <Button 
-                      variant="outline" 
-                      className="w-full justify-start border-white/30 text-white hover:bg-white/10"
+                      variant="secondary" 
+                      className="w-full justify-start bg-white/95 text-primary hover:bg-white hover:shadow-ocean transition-all duration-300"
                       asChild
                     >
                       <a href="#" target="_blank" rel="noopener noreferrer">
