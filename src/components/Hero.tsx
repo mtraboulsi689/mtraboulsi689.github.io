@@ -39,7 +39,6 @@ const Hero = () => {
             <p className="text-lg md:text-xl mb-6 text-white/80">
               Specialized in Fluid Mechanics & Numerical Modeling
             </p>
-          </div>
             
             {/* Watch Research Video Button */}
             <div className="mb-8">
@@ -74,7 +73,7 @@ const Hero = () => {
               <GraduationCap size={20} />
             </a>
             <a 
-              href="https://github.com/user689" 
+              href="https://github.com/mtraboulsi689" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
