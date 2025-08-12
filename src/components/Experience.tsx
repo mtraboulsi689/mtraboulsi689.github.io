@@ -1,8 +1,8 @@
 
 import { useState, useEffect } from 'react';
 import VerticalTimeline, { TimelineItem } from '@/components/VerticalTimeline';
+import TimelineSkeleton from '@/components/skeletons/TimelineSkeleton';
 import { useLanguage } from '@/components/language-provider';
-import { Loader2 } from 'lucide-react';
 
 interface ExperienceData {
   updated_at: string;
@@ -52,10 +52,7 @@ const Experience = () => {
               {t('experience.description')}
             </p>
           </div>
-          <div className="flex items-center justify-center">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <span className="ml-2 text-muted-foreground">Loading experience...</span>
-          </div>
+          <TimelineSkeleton items={3} />
         </div>
       </section>
     );

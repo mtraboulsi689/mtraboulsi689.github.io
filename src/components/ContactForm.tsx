@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageSquare, CheckCircle, AlertCircle, RefreshCw } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
+import { trackFormSubmission, trackExternalLink } from '@/utils/analytics';
 
 interface FormData {
   name: string;
@@ -168,6 +169,9 @@ const ContactForm = () => {
           message: 'Thank you! Your message has been sent successfully. I usually reply within 2 business days.' 
         });
         
+        // Track successful form submission
+        trackFormSubmission('contact_form', true);
+        
         // Reset form on success
         setFormData({
           name: '',
@@ -191,6 +195,9 @@ const ContactForm = () => {
         type: 'error', 
         message: 'Failed to send message. Please try again or email me directly.' 
       });
+      
+      // Track failed form submission
+      trackFormSubmission('contact_form', false);
     }
   };
 
@@ -254,6 +261,7 @@ const ContactForm = () => {
                       href="https://github.com/mtraboulsi689" 
                       target="_blank" 
                       rel="noopener noreferrer"
+                      onClick={() => trackExternalLink('https://github.com/mtraboulsi689', 'contact_social')}
                       className="flex items-center justify-center w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                       aria-label="GitHub Profile"
                     >
@@ -263,6 +271,7 @@ const ContactForm = () => {
                       href="https://www.linkedin.com/in/mtraboulsi/" 
                       target="_blank" 
                       rel="noopener noreferrer"
+                      onClick={() => trackExternalLink('https://www.linkedin.com/in/mtraboulsi/', 'contact_social')}
                       className="flex items-center justify-center w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                       aria-label="LinkedIn Profile"
                     >
@@ -272,6 +281,7 @@ const ContactForm = () => {
                       href="https://www.researchgate.net/profile/Mohammad-Traboulsi" 
                       target="_blank" 
                       rel="noopener noreferrer"
+                      onClick={() => trackExternalLink('https://www.researchgate.net/profile/Mohammad-Traboulsi', 'contact_social')}
                       className="flex items-center justify-center w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                       aria-label="ResearchGate Profile"
                     >

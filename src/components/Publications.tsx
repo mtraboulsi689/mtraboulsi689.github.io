@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { FileText, Loader2, Copy, ChevronDown, ChevronUp, Users } from 'lucide-react';
+import { FileText, Copy, ChevronDown, ChevronUp, Users } from 'lucide-react';
+import PublicationsSkeleton from '@/components/skeletons/PublicationsSkeleton';
 
 interface Publication {
   id: string;
@@ -273,14 +274,16 @@ const Publications = () => {
     return (
       <section id="publications" className="py-20 bg-gradient-coastal">
         <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient-ocean">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
               Publications & Research
             </h2>
-            <div className="flex items-center justify-center space-x-2">
-              <Loader2 className="h-6 w-6 animate-spin text-primary" />
-              <span className="text-lg text-muted-foreground">Loading publications from OpenAlex...</span>
-            </div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Research contributions in coastal engineering, fluid mechanics, and climate change impact assessment.
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <PublicationsSkeleton items={4} showMetrics={false} showFilters={false} />
           </div>
         </div>
       </section>
