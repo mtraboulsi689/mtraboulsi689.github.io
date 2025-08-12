@@ -164,38 +164,6 @@ const Experience = () => {
           ))}
         </div>
 
-        {/* Publications Section */}
-        <div className="mt-20">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4 text-gradient-ocean">
-              Publications & Research
-            </h3>
-          </div>
-          
-          <Card className="max-w-4xl mx-auto shadow-coastal hover:shadow-ocean transition-shadow duration-300">
-            <CardContent className="p-8">
-              <div className="flex items-start space-x-4">
-                <ExternalLink className="text-accent flex-shrink-0 mt-1" size={20} />
-                <div>
-                  <h4 className="text-lg font-semibold text-primary mb-2">
-                    Correlations between Dynamic and Static Mechanical Properties of Clayey Soils
-                  </h4>
-                  <p className="text-muted-foreground mb-3">
-                    Traboulsi, M., & Al Wardany, R. (2019)
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    International Journal of Civil Engineering and Technology, 10(01), 2602–2612.
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Research investigating the relationships between dynamic and static mechanical properties 
-                    of clayey soils, contributing to improved understanding of soil behavior under varying 
-                    loading conditions for civil engineering applications.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </section>
   );
