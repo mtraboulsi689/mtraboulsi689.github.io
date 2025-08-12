@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { Menu, X, Mail, Phone, MapPin, ExternalLink, Github, Linkedin, FileText, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
@@ -29,10 +29,78 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className={`text-xl font-bold transition-colors ${
-            isScrolled ? 'text-gradient-ocean' : 'text-white'
-          }`}>
-            Mohammad Traboulsi
+          <div className="flex flex-col">
+            <div className={`text-xl font-bold transition-colors ${
+              isScrolled ? 'text-gradient-ocean' : 'text-white'
+            }`}>
+              Mohammad Traboulsi
+            </div>
+            <div className="flex items-center space-x-3 mt-1">
+              <a 
+                href="mailto:traboulsimohamed@gmail.com" 
+                className={`transition-colors hover:scale-110 transform ${
+                  isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
+                }`}
+                title="Email"
+              >
+                <Mail size={16} />
+              </a>
+              <a 
+                href="https://scholar.google.com/citations?user=2sx0LHgAAAAJ" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`transition-colors hover:scale-110 transform ${
+                  isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
+                }`}
+                title="Google Scholar"
+              >
+                <GraduationCap size={16} />
+              </a>
+              <a 
+                href="https://github.com/user689" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`transition-colors hover:scale-110 transform ${
+                  isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
+                }`}
+                title="GitHub"
+              >
+                <Github size={16} />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/mtraboulsi/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`transition-colors hover:scale-110 transform ${
+                  isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
+                }`}
+                title="LinkedIn"
+              >
+                <Linkedin size={16} />
+              </a>
+              <a 
+                href="https://www.researchgate.net/profile/Mohammad-Traboulsi" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`transition-colors hover:scale-110 transform ${
+                  isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
+                }`}
+                title="ResearchGate"
+              >
+                <ExternalLink size={16} />
+              </a>
+              <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`transition-colors hover:scale-110 transform ${
+                  isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
+                }`}
+                title="CV"
+              >
+                <FileText size={16} />
+              </a>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
