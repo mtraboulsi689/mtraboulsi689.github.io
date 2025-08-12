@@ -29,7 +29,9 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="text-xl font-bold text-gradient-ocean">
+          <div className={`text-xl font-bold transition-colors ${
+            isScrolled ? 'text-gradient-ocean' : 'text-white'
+          }`}>
             Mohammad Traboulsi
           </div>
 
@@ -37,31 +39,41 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection('skills')}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
             >
               Skills
             </button>
             <button 
               onClick={() => scrollToSection('education')}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
             >
               Education
             </button>
             <button 
               onClick={() => scrollToSection('experience')}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
             >
               Experience
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
             >
               Contact
             </button>
@@ -69,13 +81,19 @@ const Header = () => {
 
           {/* Contact Icons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <a href="mailto:traboulsimohamed@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">
+            <a href="mailto:traboulsimohamed@gmail.com" className={`transition-colors ${
+              isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
+            }`}>
               <Mail size={20} />
             </a>
-            <a href="tel:+33772435745" className="text-muted-foreground hover:text-accent transition-colors">
+            <a href="tel:+33772435745" className={`transition-colors ${
+              isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
+            }`}>
               <Phone size={20} />
             </a>
-            <span className="text-muted-foreground flex items-center">
+            <span className={`flex items-center ${
+              isScrolled ? 'text-muted-foreground' : 'text-white/70'
+            }`}>
               <MapPin size={16} className="mr-1" />
               Orléans, France
             </span>
