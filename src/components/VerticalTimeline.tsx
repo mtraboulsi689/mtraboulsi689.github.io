@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronDown, ChevronUp, ExternalLink, Copy } from 'lucide-react';
+import { ChevronDown, ChevronUp, ExternalLink, Copy, Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
 
 interface TimelineLink {
   label: string;
@@ -26,28 +26,8 @@ interface VerticalTimelineProps {
   category: 'experience' | 'education';
 }
 
-interface YearGroup {
-  year: string;
-  items: TimelineItem[];
-}
-
 const VerticalTimeline = ({ items, category }: VerticalTimelineProps) => {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
-  const [expandedCardsMobile, setExpandedCardsMobile] = useState<Set<string>>(new Set());
-  const [activeYear, setActiveYear] = useState<string>('');
-  const [isMobile, setIsMobile] = useState(false);
-  const railRef = useRef<HTMLDivElement>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
-  // Check for mobile breakpoint
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Sort items by start_date descending
   const sortedItems = [...items].sort((a, b) => {
@@ -56,49 +36,6 @@ const VerticalTimeline = ({ items, category }: VerticalTimelineProps) => {
     return dateB.getTime() - dateA.getTime();
   });
 
-  // Group items by year
-  const yearGroups: YearGroup[] = sortedItems.reduce((groups, item) => {
-    const year = item.start_date.split('-')[0];
-    const existingGroup = groups.find(g => g.year === year);
-    if (existingGroup) {
-      existingGroup.items.push(item);
-    } else {
-      groups.push({ year, items: [item] });
-    }
-    return groups;
-  }, [] as YearGroup[]);
-
-  // Set up IntersectionObserver
-  useEffect(() => {
-    if (isMobile) return;
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '-80px 0px -50% 0px', // Account for sticky header
-      threshold: 0.5
-    };
-
-    observerRef.current = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const cardElement = entry.target as HTMLElement;
-          const year = cardElement.dataset.year;
-          if (year) {
-            setActiveYear(year);
-          }
-        }
-      });
-    }, observerOptions);
-
-    // Observe all cards
-    const cards = document.querySelectorAll('[data-year]');
-    cards.forEach(card => observerRef.current?.observe(card));
-
-    return () => {
-      observerRef.current?.disconnect();
-    };
-  }, [sortedItems, isMobile]);
-
   const getCategoryColors = (cat: 'experience' | 'education') => {
     switch (cat) {
       case 'experience':
@@ -106,18 +43,16 @@ const VerticalTimeline = ({ items, category }: VerticalTimelineProps) => {
           accent: 'text-orange-600',
           bg: 'bg-orange-50',
           border: 'border-orange-200',
-          line: 'bg-orange-300',
-          dot: 'bg-orange-500',
-          activeDot: 'bg-orange-600'
+          icon: 'bg-orange-500',
+          iconHover: 'bg-orange-600'
         };
       case 'education':
         return {
           accent: 'text-blue-600',
-          bg: 'bg-blue-50',
+          bg: 'bg-blue-50', 
           border: 'border-blue-200',
-          line: 'bg-blue-300',
-          dot: 'bg-blue-500',
-          activeDot: 'bg-blue-600'
+          icon: 'bg-blue-500',
+          iconHover: 'bg-blue-600'
         };
     }
   };
@@ -137,35 +72,12 @@ const VerticalTimeline = ({ items, category }: VerticalTimelineProps) => {
     return `${startMonth} – ${endMonth}`;
   };
 
-  const getRailLabel = (startDate: string, endDate: string | null) => {
-    const startYear = startDate.split('-')[0];
-    if (!endDate) {
-      return 'Present';
-    }
-    const endYear = endDate.split('-')[0];
-    return startYear === endYear ? startYear : `${startYear}-${endYear}`;
-  };
-
   const createSlug = (title: string) => {
     return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   };
 
   const handleCardExpand = (cardId: string) => {
-    if (isMobile) {
-      const newExpanded = new Set(expandedCardsMobile);
-      if (newExpanded.has(cardId)) {
-        newExpanded.delete(cardId);
-      } else {
-        newExpanded.add(cardId);
-      }
-      setExpandedCardsMobile(newExpanded);
-    } else {
-      setExpandedCard(expandedCard === cardId ? null : cardId);
-    }
-  };
-
-  const isCardExpanded = (cardId: string) => {
-    return isMobile ? expandedCardsMobile.has(cardId) : expandedCard === cardId;
+    setExpandedCard(expandedCard === cardId ? null : cardId);
   };
 
   const handleTitleClick = (item: TimelineItem) => {
@@ -183,111 +95,72 @@ const VerticalTimeline = ({ items, category }: VerticalTimelineProps) => {
     }
   };
 
+  const getIcon = () => {
+    return category === 'experience' ? Briefcase : GraduationCap;
+  };
+
+  const Icon = getIcon();
+
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-[96px,1fr] gap-0">
-        {/* Left Rail - Desktop Only */}
-        {!isMobile && (
-          <div className="hidden md:block relative">
+    <div className="max-w-4xl mx-auto relative">
+      {/* Main timeline line */}
+      <div className="absolute left-6 top-8 bottom-8 w-0.5 bg-gray-200 rounded-full" />
+      
+      <div className="space-y-8">
+        {sortedItems.map((item, index) => {
+          const cardId = `${category}-${createSlug(item.title)}`;
+          const isExpanded = expandedCard === cardId;
+          const hasExpandableContent = item.bullets && item.bullets.length > 0;
+
+          return (
             <div 
-              ref={railRef}
-              className="sticky top-20 h-screen"
+              key={item.id}
+              id={cardId}
+              className="relative flex items-start space-x-6 animate-fade-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Vertical Line */}
-              <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-gray-200">
+              {/* Timeline icon */}
+              <div className="flex-shrink-0 relative z-10">
                 <div 
-                  className={`absolute top-0 w-full transition-all duration-300 ${colors.line}`}
-                  style={{
-                    height: activeYear ? '100%' : '0%'
-                  }}
-                />
+                  className={`w-12 h-12 ${colors.icon} rounded-full flex items-center justify-center shadow-lg transition-all duration-300 group-hover:${colors.iconHover} group-hover:scale-110`}
+                >
+                  <Icon className="text-white" size={20} />
+                </div>
+                
+                {/* Connecting line to next item */}
+                {index < sortedItems.length - 1 && (
+                  <div className="absolute left-1/2 top-12 w-0.5 h-8 bg-gray-200 -translate-x-1/2" />
+                )}
               </div>
 
-              {/* Year Markers */}
-              <div className="relative">
-                {yearGroups.map((group, groupIndex) => (
-                  <div key={group.year} className="relative">
-                    {group.items.map((item, itemIndex) => {
-                      const year = item.start_date.split('-')[0];
-                      const isActive = activeYear === year;
-                      const cardId = `${category}-${year}-${createSlug(item.title)}`;
-                      
-                      return (
-                        <div
-                          key={item.id}
-                          className="absolute left-12"
-                          style={{
-                            top: `${(groupIndex * 200) + (itemIndex * 30)}px`
-                          }}
-                        >
-                          {/* Year Dot */}
-                          <div className="relative -translate-x-1/2 -translate-y-1/2">
-                            <div 
-                              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                isActive ? colors.activeDot : colors.dot
-                              } ${isActive ? 'scale-125 shadow-lg' : 'scale-100'}`}
-                            />
-                            
-                            {/* Year Label */}
-                            {itemIndex === 0 && (
-                              <div className={`absolute left-6 top-1/2 -translate-y-1/2 text-sm font-medium whitespace-nowrap ${
-                                isActive ? colors.accent : 'text-gray-600'
-                              }`}>
-                                {getRailLabel(item.start_date, item.end_date)}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Right Column - Cards */}
-        <div className="space-y-6 md:space-y-8">
-          {yearGroups.map((group, groupIndex) => (
-            <div key={group.year} className="space-y-6 md:space-y-8">
-              {group.items.map((item, itemIndex) => {
-                const year = item.start_date.split('-')[0];
-                const cardId = `${category}-${year}-${createSlug(item.title)}`;
-                const isExpanded = isCardExpanded(cardId);
-                const hasExpandableContent = item.bullets && item.bullets.length > 0;
-
-                return (
-                  <Card
-                    key={item.id}
-                    id={cardId}
-                    data-year={year}
-                    className="shadow-sm hover:shadow-md transition-all duration-300 rounded-lg"
-                  >
-                    <CardContent className="p-4 md:p-5">
-                      {/* Mobile Date Chip */}
-                      {isMobile && (
-                        <div className="mb-3">
-                          <span className="inline-block px-2 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded">
-                            {formatDateRange(item.start_date, item.end_date)}
-                          </span>
-                        </div>
-                      )}
-
+              {/* Content card */}
+              <div className="flex-1 min-w-0 group">
+                <Card 
+                  className="shadow-coastal hover:shadow-ocean transition-all duration-300 cursor-pointer"
+                  onClick={() => hasExpandableContent && handleCardExpand(cardId)}
+                >
+                  <CardContent className="p-6">
+                    <div className="space-y-4">
                       {/* Header */}
-                      <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-start justify-between">
                         <div className="flex-1 min-w-0">
                           {/* Title */}
                           <h3 
-                            className={`text-lg font-semibold leading-tight mb-1 ${
+                            className={`text-xl font-semibold leading-tight mb-2 ${
                               item.links?.[0] ? 'cursor-pointer hover:' + colors.accent + ' transition-colors' : ''
                             }`}
-                            onClick={() => item.links?.[0] && handleTitleClick(item)}
+                            onClick={(e) => {
+                              if (item.links?.[0]) {
+                                e.stopPropagation();
+                                handleTitleClick(item);
+                              }
+                            }}
                             role={item.links?.[0] ? 'button' : 'heading'}
                             tabIndex={item.links?.[0] ? 0 : undefined}
                             onKeyDown={(e) => {
                               if (item.links?.[0] && (e.key === 'Enter' || e.key === ' ')) {
                                 e.preventDefault();
+                                e.stopPropagation();
                                 handleTitleClick(item);
                               }
                             }}
@@ -297,61 +170,61 @@ const VerticalTimeline = ({ items, category }: VerticalTimelineProps) => {
 
                           {/* Role */}
                           {item.role && (
-                            <p className="text-sm text-gray-600 mb-1">{item.role}</p>
+                            <p className={`text-lg mb-2 ${colors.accent}`}>{item.role}</p>
                           )}
-
-                          {/* Organization & Location */}
-                          <div className="text-sm text-gray-500 mb-2">
-                            <span className="font-medium">{item.organization}</span>
-                            {item.location && (
-                              <>
-                                <span className="mx-1">•</span>
-                                <span>{item.location}</span>
-                              </>
-                            )}
-                          </div>
-
-                          {/* Desktop Date Range */}
-                          {!isMobile && (
-                            <div className="text-sm text-gray-500 mb-3">
-                              {formatDateRange(item.start_date, item.end_date)}
-                            </div>
-                          )}
-
-                          {/* Summary */}
-                          <p className="text-sm text-gray-700 leading-relaxed">
-                            {item.summary}
-                          </p>
                         </div>
 
-                        {/* Expand Toggle */}
+                        {/* Expand toggle */}
                         {hasExpandableContent && (
-                          <button
-                            onClick={() => handleCardExpand(cardId)}
-                            className="ml-3 p-1 rounded-md hover:bg-gray-100 transition-colors"
-                            aria-expanded={isExpanded}
-                            aria-controls={`${cardId}-bullets`}
-                            aria-label={isExpanded ? 'Collapse details' : 'Expand details'}
-                          >
+                          <div className="ml-4 transition-all duration-300 group-hover:scale-110">
                             {isExpanded ? (
-                              <ChevronUp size={16} className="text-gray-500" aria-hidden="true" />
+                              <ChevronUp size={20} className={colors.accent} />
                             ) : (
-                              <ChevronDown size={16} className="text-gray-500" aria-hidden="true" />
+                              <ChevronDown size={20} className="text-muted-foreground" />
                             )}
-                          </button>
+                          </div>
                         )}
                       </div>
 
-                      {/* Expandable Bullets */}
+                      {/* Meta info */}
+                      <div className="space-y-2">
+                        <div className="flex items-center text-muted-foreground">
+                          <MapPin size={16} className="mr-2 flex-shrink-0" />
+                          <span className="font-medium">{item.organization}</span>
+                          {item.location && (
+                            <>
+                              <span className="mx-2">•</span>
+                              <span>{item.location}</span>
+                            </>
+                          )}
+                        </div>
+                        
+                        <div className="flex items-center text-muted-foreground">
+                          <Calendar size={16} className="mr-2 flex-shrink-0" />
+                          <span>{formatDateRange(item.start_date, item.end_date)}</span>
+                        </div>
+                      </div>
+
+                      {/* Summary */}
+                      <p className="text-muted-foreground leading-relaxed">
+                        {item.summary}
+                      </p>
+
+                      {/* Expandable content */}
                       {hasExpandableContent && isExpanded && (
-                        <div 
-                          id={`${cardId}-bullets`}
-                          className="mt-4 pt-4 border-t border-gray-100 animate-fade-up"
-                        >
-                          <ul className="space-y-2 text-sm text-gray-600">
+                        <div className="pt-4 border-t border-border/50 animate-fade-up">
+                          <h4 className="font-medium text-sm text-primary mb-3 flex items-center">
+                            <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
+                            Key Highlights:
+                          </h4>
+                          <ul className="space-y-2 text-sm text-muted-foreground">
                             {item.bullets?.map((bullet, idx) => (
-                              <li key={idx} className="flex items-start">
-                                <span className={`${colors.accent} mr-2 flex-shrink-0 mt-0.5`} aria-hidden="true">•</span>
+                              <li 
+                                key={idx} 
+                                className="flex items-start animate-fade-up"
+                                style={{ animationDelay: `${idx * 0.1}s` }}
+                              >
+                                <span className={`${colors.accent} mr-3 flex-shrink-0 mt-1`}>▸</span>
                                 <span>{bullet}</span>
                               </li>
                             ))}
@@ -361,37 +234,48 @@ const VerticalTimeline = ({ items, category }: VerticalTimelineProps) => {
 
                       {/* Links */}
                       {item.links && item.links.length > 0 && (
-                        <div className="mt-4 pt-4 border-t border-gray-100 flex flex-wrap gap-2">
+                        <div className="pt-4 border-t border-border/50 flex flex-wrap gap-2">
                           {item.links.map((link, idx) => (
                             <div key={idx} className="flex gap-2">
                               <button
-                                onClick={() => window.open(link.url, '_blank', 'noopener,noreferrer')}
-                                className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  window.open(link.url, '_blank', 'noopener,noreferrer');
+                                }}
+                                className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-colors"
                               >
                                 <span>{link.label}</span>
-                                <ExternalLink size={12} aria-hidden="true" />
+                                <ExternalLink size={12} />
                               </button>
                               
                               {link.label.toLowerCase().includes('doi') && (
                                 <button
-                                  onClick={() => copyToClipboard(link.url)}
-                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    copyToClipboard(link.url);
+                                  }}
+                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full transition-colors"
                                   title="Copy DOI"
                                 >
-                                  <Copy size={12} aria-hidden="true" />
+                                  <Copy size={12} />
                                 </button>
                               )}
                             </div>
                           ))}
                         </div>
                       )}
-                    </CardContent>
-                  </Card>
-                );
-              })}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
+      
+      {/* Timeline end marker */}
+      <div className="flex justify-center pt-8">
+        <div className={`w-3 h-3 ${colors.icon} rounded-full shadow-lg`} />
       </div>
     </div>
   );
