@@ -1,73 +1,107 @@
-# Welcome to your Lovable project
+# Mohammad Traboulsi - Portfolio Website
 
-## Project info
+A modern, responsive portfolio website showcasing the professional work and expertise of Mohammad Traboulsi, a Coastal and Civil Engineer specializing in Fluid Mechanics & Numerical Modeling.
 
-**URL**: https://lovable.dev/projects/d6e1c078-03dd-4970-a6b3-fd98d52a3e22
+🌐 **Live Site**: [mtraboulsi689.github.io](https://mtraboulsi689.github.io)
 
-## How can I edit this code?
+## About Mohammad Traboulsi
 
-There are several ways of editing your application.
+Mohammad is a passionate coastal and civil engineer with expertise in:
+- **Fluid Mechanics & Numerical Modeling**
+- **Sediment Transport & Turbulence Analysis**
+- **OpenFOAM & Telemac Simulations**
+- **Data Analysis & Machine Learning**
+- **Environmental Engineering Research**
 
-**Use Lovable**
+Currently pursuing PhD research at Université Grenoble Alpes, focusing on environmental fluid mechanics and coastal engineering applications.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d6e1c078-03dd-4970-a6b3-fd98d52a3e22) and start prompting.
+## Technology Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+This portfolio is built with modern web technologies:
 
-**Use your preferred IDE**
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **Tailwind CSS** with custom ocean-themed styling
+- **shadcn/ui** component library
+- **React Router DOM** for navigation
+- **TanStack React Query** for state management
+- **Lucide React** for icons
+- **GitHub Pages** for hosting with automated CI/CD
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- ✨ **Responsive Design**: Mobile-first approach with seamless desktop experience
+- 🎨 **Ocean Theme**: Custom gradients and animations reflecting coastal engineering focus
+- 📱 **Single Page Application**: Smooth scrolling navigation between sections
+- 🚀 **Performance Optimized**: Built with Vite for fast loading times
+- 📊 **Interactive Skills**: Visual skill bars with proficiency levels
+- 📧 **Contact Integration**: Professional contact form and information
+- 🔧 **TypeScript**: Full type safety throughout the application
 
-Follow these steps:
+## Development
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
+- Node.js 18+ and npm
+- Git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Getting Started
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+# Clone the repository
+git clone https://github.com/mtraboulsi689/mtraboulsi689.github.io.git
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Navigate to project directory
+cd mtraboulsi689.github.io
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Available Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run dev          # Start development server (localhost:8080)
+npm run build        # Build for production
+npm run build:dev    # Build in development mode
+npm run lint         # Run ESLint
+npm run preview      # Preview production build
+```
 
-**Use GitHub Codespaces**
+## Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/           # Portfolio sections
+│   ├── About.tsx        # Professional background
+│   ├── Contact.tsx      # Contact information
+│   ├── Education.tsx    # Academic background
+│   ├── Experience.tsx   # Professional experience
+│   ├── Hero.tsx         # Landing section
+│   ├── Skills.tsx       # Technical skills
+│   └── ui/             # Reusable UI components
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── App.tsx            # Main application
+```
 
-## What technologies are used for this project?
+## Deployment
 
-This project is built with:
+The site is automatically deployed to GitHub Pages using GitHub Actions:
+- **Trigger**: Push to main branch
+- **Build**: Vite production build
+- **Deploy**: GitHub Pages with SPA support
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Contact
 
-## How can I deploy this project?
+**Mohammad Traboulsi**
+- 📧 Email: [Contact through website](https://mtraboulsi689.github.io)
+- 📍 Location: Orléans, France
+- 🔬 Research: Environmental Fluid Mechanics, Université Grenoble Alpes
 
-Simply open [Lovable](https://lovable.dev/projects/d6e1c078-03dd-4970-a6b3-fd98d52a3e22) and click on Share -> Publish.
+## License
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is open source and available under the [MIT License](LICENSE).

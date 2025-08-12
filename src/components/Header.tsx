@@ -90,13 +90,12 @@ const Header = () => {
                 <ExternalLink size={16} />
               </a>
               <a 
-                href="#" 
-                target="_blank" 
-                rel="noopener noreferrer"
+                href="/CV_2025.pdf" 
+                download="Mohammad_Traboulsi_CV_2025.pdf"
                 className={`transition-colors hover:scale-110 transform ${
                   isScrolled ? 'text-muted-foreground hover:text-accent' : 'text-white/80 hover:text-accent-light'
                 }`}
-                title="CV"
+                title="Download CV"
               >
                 <FileText size={16} />
               </a>
