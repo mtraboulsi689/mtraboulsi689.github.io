@@ -170,7 +170,7 @@ const SkillCard = ({ title, icon: Icon, skillList, color }: {
                 
                 {skill.examples.length > 0 && (
                   <div className="mb-2">
-                    <p className="text-xs font-medium text-primary mb-1">Applications:</p>
+                    <p className="text-xs font-medium text-primary mb-1">{t('skills.applications')}</p>
                     <ul className="text-xs text-muted-foreground space-y-1">
                       {skill.examples.map((example, idx) => (
                         <li key={idx} className="flex items-start">
@@ -184,7 +184,7 @@ const SkillCard = ({ title, icon: Icon, skillList, color }: {
 
                 {skill.projects && skill.projects.length > 0 && (
                   <div>
-                    <p className="text-xs font-medium text-primary mb-1">Recent Projects:</p>
+                    <p className="text-xs font-medium text-primary mb-1">{t('skills.recentProjects')}</p>
                     <ul className="text-xs text-muted-foreground space-y-1">
                       {skill.projects.map((project, idx) => (
                         <li key={idx} className="flex items-start">
@@ -219,7 +219,7 @@ const Skills = () => {
             {t('skills.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Click on any skill to see applications and recent projects
+            {t('skills.clickToSeeMore')}
           </p>
         </div>
 
@@ -229,7 +229,7 @@ const Skills = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <div className="animate-fade-up">
               <SkillCard
-                title="Programming"
+                title={t('skills.programmingTitle')}
                 icon={Code}
                 skillList={programmingSkills}
                 color="text-primary"
@@ -238,7 +238,7 @@ const Skills = () => {
             
             <div className="animate-fade-up" style={{animationDelay: '0.1s'}}>
               <SkillCard
-                title="Analysis & Modeling"
+                title={t('skills.analysisTitle')}
                 icon={TrendingUp}
                 skillList={analysisSkills}
                 color="text-accent"
@@ -247,7 +247,7 @@ const Skills = () => {
             
             <div className="animate-fade-up" style={{animationDelay: '0.2s'}}>
               <SkillCard
-                title="Tools & Technologies"
+                title={t('skills.toolsTitle')}
                 icon={Wrench}
                 skillList={toolSkills}
                 color="text-primary-light"

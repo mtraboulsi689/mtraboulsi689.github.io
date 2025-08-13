@@ -71,7 +71,7 @@ const Experience = () => {
             </p>
           </div>
           <div className="text-center text-red-600">
-            <p>Error loading experience data: {error}</p>
+            <p>{t('experience.errorLoading')} {error}</p>
           </div>
         </div>
       </section>

@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FileText, Copy, ChevronDown, ChevronUp, Users } from 'lucide-react';
 import PublicationsSkeleton from '@/components/skeletons/PublicationsSkeleton';
+import { useLanguage } from '@/components/language-provider';
 
 interface Publication {
   id: string;
@@ -228,6 +229,7 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
 };
 
 const Publications = () => {
+  const { t } = useLanguage();
   const [publications, setPublications] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -276,10 +278,10 @@ const Publications = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-              Publications & Research
+              {t('publications.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Research contributions in coastal engineering, fluid mechanics, and climate change impact assessment.
+              {t('publications.description')}
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
@@ -296,17 +298,17 @@ const Publications = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient-ocean">
-              Publications & Research
+              {t('publications.title')}
             </h2>
             <Card className="max-w-2xl mx-auto shadow-coastal">
               <CardContent className="p-8">
                 <div className="text-red-600 mb-4">
                   <FileText size={48} className="mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold mb-2">Unable to Load Publications</h3>
+                  <h3 className="text-lg font-semibold mb-2">{t('publications.unableToLoad')}</h3>
                   <p className="text-sm">{error}</p>
                 </div>
                 <p className="text-muted-foreground text-sm">
-                  Publications data is automatically updated weekly from OpenAlex. Please try again later.
+                  {t('publications.dataUpdatedWeekly')}
                 </p>
               </CardContent>
             </Card>
@@ -321,14 +323,14 @@ const Publications = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            Publications & Research
+            {t('publications.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Research contributions in coastal engineering, fluid mechanics, and climate change impact assessment.
+            {t('publications.description')}
           </p>
           {lastUpdated && (
             <p className="text-sm text-muted-foreground mt-2">
-              Last updated: {new Date(lastUpdated).toLocaleDateString()}
+              {t('publications.lastUpdated')} {new Date(lastUpdated).toLocaleDateString()}
             </p>
           )}
         </div>
@@ -352,23 +354,23 @@ const Publications = () => {
             <div className="mt-16 text-center">
               <Card className="max-w-4xl mx-auto shadow-coastal border-0">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold mb-6 text-primary">Research Impact</h3>
+                  <h3 className="text-2xl font-semibold mb-6 text-primary">{t('publications.researchImpact')}</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div className="text-center">
                       <div className="text-3xl font-bold text-accent mb-2">{publications.length}</div>
-                      <div className="text-sm text-muted-foreground">Publications</div>
+                      <div className="text-sm text-muted-foreground">{t('publications.publicationsCount')}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-bold text-accent mb-2">{totalCitations}</div>
-                      <div className="text-sm text-muted-foreground">Citations</div>
+                      <div className="text-sm text-muted-foreground">{t('publications.citations')}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-bold text-accent mb-2">{openAccessCount}</div>
-                      <div className="text-sm text-muted-foreground">Open Access</div>
+                      <div className="text-sm text-muted-foreground">{t('publications.openAccess')}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-bold text-accent mb-2">{Object.keys(categoryCounts).length}</div>
-                      <div className="text-sm text-muted-foreground">Categories</div>
+                      <div className="text-sm text-muted-foreground">{t('publications.categories')}</div>
                     </div>
                   </div>
                   

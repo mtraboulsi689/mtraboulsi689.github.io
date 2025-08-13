@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github, BarChart3, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/components/language-provider';
 
 interface Project {
   title: string;
@@ -13,6 +14,7 @@ interface Project {
 }
 
 const Projects = () => {
+  const { t } = useLanguage();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -104,9 +106,9 @@ const Projects = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-              Projects
+              {t('projects.title')}
             </h2>
-            <p className="text-xl text-muted-foreground">Loading projects...</p>
+            <p className="text-xl text-muted-foreground">{t('common.loading')}</p>
           </div>
         </div>
       </section>
@@ -118,11 +120,10 @@ const Projects = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            Projects
+            {t('projects.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A collection of data science and technical projects showcasing expertise in 
-            machine learning, data analysis, and statistical modeling.
+            {t('projects.description')}
           </p>
         </div>
 
@@ -171,7 +172,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                       >
                         <ExternalLink size={16} className="mr-2" />
-                        View Project
+                        {t('projects.viewProject')}
                       </a>
                     </Button>
                     
@@ -208,7 +209,7 @@ const Projects = () => {
             >
               <Link to="/projects">
                 <BarChart3 size={20} className="mr-2" />
-                View All Projects
+                {t('projects.viewAll')}
                 <ArrowRight size={16} className="ml-2" />
               </Link>
             </Button>

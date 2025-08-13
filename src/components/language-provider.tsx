@@ -127,6 +127,43 @@ const translations = {
     "contact.preparing": "Preparing Message...",
     "contact.emailNote": "Your message will open in your default email client",
 
+    // About Section
+    "about.title": "About Me",
+    "about.description": "Passionate coastal and civil engineer with expertise in fluid mechanics, numerical modeling, and data analysis. Currently pursuing advanced research in environmental fluid mechanics at Université Grenoble Alpes.",
+    "about.professionalFocus": "Professional Focus",
+    "about.professionalFocusText1": "My work centers on understanding and modeling complex fluid dynamics in coastal and civil engineering applications. I specialize in sediment transport, turbulence analysis, and the development of numerical models to predict environmental changes and their impacts on coastal infrastructure.",
+    "about.professionalFocusText2": "With extensive experience in both experimental and computational approaches, I bridge the gap between theoretical research and practical engineering solutions.",
+    "about.basedInFrance": "Based in France",
+    "about.languages": "Languages",
+    "about.keyAchievements": "Key Achievements",
+    "about.crnaGrant": "CRNA Grant Scholarship Recipient",
+    "about.rankedFirst": "Ranked 1st in Master's Program (Très Bien)",
+    "about.publishedResearch": "Published Research in International Journal",
+    "about.bootcampGraduate": "Data Analysis & ML Bootcamp Graduate",
+
+    // Skills Section
+    "skills.clickToSeeMore": "Click on any skill to see applications and recent projects",
+    "skills.applications": "Applications:",
+    "skills.recentProjects": "Recent Projects:",
+    "skills.programmingTitle": "Programming",
+    "skills.analysisTitle": "Analysis & Modeling",
+    "skills.toolsTitle": "Tools & Technologies",
+
+    // Experience Section
+    "experience.errorLoading": "Error loading experience data:",
+
+    // Publications Extra
+    "publications.lastUpdated": "Last updated:",
+    "publications.unableToLoad": "Unable to Load Publications",
+    "publications.dataUpdatedWeekly": "Publications data is automatically updated weekly from OpenAlex. Please try again later.",
+    "publications.citations": "Citations",
+    "publications.openAccess": "Open Access",
+    "publications.categories": "Categories",
+
+    // Footer
+    "footer.copyright": "© 2024 Mohammad Traboulsi. All rights reserved.",
+    "footer.description": "Coastal and Civil Engineer • Specialized in Fluid Mechanics",
+
     // Common
     "common.loading": "Loading...",
     "common.error": "Error",
@@ -234,6 +271,43 @@ const translations = {
     "contact.sendButton": "Envoyer le Message",
     "contact.preparing": "Préparation du Message...",
     "contact.emailNote": "Votre message s'ouvrira dans votre client email par défaut",
+
+    // About Section
+    "about.title": "À Propos de Moi",
+    "about.description": "Ingénieur côtier et civil passionné avec une expertise en mécanique des fluides, modélisation numérique et analyse de données. Actuellement en cours de recherche avancée en mécanique des fluides environnementale à l'Université Grenoble Alpes.",
+    "about.professionalFocus": "Orientation Professionnelle",
+    "about.professionalFocusText1": "Mon travail se concentre sur la compréhension et la modélisation de la dynamique complexe des fluides dans les applications d'ingénierie côtière et civile. Je me spécialise dans le transport sédimentaire, l'analyse de la turbulence et le développement de modèles numériques pour prédire les changements environnementaux et leurs impacts sur l'infrastructure côtière.",
+    "about.professionalFocusText2": "Avec une vaste expérience dans les approches expérimentales et computationnelles, je fais le lien entre la recherche théorique et les solutions d'ingénierie pratiques.",
+    "about.basedInFrance": "Basé en France",
+    "about.languages": "Langues",
+    "about.keyAchievements": "Réalisations Clés",
+    "about.crnaGrant": "Récipiendaire de la Bourse CRNA",
+    "about.rankedFirst": "Classé 1er du Programme de Master (Très Bien)",
+    "about.publishedResearch": "Recherche Publiée dans une Revue Internationale",
+    "about.bootcampGraduate": "Diplômé du Bootcamp d'Analyse de Données et ML",
+
+    // Skills Section
+    "skills.clickToSeeMore": "Cliquez sur une compétence pour voir les applications et projets récents",
+    "skills.applications": "Applications :",
+    "skills.recentProjects": "Projets Récents :",
+    "skills.programmingTitle": "Programmation",
+    "skills.analysisTitle": "Analyse et Modélisation",
+    "skills.toolsTitle": "Outils et Technologies",
+
+    // Experience Section
+    "experience.errorLoading": "Erreur de chargement des données d'expérience :",
+
+    // Publications Extra
+    "publications.lastUpdated": "Dernière mise à jour :",
+    "publications.unableToLoad": "Impossible de Charger les Publications",
+    "publications.dataUpdatedWeekly": "Les données de publications sont automatiquement mises à jour chaque semaine depuis OpenAlex. Veuillez réessayer plus tard.",
+    "publications.citations": "Citations",
+    "publications.openAccess": "Accès Libre",
+    "publications.categories": "Catégories",
+
+    // Footer
+    "footer.copyright": "© 2024 Mohammad Traboulsi. Tous droits réservés.",
+    "footer.description": "Ingénieur Côtier et Civil • Spécialisé en Mécanique des Fluides",
 
     // Common
     "common.loading": "Chargement...",
