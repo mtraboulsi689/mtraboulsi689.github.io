@@ -5,7 +5,7 @@ import { Mail, MapPin, ExternalLink, Award } from 'lucide-react';
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-coastal dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-950 dark:to-slate-800">
+    <section id="contact" className="py-20 bg-gradient-coastal">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
