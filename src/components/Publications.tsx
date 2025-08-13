@@ -36,11 +36,11 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
 
   const getCategoryColor = (category: string) => {
     switch (category.toLowerCase()) {
-      case 'article': return 'bg-blue-50 text-blue-700 border-blue-200';
-      case 'conference': return 'bg-purple-50 text-purple-700 border-purple-200';
-      case 'preprint': return 'bg-orange-50 text-orange-700 border-orange-200';
-      case 'book': return 'bg-indigo-50 text-indigo-700 border-indigo-200';
-      default: return 'bg-gray-50 text-gray-700 border-gray-200';
+      case 'article': return 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800';
+      case 'conference': return 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800';
+      case 'preprint': return 'bg-orange-50 dark:bg-orange-950 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800';
+      case 'book': return 'bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800';
+      default: return 'bg-muted/50 text-muted-foreground border-border';
     }
   };
 
@@ -153,8 +153,8 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
 
           {/* Abstract teaser and expander */}
           {publication.abstractTeaser && (
-            <div className="mt-3 p-3 bg-gray-50 rounded-md border-l-4 border-accent/30">
-              <div className="text-sm text-gray-700">
+            <div className="mt-3 p-3 bg-muted/30 dark:bg-muted/20 rounded-md border-l-4 border-accent/30">
+              <div className="text-sm text-muted-foreground">
                 <p className="leading-relaxed">
                   {showFullAbstract ? publication.abstract : publication.abstractTeaser}
                 </p>
@@ -190,14 +190,14 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
 
               {/* Open Access badge */}
               {publication.isOpenAccess && (
-                <span className="px-2 py-1 rounded-md text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                <span className="px-2 py-1 rounded-md text-xs font-medium bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800">
                   OA
                 </span>
               )}
 
               {/* Citation count */}
               {publication.citedByCount > 0 && (
-                <span className="px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-700 border border-gray-200 flex items-center gap-1">
+                <span className="px-2 py-1 rounded-md text-xs font-medium bg-muted/50 text-muted-foreground border border-border flex items-center gap-1">
                   <Users size={12} />
                   {publication.citedByCount}
                 </span>
@@ -209,7 +209,7 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
               <button
                 onClick={handleDOIClick}
                 onContextMenu={handleDOILongPress}
-                className="px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-700 border border-gray-200 hover:bg-gray-100 transition-colors flex items-center gap-1 group"
+                className="px-2 py-1 rounded-md text-xs font-medium bg-muted/50 text-muted-foreground border border-border hover:bg-muted transition-colors flex items-center gap-1 group"
                 title={copied ? 'DOI copied!' : 'Click to copy DOI, right-click to open'}
               >
                 <span className="font-mono">
@@ -218,7 +218,7 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
                     publication.doi
                   }
                 </span>
-                <Copy size={12} className={`transition-colors ${copied ? 'text-green-600' : 'text-gray-500 group-hover:text-gray-700'}`} />
+                <Copy size={12} className={`transition-colors ${copied ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground group-hover:text-foreground'}`} />
               </button>
             )}
           </div>
