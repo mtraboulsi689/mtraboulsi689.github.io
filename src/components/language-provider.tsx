@@ -15,7 +15,7 @@ type LanguageProviderState = {
 }
 
 const initialState: LanguageProviderState = {
-  language: "en",
+  language: "fr",
   setLanguage: () => null,
   t: (key: string) => key,
 }
@@ -318,7 +318,7 @@ const translations = {
 
 export function LanguageProvider({
   children,
-  defaultLanguage = "en",
+  defaultLanguage = "fr",
   storageKey = "portfolio-language",
   ...props
 }: LanguageProviderProps) {
