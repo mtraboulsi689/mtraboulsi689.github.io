@@ -19,7 +19,7 @@ const Spotlight = () => {
             </p>
             <p className="text-sm text-muted-foreground">
               Published in <span className="font-medium text-primary">Environmental Modelling & Software</span> (2025) • 
-              Research conducted at <span className="font-medium text-primary">BRGM & Université Grenoble Alpes</span>
+              Research conducted at <span className="font-medium text-primary">BRGM & University of Bordeaux</span>
             </p>
           </div>
         </div>
