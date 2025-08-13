@@ -1,8 +1,11 @@
 
 import { ArrowDown, Download, ExternalLink, Mail, Github, Linkedin, FileText, GraduationCap, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/components/language-provider';
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -34,10 +37,10 @@ const Hero = () => {
           
           <div>
             <p className="text-xl md:text-2xl mb-4 text-white/90 font-light">
-              Coastal and Civil Engineer
+              {t('hero.subtitle')}
             </p>
             <p className="text-lg md:text-xl mb-6 text-white/80">
-              Specialized in Fluid Mechanics & Numerical Modeling
+              {t('hero.specialization')}
             </p>
             
             {/* Watch Research Video Button */}
@@ -49,7 +52,7 @@ const Hero = () => {
                 className="text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 px-4 py-2"
               >
                 <Play size={16} className="mr-2" />
-                Watch my research explained in few minutes
+                {t('hero.watchVideo')}
               </Button>
             </div>
           </div>
@@ -115,7 +118,7 @@ const Hero = () => {
               className="bg-accent hover:bg-accent-light text-accent-foreground font-semibold px-8 py-4 text-lg shadow-ocean"
               onClick={() => scrollToSection('contact')}
             >
-              Get In Touch
+              {t('hero.getInTouch')}
             </Button>
             <Button 
               size="lg" 
@@ -123,7 +126,7 @@ const Hero = () => {
               className="bg-white/95 text-primary hover:bg-white hover:shadow-ocean transition-all duration-300 px-8 py-4 text-lg font-semibold"
               onClick={() => scrollToSection('experience')}
             >
-              View Work
+              {t('hero.viewWork')}
               <ExternalLink className="ml-2" size={20} />
             </Button>
           </div>
