@@ -19,8 +19,7 @@ const Spotlight = () => {
               {t('spotlight.videoDescription')}
             </p>
             <p className="text-sm text-muted-foreground">
-              Published in <span className="font-medium text-primary">Environmental Modelling & Software</span> (2025) • 
-              Research conducted at <span className="font-medium text-primary">BRGM & University of Bordeaux</span>
+              {t('spotlight.publishedIn')}
             </p>
           </div>
         </div>

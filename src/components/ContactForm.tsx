@@ -11,8 +11,6 @@ import { trackFormSubmission, trackExternalLink } from '@/utils/analytics';
 interface FormData {
   name: string;
   email: string;
-  organization: string;
-  role: string;
   phone: string;
   purpose: string;
   message: string;
@@ -24,49 +22,47 @@ interface FormStatus {
   message: string;
 }
 
-const purposeOptions = [
-  {
-    value: 'collaboration',
-    label: 'Research Collaboration',
-    hint: 'Joint research projects, data sharing, or academic partnerships'
-  },
-  {
-    value: 'inquiry',
-    label: 'Research Inquiry',
-    hint: 'Questions about my research, methodologies, or published work'
-  },
-  {
-    value: 'speaking',
-    label: 'Speaking Opportunity',
-    hint: 'Conference presentations, workshops, or academic talks'
-  },
-  {
-    value: 'job',
-    label: 'Job Opportunity',
-    hint: 'Employment opportunities, consulting, or project proposals'
-  },
-  {
-    value: 'media',
-    label: 'Media/Interview',
-    hint: 'Interviews, articles, or media appearances'
-  },
-  {
-    value: 'other',
-    label: 'Other',
-    hint: 'General inquiries or topics not covered above'
-  }
-];
-
 const ContactForm = () => {
   const { t } = useLanguage();
+  
+  const purposeOptions = [
+    {
+      value: 'collaboration',
+      label: t('contact.purpose.collaboration'),
+      hint: t('contact.purposeHint.collaboration')
+    },
+    {
+      value: 'inquiry', 
+      label: t('contact.purpose.inquiry'),
+      hint: t('contact.purposeHint.inquiry')
+    },
+    {
+      value: 'speaking',
+      label: t('contact.purpose.speaking'),
+      hint: t('contact.purposeHint.speaking')
+    },
+    {
+      value: 'job',
+      label: t('contact.purpose.job'),
+      hint: t('contact.purposeHint.job')
+    },
+    {
+      value: 'media',
+      label: t('contact.purpose.media'),
+      hint: t('contact.purposeHint.media')
+    },
+    {
+      value: 'other',
+      label: t('contact.purpose.other'),
+      hint: t('contact.purposeHint.other')
+    }
+  ];
   const formRef = useRef<HTMLFormElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
   
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    organization: '',
-    role: '',
     phone: '',
     purpose: '',
     message: '',
@@ -85,28 +81,28 @@ const ContactForm = () => {
 
     // Required field validation
     if (!formData.name.trim()) {
-      errors.name = 'Name is required';
+      errors.name = t('contact.form.validation.nameRequired');
     }
 
     if (!formData.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = t('contact.form.validation.emailRequired');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = 'Please enter a valid email address';
+      errors.email = t('contact.form.validation.emailInvalid');
     }
 
     if (!formData.purpose) {
-      errors.purpose = 'Please select a purpose for your message';
+      errors.purpose = t('contact.form.validation.purposeRequired');
     }
 
     if (!formData.message.trim()) {
-      errors.message = 'Message is required';
+      errors.message = t('contact.form.validation.messageRequired');
     } else if (formData.message.trim().length < 10) {
-      errors.message = 'Message must be at least 10 characters long';
+      errors.message = t('contact.form.validation.messageMinLength');
     }
 
     // Phone validation (optional but if provided, must be valid)
     if (formData.phone && !/^[\+]?[\d\s\-\(\)]{10,}$/.test(formData.phone)) {
-      errors.phone = 'Please enter a valid phone number';
+      errors.phone = t('contact.form.validation.phoneInvalid');
     }
 
     setValidationErrors(errors);
@@ -140,7 +136,7 @@ const ContactForm = () => {
       return;
     }
 
-    setFormStatus({ type: 'submitting', message: 'Sending your message...' });
+    setFormStatus({ type: 'submitting', message: t('contact.form.sending') });
 
     try {
       // Using Formspree for the backend
@@ -152,8 +148,6 @@ const ContactForm = () => {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          organization: formData.organization,
-          role: formData.role,
           phone: formData.phone,
           purpose: formData.purpose,
           message: formData.message,
@@ -166,7 +160,7 @@ const ContactForm = () => {
       if (response.ok) {
         setFormStatus({ 
           type: 'success', 
-          message: 'Thank you! Your message has been sent successfully. I usually reply within 2 business days.' 
+          message: t('contact.form.successMessage')
         });
         
         // Track successful form submission
@@ -176,8 +170,6 @@ const ContactForm = () => {
         setFormData({
           name: '',
           email: '',
-          organization: '',
-          role: '',
           phone: '',
           purpose: '',
           message: '',
@@ -193,7 +185,7 @@ const ContactForm = () => {
     } catch (error) {
       setFormStatus({ 
         type: 'error', 
-        message: 'Failed to send message. Please try again or email me directly.' 
+        message: t('contact.form.errorTitle') + '. Please try again or email me directly.'
       });
       
       // Track failed form submission
@@ -218,7 +210,7 @@ const ContactForm = () => {
             {t('contact.description')}
           </p>
           <p className="text-sm text-muted-foreground">
-            I usually reply within 2 business days.
+            {t('contact.replyTime')}
           </p>
         </div>
 
@@ -236,7 +228,7 @@ const ContactForm = () => {
                 <div className="flex items-center space-x-4">
                   <Mail className="text-accent flex-shrink-0" size={20} />
                   <div>
-                    <p className="font-medium">Email</p>
+                    <p className="font-medium">{t('contact.formLabels.email')}</p>
                     <a 
                       href="mailto:traboulsimohamed@gmail.com" 
                       className="text-muted-foreground hover:text-primary transition-colors"
@@ -314,13 +306,10 @@ const ContactForm = () => {
                   <div className="flex items-start space-x-3 p-4 bg-green-50 border border-green-200 rounded-lg">
                     <CheckCircle className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
                     <div>
-                      <p className="text-green-800 font-medium">Message sent successfully!</p>
+                      <p className="text-green-800 font-medium">{t('contact.form.successTitle')}</p>
                       <p className="text-green-700 text-sm mt-1">{formStatus.message}</p>
                       <p className="text-green-600 text-xs mt-2">
-                        If you don't hear back within 2 business days, email me at{' '}
-                        <a href="mailto:traboulsimohamed@gmail.com" className="underline">
-                          traboulsimohamed@gmail.com
-                        </a>
+                        {t('contact.form.successNote')}
                       </p>
                     </div>
                   </div>
@@ -330,7 +319,7 @@ const ContactForm = () => {
                   <div className="flex items-start space-x-3 p-4 bg-red-50 border border-red-200 rounded-lg">
                     <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
                     <div className="flex-1">
-                      <p className="text-red-800 font-medium">Failed to send message</p>
+                      <p className="text-red-800 font-medium">{t('contact.form.errorTitle')}</p>
                       <p className="text-red-700 text-sm mt-1">{formStatus.message}</p>
                       <Button
                         onClick={handleRetry}
@@ -339,7 +328,7 @@ const ContactForm = () => {
                         className="mt-3 text-red-700 border-red-300 hover:bg-red-50"
                       >
                         <RefreshCw size={14} className="mr-1" />
-                        Try Again
+                        {t('contact.form.tryAgain')}
                       </Button>
                     </div>
                   </div>
@@ -362,7 +351,7 @@ const ContactForm = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Name <span className="text-red-500">*</span>
+                      {t('contact.formLabels.name')} <span className="text-red-500">{t('contact.formLabels.required')}</span>
                     </label>
                     <Input
                       id="name"
@@ -382,7 +371,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email <span className="text-red-500">*</span>
+                      {t('contact.formLabels.email')} <span className="text-red-500">{t('contact.formLabels.required')}</span>
                     </label>
                     <Input
                       id="email"
@@ -402,40 +391,10 @@ const ContactForm = () => {
                   </div>
                 </div>
 
-                {/* Optional Fields Row */}
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="organization" className="block text-sm font-medium mb-2">
-                      Organization
-                    </label>
-                    <Input
-                      id="organization"
-                      name="organization"
-                      type="text"
-                      value={formData.organization}
-                      onChange={(e) => handleInputChange('organization', e.target.value)}
-                      className="bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="role" className="block text-sm font-medium mb-2">
-                      Role/Title
-                    </label>
-                    <Input
-                      id="role"
-                      name="role"
-                      type="text"
-                      value={formData.role}
-                      onChange={(e) => handleInputChange('role', e.target.value)}
-                      className="bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20"
-                    />
-                  </div>
-                </div>
-
                 {/* Phone */}
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Phone Number
+                    {t('contact.formLabels.phone')}
                   </label>
                   <Input
                     id="phone"
@@ -456,7 +415,7 @@ const ContactForm = () => {
                 {/* Purpose Selector */}
                 <div>
                   <label htmlFor="purpose" className="block text-sm font-medium mb-2">
-                    Purpose <span className="text-red-500">*</span>
+                    {t('contact.formLabels.purpose')} <span className="text-red-500">{t('contact.formLabels.required')}</span>
                   </label>
                   <Select 
                     value={formData.purpose} 
@@ -468,7 +427,7 @@ const ContactForm = () => {
                       }`}
                       aria-describedby={validationErrors.purpose ? "purpose-error" : selectedPurpose ? "purpose-hint" : undefined}
                     >
-                      <SelectValue placeholder="Select the purpose of your message" />
+                      <SelectValue placeholder={t('contact.form.purposePlaceholder')} />
                     </SelectTrigger>
                     <SelectContent>
                       {purposeOptions.map((option) => (
@@ -493,7 +452,7 @@ const ContactForm = () => {
                 {/* Message */}
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message <span className="text-red-500">*</span>
+                    {t('contact.formLabels.message')} <span className="text-red-500">{t('contact.formLabels.required')}</span>
                   </label>
                   <Textarea
                     id="message"
@@ -505,7 +464,7 @@ const ContactForm = () => {
                     className={`bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20 resize-none ${
                       validationErrors.message ? 'border-red-500' : ''
                     }`}
-                    placeholder="Please provide details about your inquiry..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                     aria-describedby={validationErrors.message ? "message-error" : undefined}
                   />
                   {validationErrors.message && (
@@ -521,12 +480,12 @@ const ContactForm = () => {
                   {formStatus.type === 'submitting' ? (
                     <>
                       <RefreshCw size={16} className="mr-2 animate-spin" />
-                      Sending...
+                      {t('contact.form.sending')}
                     </>
                   ) : (
                     <>
                       <Send size={16} className="mr-2" />
-                      Send Message
+                      {t('contact.form.sendButton')}
                     </>
                   )}
                 </Button>
