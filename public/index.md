@@ -7,7 +7,7 @@ Contains a Fortran translation of the original ShoreTrans model, developed by Mc
  
 The work was done as part of my Master/PhD work within a collaboration between BRGM and EPOC.
 ---
-[Weather Prediction](https://www.kaggle.com/code/mohammadtraboulsi/machine-learning-weather-station))
+[Weather Prediction](https://www.kaggle.com/code/mohammadtraboulsi/machine-learning-weather-station)
 
 A ML project to predict the weather at hourly rate in paris using the weather from different stations.
 
