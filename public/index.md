@@ -1,14 +1,20 @@
 ## Portfolio
 
 ---
-
-### Data Science Projects
-
 [ShoreTrans-fortran](https://github.com/mtraboulsi689/ShoreTrans-fortran)
 
 Contains a Fortran translation of the original ShoreTrans model, developed by McCarroll et al. (2021). The original MATLAB model simulates long-term (10-100 years) coastal change in response to sea level rise and sediment supply, accounting for sediment budgeting, shoreface translation, and multiple real-world coastal constraints. This version includes all main features but does not include some developments found in the original version (e.g storm demand, dune growth).
  
 The work was done as part of my Master/PhD work within a collaboration between BRGM and EPOC.
+---
+[Weather Prediction](https://www.kaggle.com/code/mohammadtraboulsi/machine-learning-weather-station))
+
+A ML project to predict the weather at hourly rate in paris using the weather from different stations.
+
+We also give two simple equations to predict the temperature in paris from other temperatures with up to 89% accuracy.
+
+The project was part of the machine learning class at the university of Grenoble (2021).
+
 ---
 [Covid-19: Spread and Effects of delay](https://www.kaggle.com/mohammadtraboulsi/covid-19-spread-and-effect-of-delay/notebook)
 
