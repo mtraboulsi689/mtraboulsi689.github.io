@@ -8,8 +8,9 @@ import path from 'path';
  * Handles pagination and deduplication
  */
 class OpenAlexFetcher {
-  constructor(authorId) {
+  constructor(authorId, accessToken = null) {
     this.authorId = authorId;
+    this.accessToken = accessToken;
     this.baseUrl = 'https://api.openalex.org/works';
     this.allWorks = [];
     this.seenIds = new Set();
@@ -42,7 +43,12 @@ class OpenAlexFetcher {
       console.log(`📄 Fetching page ${pageCount}...`);
       
       try {
-        const response = await fetch(url);
+        const headers = {};
+        if (this.accessToken) {
+          headers['Authorization'] = `Bearer ${this.accessToken}`;
+        }
+        
+        const response = await fetch(url, { headers });
         
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -271,10 +277,11 @@ class OpenAlexFetcher {
 async function main() {
   try {
     const authorId = process.env.OPENALEX_AUTHOR_ID || 'A5082088726';
+    const accessToken = process.env.OPENALEX_ACCESS_TOKEN;
     
     console.log('🚀 Starting OpenAlex publication fetch...');
     
-    const fetcher = new OpenAlexFetcher(authorId);
+    const fetcher = new OpenAlexFetcher(authorId, accessToken);
     const publicationsData = await fetcher.fetchAllPublications();
     
     // Ensure output directory exists

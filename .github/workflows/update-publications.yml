@@ -36,6 +36,7 @@ jobs:
         run: node scripts/fetch-publications.js
         env:
           OPENALEX_AUTHOR_ID: A5082088726
+          OPENALEX_ACCESS_TOKEN: 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
       
       - name: Check for changes
         id: verify-changed-files
