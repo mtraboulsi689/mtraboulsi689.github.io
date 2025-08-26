@@ -8,9 +8,10 @@ import path from 'path';
  * Handles pagination and deduplication
  */
 class OpenAlexFetcher {
-  constructor(authorId, accessToken = null) {
+  constructor(authorId, apiKey = null, email = null) {
     this.authorId = authorId;
-    this.accessToken = accessToken;
+    this.apiKey = apiKey;
+    this.email = email;
     this.baseUrl = 'https://api.openalex.org/works';
     this.allWorks = [];
     this.seenIds = new Set();
@@ -34,6 +35,16 @@ class OpenAlexFetcher {
       'per-page': '200',
       cursor: '*'
     });
+    
+    // Add email for better rate limits (polite pool)
+    if (this.email) {
+      params.append('mailto', this.email);
+    }
+    
+    // Add API key for premium features if available
+    if (this.apiKey) {
+      params.append('api_key', this.apiKey);
+    }
 
     let url = `${this.baseUrl}?${params}`;
     let pageCount = 0;
@@ -43,12 +54,7 @@ class OpenAlexFetcher {
       console.log(`📄 Fetching page ${pageCount}...`);
       
       try {
-        const headers = {};
-        if (this.accessToken) {
-          headers['Authorization'] = `Bearer ${this.accessToken}`;
-        }
-        
-        const response = await fetch(url, { headers });
+        const response = await fetch(url);
         
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -277,11 +283,12 @@ class OpenAlexFetcher {
 async function main() {
   try {
     const authorId = process.env.OPENALEX_AUTHOR_ID || 'A5082088726';
-    const accessToken = process.env.OPENALEX_ACCESS_TOKEN;
+    const apiKey = process.env.OPENALEX_API_KEY;
+    const email = process.env.OPENALEX_EMAIL;
     
     console.log('🚀 Starting OpenAlex publication fetch...');
     
-    const fetcher = new OpenAlexFetcher(authorId, accessToken);
+    const fetcher = new OpenAlexFetcher(authorId, apiKey, email);
     const publicationsData = await fetcher.fetchAllPublications();
     
     // Ensure output directory exists
