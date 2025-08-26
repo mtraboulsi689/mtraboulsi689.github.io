@@ -52,6 +52,7 @@ Contains professional experience data that populates the Experience section of t
 
 ### `publications.json`
 Auto-generated file from OpenAlex API. Updated weekly via GitHub Actions.
+Last manual update: 2025-08-26
 
 ## How to Add New Experience
 
