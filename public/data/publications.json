@@ -1,6 +1,6 @@
 {
-  "updated_at": "2025-10-05T03:06:02.446Z",
-  "total_count": 4,
+  "updated_at": "2025-10-12T03:00:58.582Z",
+  "total_count": 5,
   "items": [
     {
       "id": "https://openalex.org/W4412602958",
@@ -19,7 +19,7 @@
         "Bruno Castelle",
         "Arthur Robinet",
         "Vincent Marieu",
-        "E. Durand",
+        "Elsa Durand",
         "R. Jak McCarroll"
       ],
       "citedByCount": 0,
@@ -47,6 +47,30 @@
       "citedByCount": 0,
       "abstract": "In the context of climate change and growing anthropogenic influence on coastal regions, the need for reliable models for long-term (decadal to centennial) shoreline evolution is paramount (Nicholls et al., 2014). Process-based 2D and 3D models incorporate a wide array of physical processes; however, their high computational cost (Zhang et al., 2012) and cascading errors due to their strongly nonlinear nature prevent them from being used to address the long-term morphological changes of wave-dominated beaches, including the effects of climate change. We present LX-ST, which is a coupling between the LX-Shore and ShoreTrans models, aimed at simulating medium- to long-term shoreline and nearshore 3D morphology under the effects of sea level rise, coastal structures and longshore processes.",
       "abstractTeaser": "In the context of climate change and growing anthropogenic influence on coastal regions, the need for reliable models for long-term..."
+    },
+    {
+      "id": "https://openalex.org/W4414903967",
+      "title": "Simulating Shoreline and Nearshore Changes: The LX-ST Model",
+      "year": 2025,
+      "venue": "Unknown Venue",
+      "doi": null,
+      "url": "https://hal.science/hal-05004345",
+      "isOpenAccess": true,
+      "openAccessUrl": "https://hal.science/hal-05004345/document",
+      "type": "preprint",
+      "category": "preprint",
+      "authors": [
+        "Mohammad Traboulsi",
+        "Déborah Idier",
+        "Bruno Castelle",
+        "Arthur Robinet",
+        "Vincent Marieu",
+        "Elsa Durand",
+        "R. Jak McCarroll"
+      ],
+      "citedByCount": 0,
+      "abstract": null,
+      "abstractTeaser": null
     },
     {
       "id": "https://openalex.org/W4403148010",
