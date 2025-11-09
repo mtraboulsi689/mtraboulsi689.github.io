@@ -1,5 +1,5 @@
 {
-  "updated_at": "2025-11-02T03:14:19.317Z",
+  "updated_at": "2025-11-09T03:12:03.458Z",
   "total_count": 5,
   "items": [
     {
@@ -23,8 +23,8 @@
         "R. Jak McCarroll"
       ],
       "citedByCount": 0,
-      "abstract": null,
-      "abstractTeaser": null
+      "abstract": "International audience",
+      "abstractTeaser": "International audience"
     },
     {
       "id": "https://openalex.org/W4410871952",
@@ -50,13 +50,13 @@
     },
     {
       "id": "https://openalex.org/W4414903967",
-      "title": "Simulating Shoreline and Nearshore Changes: The LX-ST Model",
+      "title": "Simulating Shoreline and Nearshore Changes: The Lx-St Model",
       "year": 2025,
-      "venue": "Unknown Venue",
-      "doi": null,
-      "url": "https://hal.science/hal-05004345",
+      "venue": "SSRN Electronic Journal",
+      "doi": "10.2139/ssrn.5167192",
+      "url": "https://doi.org/10.2139/ssrn.5167192",
       "isOpenAccess": true,
-      "openAccessUrl": "https://hal.science/hal-05004345/document",
+      "openAccessUrl": "https://doi.org/10.2139/ssrn.5167192",
       "type": "preprint",
       "category": "preprint",
       "authors": [
@@ -74,9 +74,9 @@
     },
     {
       "id": "https://openalex.org/W4403148010",
-      "title": "LX-ST: INTEGRATED SHORELINE  TOPO-BATHYMETRIC ANALYSIS MODEL",
+      "title": "LX-ST: INTEGRATED SHORELINE TOPO-BATHYMETRIC ANALYSIS MODEL",
       "year": 2024,
-      "venue": "Unknown Venue",
+      "venue": "HAL (Le Centre pour la Communication Scientifique Directe)",
       "doi": null,
       "url": "https://brgm.hal.science/hal-04542836",
       "isOpenAccess": false,
@@ -91,8 +91,8 @@
         "Vincent Marieu"
       ],
       "citedByCount": 0,
-      "abstract": null,
-      "abstractTeaser": null
+      "abstract": "International audience",
+      "abstractTeaser": "International audience"
     },
     {
       "id": "https://openalex.org/W4318064295",
@@ -100,7 +100,7 @@
       "year": 2022,
       "venue": "Unknown Venue",
       "doi": "10.5150/jngcgc.2022.020",
-      "url": "https://doi.org/10.5150/jngcgc.2022.020",
+      "url": "http://doi.org/10.5150/jngcgc.2022.020",
       "isOpenAccess": true,
       "openAccessUrl": "https://doi.org/10.5150/jngcgc.2022.020",
       "type": "article",
