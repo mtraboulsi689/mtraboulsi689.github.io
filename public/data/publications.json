@@ -1,5 +1,5 @@
 {
-  "updated_at": "2025-11-16T03:17:10.081Z",
+  "updated_at": "2025-11-23T03:26:17.631Z",
   "total_count": 5,
   "items": [
     {
@@ -23,8 +23,8 @@
         "R. Jak McCarroll"
       ],
       "citedByCount": 0,
-      "abstract": "International audience",
-      "abstractTeaser": "International audience"
+      "abstract": null,
+      "abstractTeaser": null
     },
     {
       "id": "https://openalex.org/W4410871952",
