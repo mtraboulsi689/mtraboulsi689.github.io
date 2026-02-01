@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-01-25T03:53:21.230Z",
-  "total_count": 5,
+  "updated_at": "2026-02-01T04:28:53.453Z",
+  "total_count": 6,
   "items": [
     {
       "id": "https://openalex.org/W4412602958",
@@ -47,6 +47,24 @@
       "citedByCount": 0,
       "abstract": "In the context of climate change and growing anthropogenic influence on coastal regions, the need for reliable models for long-term (decadal to centennial) shoreline evolution is paramount (Nicholls et al., 2014). Process-based 2D and 3D models incorporate a wide array of physical processes; however, their high computational cost (Zhang et al., 2012) and cascading errors due to their strongly nonlinear nature prevent them from being used to address the long-term morphological changes of wave-dominated beaches, including the effects of climate change. We present LX-ST, which is a coupling between the LX-Shore and ShoreTrans models, aimed at simulating medium- to long-term shoreline and nearshore 3D morphology under the effects of sea level rise, coastal structures and longshore processes.",
       "abstractTeaser": "In the context of climate change and growing anthropogenic influence on coastal regions, the need for reliable models for long-term..."
+    },
+    {
+      "id": "https://openalex.org/W7126002645",
+      "title": "Modeling past and future evolution of sandy coasts",
+      "year": 2025,
+      "venue": "Munich Personal RePEc Archive (Ludwig Maximilian University of Munich)",
+      "doi": null,
+      "url": "http://www.theses.fr/2025BORD0388",
+      "isOpenAccess": false,
+      "openAccessUrl": null,
+      "type": "article",
+      "category": "article",
+      "authors": [
+        "Mohammad Traboulsi"
+      ],
+      "citedByCount": 0,
+      "abstract": "Les côtes sableuses sont des environnements dynamiques qui réagissent en permanence à l’influence combinée des vagues, des marées et de l’élévation du niveau de la mer. Avec l’accélération de cette élévation et la persistance des déficits sédimentaires, ces systèmes deviennent de plus en plus vulnérables, en particulier là où l’occupation humaine limite leur ajustement naturel. Malgré les récents progrès en modélisation morphodynamique côtière, la prévision à long terme du trait de côte reste difficile. La plupart des modèles ne représentent qu’un couplage simplifié entre le transport sédimentaire longitudinal et la réponse du profil transversal, considérant encore ces composantes comme faiblement interactives, sans rétroaction explicite entre l’évolution en plan du trait de côte et les translations volumétriques du profil sous l’effet de l’élévation du niveau marin. Cette thèse s’attaque à cette limitation par le développement et l’application de LX-ST, un cadre de couplage à complexité réduite intégrant la dynamique en plan du modèle LX-Shore et la translation de profil simulée par le modèle ShoreTrans. LX-ST inclut plusieurs niveaux de couplage et, via ShoreTrans, peut représenter différents modes de translation du profil, distinguant notamment les réponses dunaires adaptatives et des réponses contraintes face à l’élévation du niveau de la mer. Ses capacités ont été testées sur des cas synthétiques et réels (Lacanau, côte aquitaine, France), montrant que LX-ST reproduit les principaux comportements des systèmes littoraux, notamment la variabilité longitudinale, les rétroactions induites et les réponses non linéaires à l’élévation du niveau marin. Les projections à l’horizon 2100, selon divers scénarios de trajectoires socio-économiques partagées, combinent deux grandes sources d’incertitude : l’élévation du niveau de la mer et le déficit sédimentaire à long terme. Des projections probabilistes du trait de côte ont été obtenues avec LX-Shore, tandis que LX-ST a permis d’affiner la représentation de l’évolution dunaire et des évolutions morphologiques à proximité du d’ouvrage. L’analyse de sensibilité a montré que le déficit sédimentaire domine l’incertitude durant les premières décennies, tandis que l’élévation du niveau marin devient la principale source d’incertitudes dans la seconde partie du siècle, selon le scénario considéré. Un résultat important est la mise en évidence de changement de trajectoire, c’est-à-dire des transitions dans le schéma spatial de l’évolution du trait de côte, résultant des rétroactions entre le transport longitudinal et la translation de l’avant-côte. Les résultats soulignent également la sensibilité des projections au mode de réponse du profil (adaptatif ou érosif), avec des implications majeures pour la persistance ou la disparition des systèmes dunaires. Ce travail contribue à améliorer la compréhension et la prévision de l’évolution à long terme des côtes sableuses dominées par les vagues face à l’élévation future du niveau de la mer.",
+      "abstractTeaser": "Les côtes sableuses sont des environnements dynamiques qui réagissent en permanence à l’influence combinée des vagues, des marées et de..."
     },
     {
       "id": "https://openalex.org/W4414903967",
