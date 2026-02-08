@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-01T04:28:53.453Z",
+  "updated_at": "2026-02-08T04:31:46.025Z",
   "total_count": 6,
   "items": [
     {
@@ -52,11 +52,11 @@
       "id": "https://openalex.org/W7126002645",
       "title": "Modeling past and future evolution of sandy coasts",
       "year": 2025,
-      "venue": "Munich Personal RePEc Archive (Ludwig Maximilian University of Munich)",
+      "venue": "ZooKeys",
       "doi": null,
       "url": "http://www.theses.fr/2025BORD0388",
-      "isOpenAccess": false,
-      "openAccessUrl": null,
+      "isOpenAccess": true,
+      "openAccessUrl": "http://www.theses.fr/2025BORD0388",
       "type": "article",
       "category": "article",
       "authors": [
