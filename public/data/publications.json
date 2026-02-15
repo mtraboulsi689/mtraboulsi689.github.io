@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-08T04:31:46.025Z",
+  "updated_at": "2026-02-15T04:21:42.369Z",
   "total_count": 6,
   "items": [
     {
@@ -23,8 +23,8 @@
         "R. Jak McCarroll"
       ],
       "citedByCount": 0,
-      "abstract": null,
-      "abstractTeaser": null
+      "abstract": "International audience",
+      "abstractTeaser": "International audience"
     },
     {
       "id": "https://openalex.org/W4410871952",
@@ -52,11 +52,11 @@
       "id": "https://openalex.org/W7126002645",
       "title": "Modeling past and future evolution of sandy coasts",
       "year": 2025,
-      "venue": "ZooKeys",
+      "venue": "theses.fr (ABES)",
       "doi": null,
       "url": "http://www.theses.fr/2025BORD0388",
-      "isOpenAccess": true,
-      "openAccessUrl": "http://www.theses.fr/2025BORD0388",
+      "isOpenAccess": false,
+      "openAccessUrl": null,
       "type": "article",
       "category": "article",
       "authors": [
@@ -94,7 +94,7 @@
       "id": "https://openalex.org/W4403148010",
       "title": "LX-ST: INTEGRATED SHORELINE TOPO-BATHYMETRIC ANALYSIS MODEL",
       "year": 2024,
-      "venue": "HAL (Le Centre pour la Communication Scientifique Directe)",
+      "venue": "SPIRE - Sciences Po Institutional REpository",
       "doi": null,
       "url": "https://brgm.hal.science/hal-04542836",
       "isOpenAccess": false,
