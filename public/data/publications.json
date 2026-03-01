@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-22T04:17:13.685Z",
+  "updated_at": "2026-03-01T04:21:51.703Z",
   "total_count": 6,
   "items": [
     {
@@ -23,8 +23,8 @@
         "R. Jak McCarroll"
       ],
       "citedByCount": 0,
-      "abstract": "International audience",
-      "abstractTeaser": "International audience"
+      "abstract": null,
+      "abstractTeaser": null
     },
     {
       "id": "https://openalex.org/W4410871952",
@@ -129,7 +129,7 @@
         "Nicolas HUYBRECHTS"
       ],
       "citedByCount": 0,
-      "abstract": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the influence of climate change inside the Gironde estuary.The meteorological forcings come from 3 Global Climate Models (GCMs) combined with 2 emission scenarios (RCPs 4.5 and 8.5).Upstream of the Dordogne and Garonne rivers, the discharges time-dependent chronicles are predicted using both the meteo inputs (precipitations and temperatures), and a hydrological model based on GR4J software (PERRIN, 2007).Offshore, a Telemac 2D surge levels numerical model (LABORIE et al., 2015), supplied by meteorological forcings (winds and pressure fields) and contributions of the mean sea level rise (MSLR) provides the predicted surge levels' chronicles at the maritime boundary of the estuary.The impact due to the evolution of external forcings (rivers and sea) on the hydrodynamic pattern (salinity) are then analysed for short and middle-term horizons 2050 and 2070 using a Telemac 3D model",
+      "abstract": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the influence of climate change inside the Gironde estuary. The meteorological forcings come from 3 Global Climate Models (GCMs) combined with 2 emission scenarios (RCPs 4.5 and 8.5). Upstream of the Dordogne and Garonne rivers, the discharges time-dependent chronicles are predicted using both the meteo inputs (precipitations and temperatures), and a hydrological model based on GR4J software Offshore, a Telemac 2D surge levels numerical model The impact due to the evolution of external forcings (rivers and sea) on the hydrodynamic pattern (salinity) are then analysed for short and middle-term horizons 2050 and 2070 using a Telemac 3D model",
       "abstractTeaser": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the..."
     }
   ]
