@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-08T04:10:36.979Z",
+  "updated_at": "2026-03-15T04:31:25.995Z",
   "total_count": 6,
   "items": [
     {
@@ -23,8 +23,8 @@
         "R. Jak McCarroll"
       ],
       "citedByCount": 0,
-      "abstract": "This study presents a modular modeling framework for simulating medium- to long-term (decadal to centennial) coastal evolution, focusing on shoreface translation under the combined effects of sea-level rise (SLR) and waves. On these timescales, short-term storm-driven processes are treated as noise superimposed on longer-term trends. We couple the one-dimensional ShoreTrans model, which simulates SLR-driven profile adjustment, with the two-dimensional reduced-complexity model LX-Shore, which captures longshore sediment transport gradients. This coupling enables efficient simulation of three-dimensional morphological change across diverse sandy coastal settings, including environments with dunes, barriers, and hard structures. The framework is first applied to synthetic test cases to explore sensitivity to coupling strategies, then tested on a 5-km beach-dune system in southwest France fronted by a 1.2-km seawall. Results show reasonable agreement with observed shoreline evolution and demonstrate the value of the coupled approach in capturing morphodynamic feedbacks and trajectory shifts not reproduced when shoreline and shoreface processes are modeled independently. • A new reduced-complexity shoreline & shoreface evolution model (LX-ST) is presented. • LX-ST couples the LX-Shore and ShoreTrans models to predict the 3D topo-bathymetry. • The model accounts for sea-level rise, sediment transport, and coastal structures. • It is applied to synthetic cases and a real beach-dune system in France. • LX-ST offers new insights into predicting shoreline retreat and beach disappearance.",
-      "abstractTeaser": "This study presents a modular modeling framework for simulating medium- to long-term (decadal to centennial) coastal evolution, focusing on..."
+      "abstract": null,
+      "abstractTeaser": null
     },
     {
       "id": "https://openalex.org/W4410871952",
@@ -120,7 +120,7 @@
       "doi": "10.5150/jngcgc.2022.020",
       "url": "http://doi.org/10.5150/jngcgc.2022.020",
       "isOpenAccess": true,
-      "openAccessUrl": "https://doi.org/10.5150/jngcgc.2022.020",
+      "openAccessUrl": "http://dx.doi.org/10.5150/jngcgc.2022.020",
       "type": "article",
       "category": "article",
       "authors": [
@@ -129,7 +129,7 @@
         "Nicolas HUYBRECHTS"
       ],
       "citedByCount": 0,
-      "abstract": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the influence of climate change inside the Gironde estuary. The meteorological forcings come from 3 Global Climate Models (GCMs) combined with 2 emission scenarios (RCPs 4.5 and 8.5). Upstream of the Dordogne and Garonne rivers, the discharges time-dependent chronicles are predicted using both the meteo inputs (precipitations and temperatures), and a hydrological model based on GR4J software Offshore, a Telemac 2D surge levels numerical model The impact due to the evolution of external forcings (rivers and sea) on the hydrodynamic pattern (salinity) are then analysed for short and middle-term horizons 2050 and 2070 using a Telemac 3D model",
+      "abstract": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the influence of climate change inside the Gironde estuary.The meteorological forcings come from 3 Global Climate Models (GCMs) combined with 2 emission scenarios (RCPs 4.5 and 8.5).Upstream of the Dordogne and Garonne rivers, the discharges time-dependent chronicles are predicted using both the meteo inputs (precipitations and temperatures), and a hydrological model based on GR4J software (PERRIN, 2007).Offshore, a Telemac 2D surge levels numerical model (LABORIE et al., 2015), supplied by meteorological forcings (winds and pressure fields) and contributions of the mean sea level rise (MSLR) provides the predicted surge levels' chronicles at the maritime boundary of the estuary.The impact due to the evolution of external forcings (rivers and sea) on the hydrodynamic pattern (salinity) are then analysed for short and middle-term horizons 2050 and 2070 using a Telemac 3D model",
       "abstractTeaser": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the..."
     }
   ]
