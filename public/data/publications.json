@@ -1,7 +1,31 @@
 {
-  "updated_at": "2026-04-26T04:57:54.905Z",
-  "total_count": 7,
+  "updated_at": "2026-05-03T05:29:31.239Z",
+  "total_count": 8,
   "items": [
+    {
+      "id": "https://openalex.org/W7159682741",
+      "title": "Uncertainty analysis of shoreline and shorefaceevolution under sea-level rise at a wave dominatedsandy coast with seawall protection",
+      "year": 2026,
+      "venue": "SSRN Electronic Journal",
+      "doi": "10.2139/ssrn.6670518",
+      "url": "https://doi.org/10.2139/ssrn.6670518",
+      "isOpenAccess": true,
+      "openAccessUrl": "https://doi.org/10.2139/ssrn.6670518",
+      "type": "preprint",
+      "category": "preprint",
+      "authors": [
+        "Mohammad Traboulsi",
+        "Déborah Idier",
+        "Bruno Castelle",
+        "Jeremy Rohmer",
+        "Remi Thieblemont",
+        "Alexandre NICOLAE LERMA",
+        "M. Anna"
+      ],
+      "citedByCount": 0,
+      "abstract": null,
+      "abstractTeaser": null
+    },
     {
       "id": "https://openalex.org/W4412602958",
       "title": "A coupling approach for long-term 3D morphological evolution of sandy coasts under sea-level rise",
