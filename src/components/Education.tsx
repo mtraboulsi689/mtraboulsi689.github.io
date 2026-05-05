@@ -7,7 +7,7 @@ const educationData: TimelineItem[] = [
     id: "phd-coastal-engineering",
     category: "education",
     start_date: "2022-11",
-    end_date: null,
+    end_date: "2025-12",
     title: "PhD in Coastal Engineering",
     organization: "University of Bordeaux, BRGM",
     location: "Bordeaux, France",
