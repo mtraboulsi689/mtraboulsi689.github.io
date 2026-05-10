@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-05-05T08:45:20.127Z",
+  "updated_at": "2026-05-10T05:36:12.943Z",
   "total_count": 8,
   "items": [
     {
       "id": "https://openalex.org/W7159682741",
-      "title": "Uncertainty analysis of shoreline and shorefaceevolution under sea-level rise at a wave dominatedsandy coast with seawall protection",
+      "title": "Uncertainty analysis of shoreline and shoreface evolution under sea-level rise at a wave dominated sandy coast with seawall protection",
       "year": 2026,
       "venue": "SSRN Electronic Journal",
       "doi": "10.2139/ssrn.6670518",
@@ -18,7 +18,7 @@
         "Déborah Idier",
         "Bruno Castelle",
         "Jeremy Rohmer",
-        "Remi Thieblemont",
+        "Rémi Thiéblemont",
         "Alexandre NICOLAE LERMA",
         "M. Anna"
       ],
@@ -136,7 +136,7 @@
       "id": "https://openalex.org/W4403148010",
       "title": "LX-ST: INTEGRATED SHORELINE TOPO-BATHYMETRIC ANALYSIS MODEL",
       "year": 2024,
-      "venue": "SPIRE - Sciences Po Institutional REpository",
+      "venue": "HAL (Le Centre pour la Communication Scientifique Directe)",
       "doi": null,
       "url": "https://brgm.hal.science/hal-04542836",
       "isOpenAccess": false,
@@ -167,8 +167,8 @@
       "category": "article",
       "authors": [
         "Mohammad Traboulsi",
-        "Vanessya LABORIE",
-        "Nicolas HUYBRECHTS"
+        "Vanessya Laborie",
+        "Nicolas Huybrechts"
       ],
       "citedByCount": 0,
       "abstract": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the influence of climate change inside the Gironde estuary.The meteorological forcings come from 3 Global Climate Models (GCMs) combined with 2 emission scenarios (RCPs 4.5 and 8.5).Upstream of the Dordogne and Garonne rivers, the discharges time-dependent chronicles are predicted using both the meteo inputs (precipitations and temperatures), and a hydrological model based on GR4J software (PERRIN, 2007).Offshore, a Telemac 2D surge levels numerical model (LABORIE et al., 2015), supplied by meteorological forcings (winds and pressure fields) and contributions of the mean sea level rise (MSLR) provides the predicted surge levels' chronicles at the maritime boundary of the estuary.The impact due to the evolution of external forcings (rivers and sea) on the hydrodynamic pattern (salinity) are then analysed for short and middle-term horizons 2050 and 2070 using a Telemac 3D model",
