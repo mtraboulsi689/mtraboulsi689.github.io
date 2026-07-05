@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-28T06:16:53.989Z",
+  "updated_at": "2026-07-05T06:03:09.967Z",
   "total_count": 8,
   "items": [
     {
@@ -81,7 +81,7 @@
       "url": "http://www.theses.fr/2025BORD0388",
       "isOpenAccess": false,
       "openAccessUrl": null,
-      "type": "article",
+      "type": "dissertation",
       "category": "article",
       "authors": [
         "Mohammad Traboulsi"
