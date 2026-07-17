@@ -255,8 +255,8 @@ const AllProjects = () => {
                   className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
                   asChild
                 >
-                  <a 
-                    href="https://github.com/user689/Data-Analysis-Projects"
+                  <a
+                    href="https://github.com/mtraboulsi689?tab=repositories"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
