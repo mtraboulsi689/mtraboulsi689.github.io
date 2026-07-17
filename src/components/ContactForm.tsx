@@ -101,7 +101,7 @@ const ContactForm = () => {
     }
 
     // Phone validation (optional but if provided, must be valid)
-    if (formData.phone && !/^[\+]?[\d\s\-\(\)]{10,}$/.test(formData.phone)) {
+    if (formData.phone && !/^[+]?[\d\s\-()]{10,}$/.test(formData.phone)) {
       errors.phone = t('contact.form.validation.phoneInvalid');
     }
 

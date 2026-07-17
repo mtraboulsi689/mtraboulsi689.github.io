@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
       - run: npm run build
       # Fix SPA refresh on GitHub Pages
       - run: cp -f dist/index.html dist/404.html

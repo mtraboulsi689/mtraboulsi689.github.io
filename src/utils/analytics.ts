@@ -12,6 +12,12 @@ interface PageView {
   referrer?: string;
 }
 
+// Legacy, non-standard Do Not Track properties not present in lib.dom.d.ts
+interface LegacyDNT {
+  doNotTrack?: string | null;
+  msDoNotTrack?: string | null;
+}
+
 class Analytics {
   private isEnabled: boolean = false;
   private sessionId: string;
@@ -25,9 +31,9 @@ class Analytics {
   }
 
   private isDNTEnabled(): boolean {
-    return navigator.doNotTrack === '1' || 
-           (window as any).doNotTrack === '1' || 
-           navigator.msDoNotTrack === '1';
+    return navigator.doNotTrack === '1' ||
+           (window as unknown as LegacyDNT).doNotTrack === '1' ||
+           (navigator as LegacyDNT).msDoNotTrack === '1';
   }
 
   private isProductionEnvironment(): boolean {
@@ -41,7 +47,7 @@ class Analytics {
            Math.random().toString(36).substring(2, 15);
   }
 
-  private async sendEvent(eventData: any): Promise<void> {
+  private async sendEvent(eventData: Record<string, unknown>): Promise<void> {
     if (!this.isEnabled) return;
 
     try {

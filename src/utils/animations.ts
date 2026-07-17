@@ -101,7 +101,7 @@ export const createParallaxEffect = (
   element: HTMLElement,
   speed: number = 0.5,
   direction: 'vertical' | 'horizontal' = 'vertical'
-): void => {
+): (() => void) => {
   const handleScroll = () => {
     const rect = element.getBoundingClientRect();
     const scrolled = window.pageYOffset;
@@ -119,7 +119,7 @@ export const createParallaxEffect = (
 };
 
 // Magnetic hover effect
-export const createMagneticEffect = (element: HTMLElement, strength: number = 0.3): void => {
+export const createMagneticEffect = (element: HTMLElement, strength: number = 0.3): (() => void) => {
   const handleMouseMove = (e: MouseEvent) => {
     const rect = element.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -145,7 +145,7 @@ export const createMagneticEffect = (element: HTMLElement, strength: number = 0.
 export const createScrollProgress = (
   element: HTMLElement,
   callback: (progress: number) => void
-): void => {
+): (() => void) => {
   const handleScroll = () => {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight;
