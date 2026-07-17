@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Code, Database, Wrench, TrendingUp, ExternalLink } from 'lucide-react';
+import { Code, Database, Wrench, TrendingUp, ExternalLink, LucideIcon } from 'lucide-react';
 import { useLoading } from '@/components/loading-provider';
 import SkillsSkeleton from '@/components/skeletons/SkillsSkeleton';
 import { useLanguage } from '@/components/language-provider';
@@ -122,10 +122,11 @@ const skills: SkillData[] = [
 
 const SkillCard = ({ title, icon: Icon, skillList, color }: {
   title: string;
-  icon: any;
+  icon: LucideIcon;
   skillList: SkillData[];
   color: string;
 }) => {
+  const { t } = useLanguage();
   const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
 
   const toggleSkill = (skillName: string) => {
