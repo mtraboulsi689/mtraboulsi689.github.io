@@ -102,9 +102,9 @@ const Hero = () => {
             >
               <ExternalLink size={20} />
             </a>
-            <a 
-              href="/CV_2025.pdf" 
-              download="Mohammad_Traboulsi_CV_2025.pdf"
+            <a
+              href="/cv.pdf"
+              download="Mohammad_Traboulsi_CV.pdf"
               className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
               title="Download CV"
             >

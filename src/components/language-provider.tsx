@@ -35,8 +35,8 @@ const translations = {
 
     // Hero Section
     "hero.title": "Mohammad Traboulsi",
-    "hero.subtitle": "Coastal and Civil Engineer",
-    "hero.specialization": "Specialized in Fluid Mechanics & Numerical Modeling",
+    "hero.subtitle": "Coastal Risk Engineer, PhD",
+    "hero.specialization": "Numerical modelling of shoreline evolution for climate risk & coastal engineering projects",
     "hero.watchVideo": "Watch my research explained in few minutes",
     "hero.getInTouch": "Get In Touch",
     "hero.viewWork": "View Work",
@@ -74,7 +74,7 @@ const translations = {
 
     // Projects Section  
     "projects.title": "Projects",
-    "projects.description": "A collection of data science and technical projects showcasing expertise in machine learning, data analysis, and statistical modeling.",
+    "projects.description": "Open-source coastal engineering models and tools, alongside earlier data-analysis work.",
     "projects.viewProject": "View Project",
     "projects.viewAll": "View All Projects on GitHub",
 
@@ -95,7 +95,7 @@ const translations = {
 
     // Experience Section
     "experience.title": "Professional Experience",
-    "experience.description": "Hands-on experience in coastal engineering research and climate change impact assessment through internships at leading French research institutions.",
+    "experience.description": "Professional experience in coastal risk engineering and climate change impact assessment at leading French research and engineering institutions.",
 
     // Education Section
     "education.title": "Education", 
@@ -199,8 +199,8 @@ const translations = {
     "publications.categories": "Categories",
 
     // Footer
-    "footer.copyright": "© 2024 Mohammad Traboulsi. All rights reserved.",
-    "footer.description": "Coastal and Civil Engineer • Specialized in Fluid Mechanics",
+    "footer.copyright": "Mohammad Traboulsi. All rights reserved.",
+    "footer.description": "Coastal Risk Engineer • Numerical Modelling for Climate Adaptation",
 
     // Common
     "common.loading": "Loading...",
@@ -218,8 +218,8 @@ const translations = {
 
     // Hero Section
     "hero.title": "Mohammad Traboulsi",
-    "hero.subtitle": "Ingénieur Côtier et Civil",
-    "hero.specialization": "Spécialisé en Mécanique des Fluides et Modélisation Numérique",
+    "hero.subtitle": "Ingénieur des Risques Côtiers, Docteur",
+    "hero.specialization": "Modélisation numérique de l'évolution du littoral pour les risques climatiques et projets d'ingénierie côtière",
     "hero.watchVideo": "Regarder ma recherche expliquée en quelques minutes",
     "hero.getInTouch": "Me Contacter",
     "hero.viewWork": "Voir Mon Travail",
@@ -257,7 +257,7 @@ const translations = {
 
     // Projects Section
     "projects.title": "Projets",
-    "projects.description": "Une collection de projets de science des données et techniques démontrant une expertise en apprentissage automatique, analyse de données et modélisation statistique.",
+    "projects.description": "Modèles et outils open-source en ingénierie côtière, ainsi que des travaux antérieurs d'analyse de données.",
     "projects.viewProject": "Voir le Projet",
     "projects.viewAll": "Voir Tous les Projets sur GitHub",
 
@@ -278,7 +278,7 @@ const translations = {
 
     // Experience Section
     "experience.title": "Expérience Professionnelle",
-    "experience.description": "Expérience pratique en recherche d'ingénierie côtière et évaluation de l'impact du changement climatique grâce à des stages dans des institutions de recherche françaises de premier plan.",
+    "experience.description": "Expérience professionnelle en ingénierie des risques côtiers et évaluation de l'impact du changement climatique au sein d'institutions françaises de recherche et d'ingénierie de premier plan.",
 
     // Education Section
     "education.title": "Formation",
@@ -382,8 +382,8 @@ const translations = {
     "publications.categories": "Catégories",
 
     // Footer
-    "footer.copyright": "© 2024 Mohammad Traboulsi. Tous droits réservés.",
-    "footer.description": "Ingénieur Côtier et Civil • Spécialisé en Mécanique des Fluides",
+    "footer.copyright": "Mohammad Traboulsi. Tous droits réservés.",
+    "footer.description": "Ingénieur des Risques Côtiers • Modélisation Numérique pour l'Adaptation Climatique",
 
     // Common
     "common.loading": "Chargement...",

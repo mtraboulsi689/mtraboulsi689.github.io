@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="text-center">
           <p className="text-primary-foreground/80 text-sm">
-            {t('footer.copyright')}
+            © {new Date().getFullYear()} {t('footer.copyright')}
           </p>
           <p className="text-primary-foreground/60 text-xs mt-2">
             {t('footer.description')}
