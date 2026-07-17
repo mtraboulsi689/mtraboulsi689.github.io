@@ -4,6 +4,21 @@ import fs from 'fs';
 import path from 'path';
 
 /**
+ * OpenAlex works that are known near-duplicates of another record already
+ * in the list (e.g. an early HAL report later published as a conference
+ * paper under a near-identical title). OpenAlex has no reliable machine
+ * signal for this, so it's a manually curated, documented exclude list
+ * rather than a fuzzy auto-merge.
+ */
+const EXCLUDED_WORK_IDS = new Set([
+  // "LX-ST: INTEGRATED SHORELINE TOPO-BATHYMETRIC ANALYSIS MODEL" (2024, HAL
+  // report). Superseded by the peer-reviewed 2025 ICCE conference paper
+  // "LX-ST: INTEGRATED SHORELINE AND TOPO-BATHYMETRIC ANALYSIS MODEL"
+  // (https://openalex.org/W7152375875).
+  'https://openalex.org/W4403148010',
+]);
+
+/**
  * Fetches publications from OpenAlex API for a given author ID
  * Handles pagination and deduplication
  */
@@ -16,6 +31,10 @@ class OpenAlexFetcher {
     this.allWorks = [];
     this.seenIds = new Set();
     this.seenDois = new Set();
+    // Maps "year::normalized title" -> index in this.allWorks, to catch the
+    // same work indexed twice by OpenAlex under different IDs (e.g. a thesis
+    // registered via two repositories).
+    this.seenTitleYears = new Map();
   }
 
   /**
@@ -93,12 +112,17 @@ class OpenAlexFetcher {
   processWork(work) {
     const openAlexId = work.id;
     const doi = work.doi?.replace('https://doi.org/', '') || null;
-    
+
+    // Skip explicitly excluded near-duplicate records (see EXCLUDED_WORK_IDS)
+    if (EXCLUDED_WORK_IDS.has(openAlexId)) {
+      return;
+    }
+
     // Skip if we've already seen this work (by OpenAlex ID or DOI)
     if (this.seenIds.has(openAlexId) || (doi && this.seenDois.has(doi))) {
       return;
     }
-    
+
     // Mark as seen
     this.seenIds.add(openAlexId);
     if (doi) {
@@ -139,7 +163,50 @@ class OpenAlexFetcher {
       abstractTeaser: abstractTeaser
     };
 
+    // Same-year records with an identical normalized title are treated as
+    // the same work indexed twice (e.g. a thesis registered via two
+    // repositories). Keep whichever record is more useful to a reader: has
+    // a DOI, then has a named venue.
+    const titleYearKey = `${publication.year}::${this.normalizeTitle(publication.title)}`;
+    const existingIndex = this.seenTitleYears.get(titleYearKey);
+
+    if (existingIndex !== undefined) {
+      const existing = this.allWorks[existingIndex];
+      if (this.isBetterPublication(publication, existing)) {
+        this.allWorks[existingIndex] = publication;
+      }
+      return;
+    }
+
+    this.seenTitleYears.set(titleYearKey, this.allWorks.length);
     this.allWorks.push(publication);
+  }
+
+  /**
+   * Normalize a title for duplicate comparison: lowercase, strip
+   * punctuation, collapse whitespace.
+   */
+  normalizeTitle(title) {
+    return (title || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  /**
+   * Decide whether `candidate` is a more useful record to display than
+   * `current` for the same underlying work.
+   */
+  isBetterPublication(candidate, current) {
+    if (Boolean(candidate.doi) !== Boolean(current.doi)) {
+      return Boolean(candidate.doi);
+    }
+    const candidateHasVenue = candidate.venue && candidate.venue !== 'Unknown Venue';
+    const currentHasVenue = current.venue && current.venue !== 'Unknown Venue';
+    if (candidateHasVenue !== currentHasVenue) {
+      return candidateHasVenue;
+    }
+    return candidate.citedByCount > current.citedByCount;
   }
 
   /**

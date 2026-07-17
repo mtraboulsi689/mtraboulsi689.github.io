@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-12T05:27:00.166Z",
-  "total_count": 8,
+  "updated_at": "2026-07-17T21:50:04.355Z",
+  "total_count": 6,
   "items": [
     {
       "id": "https://openalex.org/W7159682741",
@@ -73,24 +73,6 @@
       "abstractTeaser": "In the context of climate change and growing anthropogenic influence on coastal regions, the need for reliable models for long-term..."
     },
     {
-      "id": "https://openalex.org/W7126002645",
-      "title": "Modeling past and future evolution of sandy coasts",
-      "year": 2025,
-      "venue": "theses.fr (ABES)",
-      "doi": null,
-      "url": "http://www.theses.fr/2025BORD0388",
-      "isOpenAccess": false,
-      "openAccessUrl": null,
-      "type": "dissertation",
-      "category": "article",
-      "authors": [
-        "Mohammad Traboulsi"
-      ],
-      "citedByCount": 0,
-      "abstract": "Les côtes sableuses sont des environnements dynamiques qui réagissent en permanence à l’influence combinée des vagues, des marées et de l’élévation du niveau de la mer. Avec l’accélération de cette élévation et la persistance des déficits sédimentaires, ces systèmes deviennent de plus en plus vulnérables, en particulier là où l’occupation humaine limite leur ajustement naturel. Malgré les récents progrès en modélisation morphodynamique côtière, la prévision à long terme du trait de côte reste difficile. La plupart des modèles ne représentent qu’un couplage simplifié entre le transport sédimentaire longitudinal et la réponse du profil transversal, considérant encore ces composantes comme faiblement interactives, sans rétroaction explicite entre l’évolution en plan du trait de côte et les translations volumétriques du profil sous l’effet de l’élévation du niveau marin. Cette thèse s’attaque à cette limitation par le développement et l’application de LX-ST, un cadre de couplage à complexité réduite intégrant la dynamique en plan du modèle LX-Shore et la translation de profil simulée par le modèle ShoreTrans. LX-ST inclut plusieurs niveaux de couplage et, via ShoreTrans, peut représenter différents modes de translation du profil, distinguant notamment les réponses dunaires adaptatives et des réponses contraintes face à l’élévation du niveau de la mer. Ses capacités ont été testées sur des cas synthétiques et réels (Lacanau, côte aquitaine, France), montrant que LX-ST reproduit les principaux comportements des systèmes littoraux, notamment la variabilité longitudinale, les rétroactions induites et les réponses non linéaires à l’élévation du niveau marin. Les projections à l’horizon 2100, selon divers scénarios de trajectoires socio-économiques partagées, combinent deux grandes sources d’incertitude : l’élévation du niveau de la mer et le déficit sédimentaire à long terme. Des projections probabilistes du trait de côte ont été obtenues avec LX-Shore, tandis que LX-ST a permis d’affiner la représentation de l’évolution dunaire et des évolutions morphologiques à proximité du d’ouvrage. L’analyse de sensibilité a montré que le déficit sédimentaire domine l’incertitude durant les premières décennies, tandis que l’élévation du niveau marin devient la principale source d’incertitudes dans la seconde partie du siècle, selon le scénario considéré. Un résultat important est la mise en évidence de changement de trajectoire, c’est-à-dire des transitions dans le schéma spatial de l’évolution du trait de côte, résultant des rétroactions entre le transport longitudinal et la translation de l’avant-côte. Les résultats soulignent également la sensibilité des projections au mode de réponse du profil (adaptatif ou érosif), avec des implications majeures pour la persistance ou la disparition des systèmes dunaires. Ce travail contribue à améliorer la compréhension et la prévision de l’évolution à long terme des côtes sableuses dominées par les vagues face à l’élévation future du niveau de la mer.",
-      "abstractTeaser": "Les côtes sableuses sont des environnements dynamiques qui réagissent en permanence à l’influence combinée des vagues, des marées et de..."
-    },
-    {
       "id": "https://openalex.org/W7152375875",
       "title": "Modeling past and future evolution of sandy coasts",
       "year": 2025,
@@ -133,28 +115,6 @@
       "abstractTeaser": null
     },
     {
-      "id": "https://openalex.org/W4403148010",
-      "title": "LX-ST: INTEGRATED SHORELINE TOPO-BATHYMETRIC ANALYSIS MODEL",
-      "year": 2024,
-      "venue": "HAL (Le Centre pour la Communication Scientifique Directe)",
-      "doi": null,
-      "url": "https://brgm.hal.science/hal-04542836",
-      "isOpenAccess": false,
-      "openAccessUrl": null,
-      "type": "article",
-      "category": "article",
-      "authors": [
-        "Mohammad Traboulsi",
-        "Déborah Idier",
-        "Bruno Castelle",
-        "Arthur Robinet",
-        "Vincent Marieu"
-      ],
-      "citedByCount": 0,
-      "abstract": "International audience",
-      "abstractTeaser": "International audience"
-    },
-    {
       "id": "https://openalex.org/W4318064295",
       "title": "Impact of climate change on the hydrodynamic patterns of the Gironde estuary",
       "year": 2022,
@@ -163,7 +123,7 @@
       "url": "http://doi.org/10.5150/jngcgc.2022.020",
       "isOpenAccess": true,
       "openAccessUrl": "http://dx.doi.org/10.5150/jngcgc.2022.020",
-      "type": "article",
+      "type": "conference-paper",
       "category": "article",
       "authors": [
         "Mohammad Traboulsi",

@@ -272,6 +272,15 @@ const Publications = () => {
     return acc;
   }, {} as Record<string, number>);
 
+  // Never display a zero as if it were an accomplishment (e.g. citation
+  // counts lag behind OpenAlex for recently published work).
+  const visibleStats = [
+    { value: publications.length, label: t('publications.publicationsCount') },
+    ...(totalCitations > 0 ? [{ value: totalCitations, label: t('publications.citations') }] : []),
+    { value: openAccessCount, label: t('publications.openAccess') },
+    { value: Object.keys(categoryCounts).length, label: t('publications.categories') },
+  ];
+
   if (loading) {
     return (
       <section id="publications" className="py-20 bg-gradient-coastal">
@@ -355,23 +364,13 @@ const Publications = () => {
               <Card className="max-w-4xl mx-auto shadow-coastal border-0">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-semibold mb-6 text-primary">{t('publications.researchImpact')}</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-accent mb-2">{publications.length}</div>
-                      <div className="text-sm text-muted-foreground">{t('publications.publicationsCount')}</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-accent mb-2">{totalCitations}</div>
-                      <div className="text-sm text-muted-foreground">{t('publications.citations')}</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-accent mb-2">{openAccessCount}</div>
-                      <div className="text-sm text-muted-foreground">{t('publications.openAccess')}</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-accent mb-2">{Object.keys(categoryCounts).length}</div>
-                      <div className="text-sm text-muted-foreground">{t('publications.categories')}</div>
-                    </div>
+                  <div className={`grid grid-cols-2 gap-6 ${visibleStats.length >= 4 ? 'md:grid-cols-4' : 'md:grid-cols-3'}`}>
+                    {visibleStats.map((stat) => (
+                      <div key={stat.label} className="text-center">
+                        <div className="text-3xl font-bold text-accent mb-2">{stat.value}</div>
+                        <div className="text-sm text-muted-foreground">{stat.label}</div>
+                      </div>
+                    ))}
                   </div>
                   
                   {/* Category breakdown */}
