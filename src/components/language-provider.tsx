@@ -43,6 +43,10 @@ const translations = {
     "hero.watchVideo": "See the model in action (3 min)",
     "hero.getInTouch": "Discuss your project",
     "hero.viewWork": "See how I work",
+    "hero.stats.modelled": "5 km of coastline modelled",
+    "hero.stats.horizon": "projections to 2100",
+    "hero.stats.scenarios": "3 climate scenarios",
+    "hero.stats.published": "Env. Modelling & Software, 2025",
 
     // What I Do Section
     "whatIDo.title": "What I Do",
@@ -242,6 +246,10 @@ const translations = {
     "hero.watchVideo": "Voir le modèle en action (3 min)",
     "hero.getInTouch": "Discuter de votre projet",
     "hero.viewWork": "Voir comment je travaille",
+    "hero.stats.modelled": "5 km de littoral modélisés",
+    "hero.stats.horizon": "projections jusqu'en 2100",
+    "hero.stats.scenarios": "3 scénarios climatiques",
+    "hero.stats.published": "Env. Modelling & Software, 2025",
 
     // What I Do Section
     "whatIDo.title": "Ce Que Je Fais",
