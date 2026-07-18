@@ -23,10 +23,11 @@
     --secondary-foreground: 215 25% 25%;
     --secondary-dark: 200 20% 65%;
 
-    /* Accent - coral, used sparingly */
-    --accent: 15 80% 55%;
+    /* Accent - coral, used sparingly. Kept dark enough that small coral
+       text passes WCAG AA on white and white text passes on coral. */
+    --accent: 15 78% 45%;
     --accent-foreground: 15 10% 98%;
-    --accent-light: 15 80% 68%;
+    --accent-light: 15 72% 55%;
 
     /* Neutral grays */
     --muted: 215 15% 92%;
