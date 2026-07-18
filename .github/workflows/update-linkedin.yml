@@ -1,13 +1,11 @@
 name: Update Career Data from LinkedIn
 
+# Manual-only until a LinkedIn data source is configured (see
+# public/data/README.md). Re-add a schedule trigger once one of
+# LINKEDIN_PROFILE_API_URL / LINKEDIN_SOURCE_JSON / a local export
+# workflow is actually in use.
 on:
-  schedule:
-    - cron: '0 3 * * 1'
   workflow_dispatch:
-  push:
-    paths:
-      - 'scripts/fetch-linkedin-profile.js'
-      - '.github/workflows/update-linkedin.yml'
 
 jobs:
   update-linkedin:
