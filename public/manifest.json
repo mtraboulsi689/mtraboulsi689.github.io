@@ -1,13 +1,9 @@
 {
-  "name": "Mohammad Traboulsi - Coastal Engineer Portfolio",
+  "name": "Mohammad Traboulsi - Coastal Engineering Consultant",
   "short_name": "M. Traboulsi",
-  "description": "Portfolio of Mohammad Traboulsi, coastal and civil engineer specialized in fluid mechanics and numerical modeling",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
+  "description": "Mohammad Traboulsi, coastal risk engineer specialized in shoreline evolution modeling and climate risk assessment",
   "theme_color": "#2563eb",
-  "orientation": "portrait-primary",
-  "categories": ["education", "productivity", "utilities"],
+  "background_color": "#ffffff",
   "lang": "en-US",
   "dir": "ltr",
   "icons": [
@@ -16,32 +12,6 @@
       "sizes": "any",
       "type": "image/png",
       "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Publications",
-      "description": "View research publications",
-      "url": "/#publications",
-      "icons": [
-        {
-          "src": "/favicon.png",
-          "sizes": "any",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Contact",
-      "description": "Get in touch",
-      "url": "/#contact", 
-      "icons": [
-        {
-          "src": "/favicon.png",
-          "sizes": "any",
-          "type": "image/png"
-        }
-      ]
     }
   ]
 }
