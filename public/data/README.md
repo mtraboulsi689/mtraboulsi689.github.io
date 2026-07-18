@@ -5,7 +5,7 @@ This directory contains JSON files used to dynamically populate content on the p
 ## Files
 
 ### `experience.json`
-Contains professional experience data that populates the Experience section of the portfolio.
+Contains professional experience data that populates the Experience section of the portfolio. This can be generated from LinkedIn data with `npm run update:linkedin`.
 
 **Structure:**
 ```json
@@ -53,6 +53,18 @@ Contains professional experience data that populates the Experience section of t
 ### `publications.json`
 Auto-generated file from OpenAlex API. Updated weekly via GitHub Actions.
 Last manual update: 2025-08-26
+
+### `linkedin-feed.json`
+Generated from LinkedIn source data when available. The homepage displays this file only when it contains posts.
+
+Supported update inputs:
+- `LINKEDIN_PROFILE_API_URL` plus optional `LINKEDIN_ACCESS_TOKEN`: fetches an authorized JSON payload.
+- `LINKEDIN_SOURCE_JSON`: raw JSON supplied as a GitHub secret or local environment variable.
+- `LINKEDIN_EXPORT_DIR`: local LinkedIn export directory, defaulting to `data/linkedin/`.
+
+The script accepts common LinkedIn/export field names for positions and posts, then writes:
+- `public/data/experience.json`
+- `public/data/linkedin-feed.json`
 
 ## How to Add New Experience
 

@@ -49,6 +49,9 @@ const translations = {
     "spotlight.date": "December 2024",
     "spotlight.author": "Mohammad Traboulsi",
     "spotlight.videoDescription": "This video provides a comprehensive explanation of the LX-ST coupled model development for simulating long-term shoreline morphological evolution under climate change scenarios. Learn about the integration of longitudinal and cross-shore sediment transport mechanisms.",
+    "spotlight.videoTitle": "Research Explanation Video",
+    "spotlight.playVideo": "Play video",
+    "spotlight.openYoutube": "Open on YouTube",
     "spotlight.keyTopics": "Key Topics Covered:",
     "spotlight.topic1": "LX-ST model architecture and coupling methodology",
     "spotlight.topic2": "Multi-scenario climate impact simulations (SSP2-4.5, SSP5-8.5)",
@@ -96,6 +99,9 @@ const translations = {
     // Experience Section
     "experience.title": "Professional Experience",
     "experience.description": "Professional experience in coastal risk engineering and climate change impact assessment at leading French research and engineering institutions.",
+    "linkedinFeed.title": "Recent LinkedIn Posts",
+    "linkedinFeed.description": "Recent professional updates and research notes from LinkedIn.",
+    "linkedinFeed.viewPost": "View post",
 
     // Education Section
     "education.title": "Education", 
@@ -232,6 +238,9 @@ const translations = {
     "spotlight.date": "Décembre 2024",
     "spotlight.author": "Mohammad Traboulsi",
     "spotlight.videoDescription": "Cette vidéo fournit une explication complète du développement du modèle couplé LX-ST pour simuler l'évolution morphologique à long terme du littoral sous les scénarios de changement climatique. Découvrez l'intégration des mécanismes de transport sédimentaire longitudinal et transversal.",
+    "spotlight.videoTitle": "Vidéo d'explication de la recherche",
+    "spotlight.playVideo": "Lire la vidéo",
+    "spotlight.openYoutube": "Ouvrir sur YouTube",
     "spotlight.keyTopics": "Sujets Clés Couverts :",
     "spotlight.topic1": "Architecture du modèle LX-ST et méthodologie de couplage",
     "spotlight.topic2": "Simulations d'impact climatique multi-scénarios (SSP2-4.5, SSP5-8.5)",
@@ -279,6 +288,9 @@ const translations = {
     // Experience Section
     "experience.title": "Expérience Professionnelle",
     "experience.description": "Expérience professionnelle en ingénierie des risques côtiers et évaluation de l'impact du changement climatique au sein d'institutions françaises de recherche et d'ingénierie de premier plan.",
+    "linkedinFeed.title": "Publications LinkedIn récentes",
+    "linkedinFeed.description": "Mises à jour professionnelles et notes de recherche récentes depuis LinkedIn.",
+    "linkedinFeed.viewPost": "Voir la publication",
 
     // Education Section
     "education.title": "Formation",

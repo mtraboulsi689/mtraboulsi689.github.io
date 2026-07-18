@@ -13,6 +13,10 @@ dist-ssr
 *.local
 *.tsbuildinfo
 
+# Local LinkedIn exports can contain private account data.
+data/linkedin/
+public/data/linkedin-source.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

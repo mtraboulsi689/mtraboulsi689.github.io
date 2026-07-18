@@ -9,6 +9,7 @@
     "build:dev": "vite build --mode development",
     "typecheck": "tsc -b",
     "lint": "eslint .",
+    "update:linkedin": "node scripts/fetch-linkedin-profile.js",
     "preview": "vite preview"
   },
   "dependencies": {
