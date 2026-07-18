@@ -40,8 +40,11 @@ const About = () => {
               <p className="leading-relaxed text-muted-foreground mb-4">
                 {t('about.professionalFocusText1')}
               </p>
-              <p className="leading-relaxed text-muted-foreground">
+              <p className="leading-relaxed text-muted-foreground mb-4">
                 {t('about.professionalFocusText2')}
+              </p>
+              <p className="leading-relaxed text-foreground font-medium">
+                {t('about.professionalFocusText3')}
               </p>
             </div>
           </Reveal>
@@ -67,9 +70,9 @@ const About = () => {
                   </dt>
                   <dd className="mt-0.5 text-sm text-foreground">
                     <ul className="space-y-0.5">
-                      <li>{t('about.crnaGrant')}</li>
-                      <li>{t('about.rankedFirst')}</li>
-                      <li>{t('about.publishedResearch')}</li>
+                      <li>{t('about.highlight1')}</li>
+                      <li>{t('about.highlight2')}</li>
+                      <li>{t('about.highlight3')}</li>
                     </ul>
                   </dd>
                 </div>
