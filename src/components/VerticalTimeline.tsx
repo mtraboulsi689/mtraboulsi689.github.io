@@ -24,9 +24,10 @@ interface TimelineItem {
 interface VerticalTimelineProps {
   items: TimelineItem[];
   category: 'experience' | 'education';
+  detailsLabel: string;
 }
 
-const VerticalTimeline = ({ items, category }: VerticalTimelineProps) => {
+const VerticalTimeline = ({ items, category, detailsLabel }: VerticalTimelineProps) => {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
   // Sort items by start_date descending
@@ -215,7 +216,7 @@ const VerticalTimeline = ({ items, category }: VerticalTimelineProps) => {
                         <div className="pt-4 border-t border-border/50 animate-fade-up">
                           <h4 className="font-medium text-sm text-primary mb-3 flex items-center">
                             <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                            Key Highlights:
+                            {detailsLabel}
                           </h4>
                           <ul className="space-y-2 text-sm text-muted-foreground">
                             {item.bullets?.map((bullet, idx) => (

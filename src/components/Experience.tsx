@@ -90,7 +90,7 @@ const Experience = () => {
           </p>
         </div>
 
-        <VerticalTimeline items={experienceData} category="experience" />
+        <VerticalTimeline items={experienceData} category="experience" detailsLabel={t('experience.caseStudyLabel')} />
       </div>
     </section>
   );

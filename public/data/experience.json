@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-17T00:00:00.000Z",
+  "updated_at": "2026-07-18T00:00:00.000Z",
   "items": [
     {
       "id": "brgm-coastal-risk-engineer",
@@ -9,12 +9,12 @@
       "title": "Coastal Risk Engineer",
       "organization": "BRGM",
       "location": "France",
-      "summary": "Development and application of advanced coastal morphodynamic models for long-term shoreline evolution under climate change scenarios.",
+      "summary": "Built and validated a long-term shoreline-evolution model for one of France's most exposed tourist coastlines, projecting retreat at Lacanau (5 km) to 2100 under multiple sea-level-rise scenarios.",
       "bullets": [
-        "Developed the coupled LX-ST model to simulate long-term shoreline morphological evolution",
-        "Integrated longitudinal and cross-shore sediment transport for comprehensive coastal modeling",
-        "Conducted multi-scenario simulations (SSP2-4.5, SSP5-8.5, High-End) for climate impact assessment",
-        "Applied the model to the Lacanau site (5 km) with sensitivity tests and varying erosion rates"
+        "Problem — Lacanau's beachfront needed defensible long-term erosion projections to support coastal-risk planning under sea-level rise.",
+        "Approach — Developed the coupled LX-ST model, integrating cross-shore (ShoreTrans) and longshore sediment transport, and ran SSP2-4.5, SSP5-8.5, and High-End climate scenarios with sensitivity testing.",
+        "Deliverable — A validated, peer-reviewed shoreline-evolution model applied to the 5 km Lacanau site, with erosion-rate sensitivity bands for planning.",
+        "Evidence — Published in Environmental Modelling & Software (2025); method and results are peer-reviewed."
       ],
       "links": [
         {
@@ -32,12 +32,18 @@
       "role": "Internship",
       "organization": "BRGM",
       "location": "France",
-      "summary": "Enhanced coastal modeling capabilities for climate change impact assessment on sandy coastlines.",
+      "summary": "Turned a MATLAB research model (ShoreTrans) into fast, portable Fortran engineering software, adding 2D capability for real coastal geometries.",
       "bullets": [
-        "Enhanced LX-Shore code with ShoreTrans module for improved accuracy",
-        "Developed 2D modeling capabilities for complex coastal geometries",
-        "Implemented sediment transport algorithms for long-term predictions",
-        "Validated models against observed coastal evolution data"
+        "Problem — The published ShoreTrans model (McCarroll et al., 2021) ran in MATLAB, was slow for repeated engineering-scale runs, and lacked 2D capability for complex coastlines.",
+        "Approach — Enhanced BRGM's LX-Shore code with a Fortran ShoreTrans module, adding 2D modeling capability and refined sediment-transport algorithms.",
+        "Deliverable — A faster, portable shoreline-evolution codebase, validated against observed coastal-evolution data.",
+        "Evidence — Open-sourced as ShoreTrans-fortran; see the repository for the full implementation."
+      ],
+      "links": [
+        {
+          "label": "ShoreTrans-fortran on GitHub",
+          "url": "https://github.com/mtraboulsi689/ShoreTrans-fortran"
+        }
       ]
     },
     {
@@ -49,13 +55,12 @@
       "role": "Internship - ECCLIPSE Project",
       "organization": "Cerema",
       "location": "Margny-lès-Compiègne, France",
-      "summary": "Comprehensive hydrodynamic modeling study assessing climate change impacts on France's largest estuary.",
+      "summary": "Stress-tested France's largest estuary against climate change, modeling flood and drought scenarios to 2100 for the Gironde and its Garonne and Dordogne tributaries.",
       "bullets": [
-        "Developed Telemac3D & Telemac2D models for flood and drought scenarios",
-        "Analyzed dredging impacts on estuarine circulation patterns",
-        "Performed hydrological modeling of Garonne & Dordogne rivers",
-        "Generated climate scenarios projections up to 2100",
-        "Contributed to national climate adaptation strategies"
+        "Problem — The Gironde estuary, France's largest, needed a hydrodynamic assessment of climate-driven flood and drought risk, including dredging impacts on circulation.",
+        "Approach — Built coupled Telemac2D/Telemac3D models of the estuary and its Garonne and Dordogne tributaries, running climate-scenario projections to 2100.",
+        "Deliverable — A validated hydrodynamic model quantifying dredging impacts and long-term circulation change.",
+        "Evidence — Findings contributed to French national climate-adaptation strategy and were published in JNGCGC (2022)."
       ],
       "links": [
         {

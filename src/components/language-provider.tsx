@@ -27,9 +27,9 @@ const translations = {
   en: {
     // Navigation
     "nav.skills": "Skills",
-    "nav.projects": "Projects", 
+    "nav.projects": "Projects",
     "nav.publications": "Publications",
-    "nav.experience": "Experience",
+    "nav.experience": "Case Studies",
     "nav.education": "Education",
     "nav.contact": "Contact",
 
@@ -107,15 +107,17 @@ const translations = {
     "publications.phdStart": "Started PhD",
 
     // Experience Section
-    "experience.title": "Professional Experience",
-    "experience.description": "Professional experience in coastal risk engineering and climate change impact assessment at leading French research and engineering institutions.",
+    "experience.title": "Case Studies",
+    "experience.description": "Selected engineering work: the problem, the model, and the result — at BRGM and Cerema.",
+    "experience.caseStudyLabel": "The Case Study",
     "linkedinFeed.title": "Recent LinkedIn Posts",
     "linkedinFeed.description": "Recent professional updates and research notes from LinkedIn.",
     "linkedinFeed.viewPost": "View post",
 
     // Education Section
-    "education.title": "Education", 
+    "education.title": "Education",
     "education.description": "A progressive academic journey through specialized programs in coastal engineering, fluid mechanics, and computational methods across multiple international institutions.",
+    "education.highlightsLabel": "Key Highlights",
 
     // Contact Section
     "contact.title": "Get In Touch",
@@ -227,8 +229,8 @@ const translations = {
     // Navigation
     "nav.skills": "Compétences",
     "nav.projects": "Projets",
-    "nav.publications": "Publications", 
-    "nav.experience": "Expérience",
+    "nav.publications": "Publications",
+    "nav.experience": "Études de Cas",
     "nav.education": "Formation",
     "nav.contact": "Contact",
 
@@ -306,8 +308,9 @@ const translations = {
     "publications.phdStart": "Début du Doctorat",
 
     // Experience Section
-    "experience.title": "Expérience Professionnelle",
-    "experience.description": "Expérience professionnelle en ingénierie des risques côtiers et évaluation de l'impact du changement climatique au sein d'institutions françaises de recherche et d'ingénierie de premier plan.",
+    "experience.title": "Études de Cas",
+    "experience.description": "Travaux d'ingénierie sélectionnés : le problème, le modèle, et le résultat — au BRGM et au Cerema.",
+    "experience.caseStudyLabel": "L'Étude de Cas",
     "linkedinFeed.title": "Publications LinkedIn récentes",
     "linkedinFeed.description": "Mises à jour professionnelles et notes de recherche récentes depuis LinkedIn.",
     "linkedinFeed.viewPost": "Voir la publication",
@@ -315,6 +318,7 @@ const translations = {
     // Education Section
     "education.title": "Formation",
     "education.description": "Un parcours académique progressif à travers des programmes spécialisés en ingénierie côtière, mécanique des fluides et méthodes computationnelles dans plusieurs institutions internationales.",
+    "education.highlightsLabel": "Points Clés",
 
     // Contact Section
     "contact.title": "Me Contacter",

@@ -104,7 +104,7 @@ const Education = () => {
           </p>
         </div>
 
-        <VerticalTimeline items={educationData} category="education" />
+        <VerticalTimeline items={educationData} category="education" detailsLabel={t('education.highlightsLabel')} />
       </div>
     </section>
   );
