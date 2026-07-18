@@ -3,6 +3,7 @@ import { FileText, Copy, ChevronDown, ChevronUp } from 'lucide-react';
 import PublicationsSkeleton from '@/components/skeletons/PublicationsSkeleton';
 import { useLanguage } from '@/components/language-provider';
 import Reveal from '@/components/Reveal';
+import { useCountUp } from '@/hooks/use-count-up';
 
 interface Publication {
   id: string;
@@ -29,6 +30,13 @@ interface PublicationsData {
 
 const formatCategory = (category: string) =>
   category.charAt(0).toUpperCase() + category.slice(1);
+
+const StatValue = ({ value }: { value: number }) => {
+  const { ref, value: displayed } = useCountUp(value);
+  return (
+    <span ref={ref as React.RefObject<HTMLSpanElement>}>{displayed}</span>
+  );
+};
 
 const PublicationRow = ({ publication, index }: { publication: Publication; index: number }) => {
   const [showFullAbstract, setShowFullAbstract] = useState(false);
@@ -205,7 +213,7 @@ const Publications = () => {
                         {stat.label}
                       </dt>
                       <dd className="order-1 font-display text-3xl font-semibold text-foreground">
-                        {stat.value}
+                        <StatValue value={stat.value} />
                       </dd>
                     </div>
                   ))}
