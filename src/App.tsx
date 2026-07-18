@@ -10,7 +10,6 @@ import { LoadingProvider } from "@/components/loading-provider";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { trackPageView } from "@/utils/analytics";
 import Index from "./pages/Index";
-import AllProjects from "./pages/AllProjects";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,7 +29,6 @@ const AppContent = () => {
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/projects" element={<AllProjects />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

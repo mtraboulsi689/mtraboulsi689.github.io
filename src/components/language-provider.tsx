@@ -79,7 +79,6 @@ const translations = {
     "projects.title": "Projects",
     "projects.description": "Open-source coastal engineering models and tools, alongside earlier data-analysis work.",
     "projects.viewProject": "View Project",
-    "projects.viewAll": "View All Projects on GitHub",
 
     // Publications Section
     "publications.title": "Publications & Research",
@@ -268,7 +267,6 @@ const translations = {
     "projects.title": "Projets",
     "projects.description": "Modèles et outils open-source en ingénierie côtière, ainsi que des travaux antérieurs d'analyse de données.",
     "projects.viewProject": "Voir le Projet",
-    "projects.viewAll": "Voir Tous les Projets sur GitHub",
 
     // Publications Section
     "publications.title": "Publications et Recherche",

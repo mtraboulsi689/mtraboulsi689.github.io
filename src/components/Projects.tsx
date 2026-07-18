@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, BarChart3, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ExternalLink, Github, BarChart3 } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
 
 interface Project {
@@ -197,24 +196,6 @@ const Projects = () => {
             </div>
           ))}
         </div>
-
-        {/* Link to external projects page */}
-        {projects.length > 3 && (
-          <div className="text-center mt-12">
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-              asChild
-            >
-              <Link to="/projects">
-                <BarChart3 size={20} className="mr-2" />
-                {t('projects.viewAll')}
-                <ArrowRight size={16} className="ml-2" />
-              </Link>
-            </Button>
-          </div>
-        )}
       </div>
     </section>
   );
