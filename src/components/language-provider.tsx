@@ -35,11 +35,12 @@ const translations = {
 
     // Hero Section
     "hero.title": "Mohammad Traboulsi",
-    "hero.subtitle": "Coastal Risk Engineer, PhD",
-    "hero.specialization": "Numerical modelling of shoreline evolution for climate risk & coastal engineering projects",
-    "hero.watchVideo": "Watch my research explained in few minutes",
-    "hero.getInTouch": "Get In Touch",
-    "hero.viewWork": "View Work",
+    "hero.subtitle": "Consulting engineer — coastal & shoreline modelling",
+    "hero.specialization": "I help engineering firms and coastal territories quantify shoreline retreat under sea-level rise, with numerical models I build and validate myself.",
+    "hero.credentials": "Developer of the LX-ST shoreline evolution model · Coastal Risk Engineer at BRGM",
+    "hero.watchVideo": "See the model in action (3 min)",
+    "hero.getInTouch": "Discuss your project",
+    "hero.viewWork": "See how I work",
 
     // Spotlight Section
     "spotlight.badge": "Research Spotlight",
@@ -223,11 +224,12 @@ const translations = {
 
     // Hero Section
     "hero.title": "Mohammad Traboulsi",
-    "hero.subtitle": "Ingénieur des Risques Côtiers, Docteur",
-    "hero.specialization": "Modélisation numérique de l'évolution du littoral pour les risques climatiques et projets d'ingénierie côtière",
-    "hero.watchVideo": "Regarder ma recherche expliquée en quelques minutes",
-    "hero.getInTouch": "Me Contacter",
-    "hero.viewWork": "Voir Mon Travail",
+    "hero.subtitle": "Ingénieur conseil — modélisation côtière et littorale",
+    "hero.specialization": "J'aide les bureaux d'études et les territoires littoraux à quantifier le recul du trait de côte sous l'effet de la montée du niveau marin, avec des modèles numériques que je développe et valide moi-même.",
+    "hero.credentials": "Développeur du modèle d'évolution du littoral LX-ST · Ingénieur des risques côtiers au BRGM",
+    "hero.watchVideo": "Voir le modèle en action (3 min)",
+    "hero.getInTouch": "Discuter de votre projet",
+    "hero.viewWork": "Voir comment je travaille",
 
     // Spotlight Section
     "spotlight.badge": "Recherche à l'Honneur",

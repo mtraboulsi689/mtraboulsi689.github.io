@@ -1,5 +1,5 @@
 
-import { ArrowDown, Download, ExternalLink, Mail, Github, Linkedin, FileText, GraduationCap, Play } from 'lucide-react';
+import { ArrowDown, ArrowRight, ExternalLink, Mail, Github, Linkedin, FileText, GraduationCap, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/components/language-provider';
 
@@ -28,21 +28,25 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center text-white stagger-fade-up">
           <div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight hover-scale">
+            <h1 className="text-5xl md:text-7xl font-bold mb-2 leading-tight hover-scale">
               Mohammad
               <br />
               <span className="text-accent-light">Traboulsi</span>
+              <span className="text-2xl md:text-3xl font-medium text-white/60">, PhD</span>
             </h1>
           </div>
-          
+
           <div>
-            <p className="text-xl md:text-2xl mb-4 text-white/90 font-light">
+            <p className="text-xl md:text-2xl mb-4 text-white font-semibold">
               {t('hero.subtitle')}
             </p>
-            <p className="text-lg md:text-xl mb-6 text-white/80">
+            <p className="text-lg md:text-xl mb-4 text-white/80 max-w-2xl mx-auto">
               {t('hero.specialization')}
             </p>
-            
+            <p className="text-sm md:text-base mb-6 text-white/60">
+              {t('hero.credentials')}
+            </p>
+
             {/* Watch Research Video Button */}
             <div className="mb-8">
               <Button
@@ -127,7 +131,7 @@ const Hero = () => {
               onClick={() => scrollToSection('experience')}
             >
               {t('hero.viewWork')}
-              <ExternalLink className="ml-2" size={20} />
+              <ArrowRight className="ml-2" size={20} />
             </Button>
           </div>
 
