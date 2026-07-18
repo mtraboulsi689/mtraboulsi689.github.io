@@ -42,6 +42,16 @@ const translations = {
     "hero.getInTouch": "Discuss your project",
     "hero.viewWork": "See how I work",
 
+    // What I Do Section
+    "whatIDo.title": "What I Do",
+    "whatIDo.description": "Three ways to work with me, from a single projection to a full model built for your site.",
+    "whatIDo.studies.title": "Shoreline & Coastal Evolution Studies",
+    "whatIDo.studies.description": "Trait-de-côte projections at 30- and 100-year horizons, with uncertainty bands, for regulatory studies and adaptation planning.",
+    "whatIDo.modelDev.title": "Model Development & Engineering",
+    "whatIDo.modelDev.description": "Custom morphodynamic models, MATLAB-to-Fortran/Python industrialization, and coupled Telemac systems built for your case.",
+    "whatIDo.review.title": "Expert Review & Training",
+    "whatIDo.review.description": "Independent audits of existing coastal models, and hands-on training in Telemac and shoreline-modelling methods.",
+
     // Spotlight Section
     "spotlight.badge": "Research Spotlight",
     "spotlight.title": "Latest Research",
@@ -230,6 +240,16 @@ const translations = {
     "hero.watchVideo": "Voir le modèle en action (3 min)",
     "hero.getInTouch": "Discuter de votre projet",
     "hero.viewWork": "Voir comment je travaille",
+
+    // What I Do Section
+    "whatIDo.title": "Ce Que Je Fais",
+    "whatIDo.description": "Trois façons de travailler avec moi, d'une simple projection à un modèle complet conçu pour votre site.",
+    "whatIDo.studies.title": "Études d'Évolution Côtière et Littorale",
+    "whatIDo.studies.description": "Projections du trait de côte à 30 et 100 ans, avec bandes d'incertitude, pour les études réglementaires et la planification de l'adaptation.",
+    "whatIDo.modelDev.title": "Développement de Modèles & Ingénierie",
+    "whatIDo.modelDev.description": "Modèles morphodynamiques sur mesure, industrialisation MATLAB vers Fortran/Python, et systèmes Telemac couplés conçus pour votre cas.",
+    "whatIDo.review.title": "Expertise & Formation",
+    "whatIDo.review.description": "Audits indépendants de modèles côtiers existants, et formations pratiques à Telemac et aux méthodes de modélisation du littoral.",
 
     // Spotlight Section
     "spotlight.badge": "Recherche à l'Honneur",
