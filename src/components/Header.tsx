@@ -50,31 +50,15 @@ const Header = () => {
             >
               MT
             </button>
-            <button 
-              onClick={() => scrollToSection('skills')}
+            <button
+              onClick={() => scrollToSection('services')}
               className={`transition-colors font-medium ${
                 isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
               }`}
             >
-              {t('nav.skills')}
+              {t('nav.services')}
             </button>
-            <button 
-              onClick={() => scrollToSection('projects')}
-              className={`transition-colors font-medium ${
-                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              {t('nav.projects')}
-            </button>
-            <button 
-              onClick={() => scrollToSection('publications')}
-              className={`transition-colors font-medium ${
-                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              {t('nav.publications')}
-            </button>
-            <button 
+            <button
               onClick={() => scrollToSection('experience')}
               className={`transition-colors font-medium ${
                 isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
@@ -82,7 +66,31 @@ const Header = () => {
             >
               {t('nav.experience')}
             </button>
-            <button 
+            <button
+              onClick={() => scrollToSection('publications')}
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
+            >
+              {t('nav.publications')}
+            </button>
+            <button
+              onClick={() => scrollToSection('projects')}
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
+            >
+              {t('nav.projects')}
+            </button>
+            <button
+              onClick={() => scrollToSection('skills')}
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
+            >
+              {t('nav.skills')}
+            </button>
+            <button
               onClick={() => scrollToSection('education')}
               className={`transition-colors font-medium ${
                 isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
@@ -138,10 +146,11 @@ const Header = () => {
             <nav className="flex flex-col space-y-1 p-4">
               {[
                 { key: 'top', label: 'MT', isSpecial: true },
-                { key: 'skills', label: t('nav.skills') },
-                { key: 'projects', label: t('nav.projects') },
-                { key: 'publications', label: t('nav.publications') },
+                { key: 'services', label: t('nav.services') },
                 { key: 'experience', label: t('nav.experience') },
+                { key: 'publications', label: t('nav.publications') },
+                { key: 'projects', label: t('nav.projects') },
+                { key: 'skills', label: t('nav.skills') },
                 { key: 'education', label: t('nav.education') },
                 { key: 'contact', label: t('nav.contact') }
               ].map((item, index) => (

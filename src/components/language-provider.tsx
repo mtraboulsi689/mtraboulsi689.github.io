@@ -26,6 +26,7 @@ const LanguageProviderContext = createContext<LanguageProviderState>(initialStat
 const translations = {
   en: {
     // Navigation
+    "nav.services": "What I Do",
     "nav.skills": "Skills",
     "nav.projects": "Projects",
     "nav.publications": "Publications",
@@ -80,13 +81,8 @@ const translations = {
 
     // Skills Section
     "skills.title": "Technical Skills",
-    "skills.description": "Comprehensive expertise across programming languages, analytical tools, and specialized engineering software for coastal and environmental modeling.",
-    "skills.programming": "Programming",
-    "skills.analysis": "Analysis & Modeling",
-    "skills.tools": "Tools & Technologies",
-    "skills.keywords": "Research Keywords",
 
-    // Projects Section  
+    // Projects Section
     "projects.title": "Projects",
     "projects.description": "Open-source coastal engineering models and tools, alongside earlier data-analysis work.",
     "projects.viewProject": "View Project",
@@ -198,9 +194,6 @@ const translations = {
     "about.bootcampGraduate": "Data Analysis & ML Bootcamp Graduate",
 
     // Skills Section
-    "skills.clickToSeeMore": "Click on any skill to see applications and recent projects",
-    "skills.applications": "Applications:",
-    "skills.recentProjects": "Recent Projects:",
     "skills.programmingTitle": "Programming",
     "skills.analysisTitle": "Analysis & Modeling",
     "skills.toolsTitle": "Tools & Technologies",
@@ -227,6 +220,7 @@ const translations = {
   },
   fr: {
     // Navigation
+    "nav.services": "Ce Que Je Fais",
     "nav.skills": "Compétences",
     "nav.projects": "Projets",
     "nav.publications": "Publications",
@@ -281,11 +275,6 @@ const translations = {
 
     // Skills Section
     "skills.title": "Compétences Techniques",
-    "skills.description": "Expertise complète dans les langages de programmation, les outils analytiques et les logiciels d'ingénierie spécialisés pour la modélisation côtière et environnementale.",
-    "skills.programming": "Programmation",
-    "skills.analysis": "Analyse et Modélisation",
-    "skills.tools": "Outils et Technologies",
-    "skills.keywords": "Mots-clés de Recherche",
 
     // Projects Section
     "projects.title": "Projets",
@@ -399,9 +388,6 @@ const translations = {
     "about.bootcampGraduate": "Diplômé du Bootcamp d'Analyse de Données et ML",
 
     // Skills Section
-    "skills.clickToSeeMore": "Cliquez sur une compétence pour voir les applications et projets récents",
-    "skills.applications": "Applications :",
-    "skills.recentProjects": "Projets Récents :",
     "skills.programmingTitle": "Programmation",
     "skills.analysisTitle": "Analyse et Modélisation",
     "skills.toolsTitle": "Outils et Technologies",

@@ -3,11 +3,11 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import WhatIDo from '@/components/WhatIDo';
 import Spotlight from '@/components/Spotlight';
-import Skills from '@/components/Skills';
-import Projects from '@/components/Projects';
-import Publications from '@/components/Publications';
 import Experience from '@/components/Experience';
+import Publications from '@/components/Publications';
+import Projects from '@/components/Projects';
 import LinkedInFeed from '@/components/LinkedInFeed';
+import Skills from '@/components/Skills';
 import Education from '@/components/Education';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
@@ -19,11 +19,11 @@ const Index = () => {
       <Hero />
       <WhatIDo />
       <Spotlight />
-      <Skills />
-      <Projects />
-      <Publications />
       <Experience />
+      <Publications />
+      <Projects />
       <LinkedInFeed />
+      <Skills />
       <Education />
       <ContactForm />
       <Footer />
