@@ -51,13 +51,15 @@ export function LoadingProvider({ children, ...props }: LoadingProviderProps) {
       { section: 'education', delay: 400 },
     ]
 
-    loadingSections.forEach(({ section, delay }) => {
-      const timer = setTimeout(() => {
+    const timers = loadingSections.map(({ section, delay }) =>
+      window.setTimeout(() => {
         setLoadingState(prev => ({ ...prev, [section]: false }))
-      }, delay)
+      }, delay),
+    )
 
-      return () => clearTimeout(timer)
-    })
+    return () => {
+      timers.forEach(window.clearTimeout)
+    }
   }, [])
 
   const setLoading = (section: keyof LoadingState, isLoading: boolean) => {
