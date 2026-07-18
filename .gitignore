@@ -17,6 +17,11 @@ dist-ssr
 data/linkedin/
 public/data/linkedin-source.json
 
+# Raw source photo dropped at repo root; the resized/compressed copy
+# actually used by the site lives at public/headshot.jpg.
+/headshot.png
+/headshot.png:Zone.Identifier
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
