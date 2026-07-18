@@ -32,6 +32,7 @@ const translations = {
     "nav.publications": "Publications",
     "nav.experience": "Case Studies",
     "nav.education": "Education",
+    "nav.about": "About",
     "nav.contact": "Contact",
 
     // Hero Section
@@ -181,17 +182,21 @@ const translations = {
 
     // About Section
     "about.title": "About Me",
-    "about.description": "Passionate coastal and civil engineer with expertise in fluid mechanics, numerical modeling, and data analysis. Currently pursuing advanced research in environmental fluid mechanics at Université Grenoble Alpes.",
+    "about.description": "Coastal risk engineer and PhD, based in France, working at the intersection of numerical modelling and applied coastal engineering.",
     "about.professionalFocus": "Professional Focus",
     "about.professionalFocusText1": "My work centers on understanding and modeling complex fluid dynamics in coastal and civil engineering applications. I specialize in sediment transport, turbulence analysis, and the development of numerical models to predict environmental changes and their impacts on coastal infrastructure.",
     "about.professionalFocusText2": "With extensive experience in both experimental and computational approaches, I bridge the gap between theoretical research and practical engineering solutions.",
     "about.basedInFrance": "Based in France",
     "about.languages": "Languages",
+    "about.languagesText": "Arabic (native) · English (fluent) · French (professional)",
     "about.keyAchievements": "Key Achievements",
     "about.crnaGrant": "CRNA Grant Scholarship Recipient",
     "about.rankedFirst": "Ranked 1st in Master's Program (Très Bien)",
     "about.publishedResearch": "Published Research in International Journal",
-    "about.bootcampGraduate": "Data Analysis & ML Bootcamp Graduate",
+    "about.institutionsLabel": "Institutions",
+    "about.institutionsList": "BRGM · Cerema · University of Bordeaux · EPOC",
+    "about.thesisLink": "PhD Thesis (theses.fr)",
+    "about.photoAlt": "Portrait of Mohammad Traboulsi",
 
     // Skills Section
     "skills.programmingTitle": "Programming",
@@ -226,6 +231,7 @@ const translations = {
     "nav.publications": "Publications",
     "nav.experience": "Études de Cas",
     "nav.education": "Formation",
+    "nav.about": "À Propos",
     "nav.contact": "Contact",
 
     // Hero Section
@@ -375,17 +381,21 @@ const translations = {
 
     // About Section
     "about.title": "À Propos de Moi",
-    "about.description": "Ingénieur côtier et civil passionné avec une expertise en mécanique des fluides, modélisation numérique et analyse de données. Actuellement en cours de recherche avancée en mécanique des fluides environnementale à l'Université Grenoble Alpes.",
+    "about.description": "Ingénieur des risques côtiers et docteur, basé en France, à l'intersection de la modélisation numérique et de l'ingénierie côtière appliquée.",
     "about.professionalFocus": "Orientation Professionnelle",
     "about.professionalFocusText1": "Mon travail se concentre sur la compréhension et la modélisation de la dynamique complexe des fluides dans les applications d'ingénierie côtière et civile. Je me spécialise dans le transport sédimentaire, l'analyse de la turbulence et le développement de modèles numériques pour prédire les changements environnementaux et leurs impacts sur l'infrastructure côtière.",
     "about.professionalFocusText2": "Avec une vaste expérience dans les approches expérimentales et computationnelles, je fais le lien entre la recherche théorique et les solutions d'ingénierie pratiques.",
     "about.basedInFrance": "Basé en France",
     "about.languages": "Langues",
+    "about.languagesText": "Arabe (langue maternelle) · Anglais (courant) · Français (professionnel)",
     "about.keyAchievements": "Réalisations Clés",
     "about.crnaGrant": "Récipiendaire de la Bourse CRNA",
     "about.rankedFirst": "Classé 1er du Programme de Master (Très Bien)",
     "about.publishedResearch": "Recherche Publiée dans une Revue Internationale",
-    "about.bootcampGraduate": "Diplômé du Bootcamp d'Analyse de Données et ML",
+    "about.institutionsLabel": "Institutions",
+    "about.institutionsList": "BRGM · Cerema · Université de Bordeaux · EPOC",
+    "about.thesisLink": "Thèse de Doctorat (theses.fr)",
+    "about.photoAlt": "Portrait de Mohammad Traboulsi",
 
     // Skills Section
     "skills.programmingTitle": "Programmation",

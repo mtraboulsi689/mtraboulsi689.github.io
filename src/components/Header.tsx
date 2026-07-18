@@ -98,7 +98,15 @@ const Header = () => {
             >
               {t('nav.education')}
             </button>
-            <button 
+            <button
+              onClick={() => scrollToSection('about')}
+              className={`transition-colors font-medium ${
+                isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
+              }`}
+            >
+              {t('nav.about')}
+            </button>
+            <button
               onClick={() => scrollToSection('contact')}
               className={`transition-colors font-medium ${
                 isScrolled ? 'text-muted-foreground hover:text-primary' : 'text-white/90 hover:text-white'
@@ -152,6 +160,7 @@ const Header = () => {
                 { key: 'projects', label: t('nav.projects') },
                 { key: 'skills', label: t('nav.skills') },
                 { key: 'education', label: t('nav.education') },
+                { key: 'about', label: t('nav.about') },
                 { key: 'contact', label: t('nav.contact') }
               ].map((item, index) => (
                 <button 

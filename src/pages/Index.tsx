@@ -9,6 +9,7 @@ import Projects from '@/components/Projects';
 import LinkedInFeed from '@/components/LinkedInFeed';
 import Skills from '@/components/Skills';
 import Education from '@/components/Education';
+import About from '@/components/About';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 
@@ -25,6 +26,7 @@ const Index = () => {
       <LinkedInFeed />
       <Skills />
       <Education />
+      <About />
       <ContactForm />
       <Footer />
     </div>
