@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
@@ -58,6 +57,10 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				abyss: {
+					DEFAULT: 'hsl(var(--abyss))',
+					foreground: 'hsl(var(--abyss-foreground))'
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -65,28 +68,24 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				mono: ['JetBrains Mono', 'monospace'],
+				sans: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
+				display: ['Space Grotesk Variable', 'Space Grotesk', 'Inter Variable', 'system-ui', 'sans-serif'],
+				mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
 			},
 			animation: {
-				'float': 'float 6s ease-in-out infinite',
-				'fade-up': 'fadeUp 0.8s ease-out forwards',
-				'slide-in': 'slideIn 1s ease-out forwards',
+				'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+				'drift': 'drift 40s linear infinite alternate',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			keyframes: {
-				float: {
-					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-20px)' }
-				},
 				fadeUp: {
-					from: { opacity: '0', transform: 'translateY(30px)' },
+					from: { opacity: '0', transform: 'translateY(24px)' },
 					to: { opacity: '1', transform: 'translateY(0)' }
 				},
-				slideIn: {
-					from: { opacity: '0', transform: 'translateX(-30px)' },
-					to: { opacity: '1', transform: 'translateX(0)' }
+				drift: {
+					from: { transform: 'translateX(0) translateY(0)' },
+					to: { transform: 'translateX(-3%) translateY(2%)' }
 				},
 				'accordion-down': {
 					from: { height: '0' },
@@ -97,11 +96,6 @@ export default {
 					to: { height: '0' }
 				}
 			},
-			backgroundImage: {
-				'gradient-ocean': 'var(--gradient-ocean)',
-				'gradient-coastal': 'var(--gradient-coastal)',
-				'gradient-hero': 'var(--gradient-hero)',
-			}
 		}
 	},
 	plugins: [tailwindcssAnimate],
