@@ -88,8 +88,8 @@ const translations = {
     "skills.title": "Technical Skills",
 
     // Projects Section
-    "projects.title": "Projects",
-    "projects.description": "Open-source coastal engineering models and tools, alongside earlier data-analysis work.",
+    "projects.title": "Open Source",
+    "projects.description": "Coastal engineering models and tools, released as working code.",
     "projects.viewProject": "View Project",
 
     // Publications Section
@@ -220,7 +220,12 @@ const translations = {
 
     // Footer
     "footer.copyright": "Mohammad Traboulsi. All rights reserved.",
-    "footer.description": "Coastal Risk Engineer • Numerical Modelling for Climate Adaptation",
+    "footer.description": "Consulting engineer — coastal & shoreline modelling. I help engineering firms and coastal territories quantify shoreline retreat under sea-level rise.",
+    "footer.navigate": "Navigate",
+    "footer.documents": "Documents",
+    "footer.cv": "CV (PDF)",
+    "footer.capabilities": "Capability statement (PDF)",
+    "footer.autoUpdated": "publications auto-updated weekly from OpenAlex",
 
     // Common
     "common.loading": "Loading...",
@@ -291,8 +296,8 @@ const translations = {
     "skills.title": "Compétences Techniques",
 
     // Projects Section
-    "projects.title": "Projets",
-    "projects.description": "Modèles et outils open-source en ingénierie côtière, ainsi que des travaux antérieurs d'analyse de données.",
+    "projects.title": "Open Source",
+    "projects.description": "Modèles et outils d'ingénierie côtière, publiés sous forme de code fonctionnel.",
     "projects.viewProject": "Voir le Projet",
 
     // Publications Section
@@ -423,7 +428,12 @@ const translations = {
 
     // Footer
     "footer.copyright": "Mohammad Traboulsi. Tous droits réservés.",
-    "footer.description": "Ingénieur des Risques Côtiers • Modélisation Numérique pour l'Adaptation Climatique",
+    "footer.description": "Ingénieur conseil — modélisation côtière et littorale. J'aide les bureaux d'études et les territoires littoraux à quantifier le recul du trait de côte.",
+    "footer.navigate": "Navigation",
+    "footer.documents": "Documents",
+    "footer.cv": "CV (PDF)",
+    "footer.capabilities": "Plaquette de compétences (PDF)",
+    "footer.autoUpdated": "publications mises à jour chaque semaine depuis OpenAlex",
 
     // Common
     "common.loading": "Chargement...",

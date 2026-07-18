@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { FileText, Copy, ChevronDown, ChevronUp, Users } from 'lucide-react';
+import { FileText, Copy, ChevronDown, ChevronUp } from 'lucide-react';
 import PublicationsSkeleton from '@/components/skeletons/PublicationsSkeleton';
 import { useLanguage } from '@/components/language-provider';
+import Reveal from '@/components/Reveal';
 
 interface Publication {
   id: string;
@@ -28,35 +27,16 @@ interface PublicationsData {
   items: Publication[];
 }
 
+const formatCategory = (category: string) =>
+  category.charAt(0).toUpperCase() + category.slice(1);
 
-const PublicationCard = ({ publication }: { publication: Publication }) => {
+const PublicationRow = ({ publication, index }: { publication: Publication; index: number }) => {
   const [showFullAbstract, setShowFullAbstract] = useState(false);
   const [showAllAuthors, setShowAllAuthors] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const getCategoryColor = (category: string) => {
-    switch (category.toLowerCase()) {
-      case 'article': return 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800';
-      case 'conference': return 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800';
-      case 'preprint': return 'bg-orange-50 dark:bg-orange-950 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800';
-      case 'book': return 'bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800';
-      default: return 'bg-muted/50 text-muted-foreground border-border';
-    }
-  };
-
-  const formatCategory = (category: string) => {
-    switch (category.toLowerCase()) {
-      case 'conference': return 'Conference';
-      case 'preprint': return 'Preprint';
-      case 'article': return 'Article';
-      case 'book': return 'Book';
-      default: return category.charAt(0).toUpperCase() + category.slice(1);
-    }
-  };
-
   const copyDOI = async () => {
     if (!publication.doi) return;
-    
     try {
       await navigator.clipboard.writeText(publication.doi);
       setCopied(true);
@@ -66,165 +46,87 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
     }
   };
 
-  const openDOI = () => {
-    if (!publication.doi) return;
-    window.open(`https://doi.org/${publication.doi}`, '_blank');
-  };
-
-  const handleDOIClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    copyDOI();
-  };
-
-  const handleDOILongPress = (e: React.MouseEvent) => {
-    e.preventDefault();
-    openDOI();
-  };
-
-  const getDisplayAuthors = () => {
-    if (showAllAuthors || publication.authors.length <= 3) {
-      return publication.authors;
-    }
-    return publication.authors.slice(0, 3);
-  };
-
-  const getRemainingAuthorsCount = () => {
-    return publication.authors.length - 3;
-  };
+  const displayAuthors =
+    showAllAuthors || publication.authors.length <= 3
+      ? publication.authors
+      : publication.authors.slice(0, 3);
 
   return (
-    <Card className="shadow-coastal hover:shadow-ocean transition-all duration-300 group border-0">
-      <CardContent className="p-6">
-        <div className="space-y-4">
-          {/* Title as primary clickable area */}
-          <div>
-            <a 
-              href={publication.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <h3 className="text-lg font-semibold text-primary leading-tight hover:text-accent transition-colors cursor-pointer">
-                {publication.title}
-              </h3>
-            </a>
-          </div>
+    <Reveal delay={Math.min(index * 60, 240)}>
+      <article className="grid grid-cols-[auto_1fr] gap-x-6 md:gap-x-10 border-b border-border py-8">
+        <span className="font-mono text-sm text-muted-foreground pt-1">
+          {publication.year ?? '—'}
+        </span>
 
-          {/* Venue and Year line */}
-          <div className="text-sm text-muted-foreground">
-            {publication.year && (
+        <div>
+          <a href={publication.url} target="_blank" rel="noopener noreferrer" className="group block">
+            <h3 className="font-display text-lg font-medium leading-snug text-foreground transition-colors group-hover:text-accent">
+              {publication.title}
+            </h3>
+          </a>
+
+          {publication.venue && publication.venue !== 'Unknown Venue' && (
+            <p className="mt-1 text-sm italic text-muted-foreground">{publication.venue}</p>
+          )}
+
+          <p className="mt-2 text-sm text-muted-foreground">
+            {displayAuthors.join(', ')}
+            {publication.authors.length > 3 && (
               <>
-                {publication.year}
-                {publication.venue && publication.venue !== 'Unknown Venue' && (
-                  <> • {publication.venue}</>
-                )}
+                {' '}
+                <button
+                  onClick={() => setShowAllAuthors(!showAllAuthors)}
+                  className="font-medium text-accent hover:text-accent-light"
+                >
+                  {showAllAuthors ? 'show less' : `+${publication.authors.length - 3} more`}
+                </button>
               </>
             )}
-          </div>
+          </p>
 
-          {/* Authors */}
-          <div className="text-sm">
-            <span className="text-muted-foreground">
-              {getDisplayAuthors().join(', ')}
-              {!showAllAuthors && publication.authors.length > 3 && (
-                <>
-                  {' '}
-                  <button 
-                    onClick={() => setShowAllAuthors(true)}
-                    className="text-accent hover:text-accent-light font-medium"
-                  >
-                    +{getRemainingAuthorsCount()} more
-                  </button>
-                </>
-              )}
-              {showAllAuthors && publication.authors.length > 3 && (
-                <>
-                  {' '}
-                  <button 
-                    onClick={() => setShowAllAuthors(false)}
-                    className="text-accent hover:text-accent-light font-medium"
-                  >
-                    show less
-                  </button>
-                </>
-              )}
-            </span>
-          </div>
-
-          {/* Abstract teaser and expander */}
           {publication.abstractTeaser && (
-            <div className="mt-3 p-3 bg-muted/30 dark:bg-muted/20 rounded-md border-l-4 border-accent/30">
-              <div className="text-sm text-muted-foreground">
-                <p className="leading-relaxed">
-                  {showFullAbstract ? publication.abstract : publication.abstractTeaser}
-                </p>
-                {publication.abstract && publication.abstract !== publication.abstractTeaser && (
-                  <button 
-                    onClick={() => setShowFullAbstract(!showFullAbstract)}
-                    className="mt-2 text-accent hover:text-accent-light font-medium inline-flex items-center gap-1 text-xs transition-colors"
-                  >
-                    {showFullAbstract ? (
-                      <>
-                        <ChevronUp size={12} />
-                        Show less
-                      </>
-                    ) : (
-                      <>
-                        <ChevronDown size={12} />
-                        Read full abstract
-                      </>
-                    )}
-                  </button>
-                )}
-              </div>
+            <div className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <p>{showFullAbstract ? publication.abstract : publication.abstractTeaser}</p>
+              {publication.abstract && publication.abstract !== publication.abstractTeaser && (
+                <button
+                  onClick={() => setShowFullAbstract(!showFullAbstract)}
+                  className="mt-1.5 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent-light"
+                >
+                  {showFullAbstract ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                  {showFullAbstract ? 'Show less' : 'Read full abstract'}
+                </button>
+              )}
             </div>
           )}
 
-          {/* Badges and DOI */}
-          <div className="flex items-center justify-between flex-wrap gap-3">
-            <div className="flex items-center gap-2 flex-wrap">
-              {/* Category badge */}
-              <span className={`px-2 py-1 rounded-md text-xs font-medium border ${getCategoryColor(publication.category)}`}>
-                {formatCategory(publication.category)}
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="rounded-sm border border-border px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-muted-foreground">
+              {formatCategory(publication.category)}
+            </span>
+            {publication.isOpenAccess && (
+              <span className="rounded-sm border border-accent/40 px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-accent">
+                OA
               </span>
-
-              {/* Open Access badge */}
-              {publication.isOpenAccess && (
-                <span className="px-2 py-1 rounded-md text-xs font-medium bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800">
-                  OA
-                </span>
-              )}
-
-              {/* Citation count */}
-              {publication.citedByCount > 0 && (
-                <span className="px-2 py-1 rounded-md text-xs font-medium bg-muted/50 text-muted-foreground border border-border flex items-center gap-1">
-                  <Users size={12} />
-                  {publication.citedByCount}
-                </span>
-              )}
-            </div>
-
-            {/* DOI pill */}
+            )}
+            {publication.citedByCount > 0 && (
+              <span className="rounded-sm border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+                {publication.citedByCount} cit.
+              </span>
+            )}
             {publication.doi && (
               <button
-                onClick={handleDOIClick}
-                onContextMenu={handleDOILongPress}
-                className="px-2 py-1 rounded-md text-xs font-medium bg-muted/50 text-muted-foreground border border-border hover:bg-muted transition-colors flex items-center gap-1 group"
-                title={copied ? 'DOI copied!' : 'Click to copy DOI, right-click to open'}
+                onClick={copyDOI}
+                className="inline-flex items-center gap-1.5 rounded-sm border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent"
+                title={copied ? 'DOI copied!' : 'Click to copy DOI'}
               >
-                <span className="font-mono">
-                  {publication.doi.length > 25 ? 
-                    `${publication.doi.split('/')[0]}/...` : 
-                    publication.doi
-                  }
-                </span>
-                <Copy size={12} className={`transition-colors ${copied ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground group-hover:text-foreground'}`} />
+                {publication.doi.length > 30 ? `${publication.doi.split('/')[0]}/…` : publication.doi}
+                <Copy size={11} className={copied ? 'text-accent' : ''} />
               </button>
             )}
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </article>
+    </Reveal>
   );
 };
 
@@ -240,11 +142,11 @@ const Publications = () => {
       try {
         setLoading(true);
         const response = await fetch('/data/publications.json');
-        
+
         if (!response.ok) {
           throw new Error(`Failed to fetch publications: ${response.status}`);
         }
-        
+
         const data: PublicationsData = await response.json();
         setPublications(data.items);
         setLastUpdated(data.updated_at);
@@ -262,133 +164,81 @@ const Publications = () => {
   }, []);
 
   const totalCitations = publications.reduce((sum, pub) => sum + pub.citedByCount, 0);
-  const openAccessCount = publications.filter(pub => pub.isOpenAccess).length;
-  const recentYears = publications.map(p => p.year).filter(y => y !== null);
-  const yearRange = recentYears.length > 0 ? 
-    `${Math.min(...recentYears)}-${Math.max(...recentYears)}` : 
-    'N/A';
-  const categoryCounts = publications.reduce((acc, pub) => {
-    acc[pub.category] = (acc[pub.category] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+  const openAccessCount = publications.filter((pub) => pub.isOpenAccess).length;
+  const categoryCount = new Set(publications.map((p) => p.category)).size;
 
-  // Never display a zero as if it were an accomplishment (e.g. citation
-  // counts lag behind OpenAlex for recently published work).
-  const visibleStats = [
+  // Never display a zero as if it were an accomplishment (citation counts lag
+  // behind OpenAlex for recently published work).
+  const stats = [
     { value: publications.length, label: t('publications.publicationsCount') },
     ...(totalCitations > 0 ? [{ value: totalCitations, label: t('publications.citations') }] : []),
     { value: openAccessCount, label: t('publications.openAccess') },
-    { value: Object.keys(categoryCounts).length, label: t('publications.categories') },
+    { value: categoryCount, label: t('publications.categories') },
   ];
 
-  if (loading) {
-    return (
-      <section id="publications" className="py-20 bg-gradient-coastal">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-              {t('publications.title')}
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('publications.description')}
-            </p>
-          </div>
-          <div className="max-w-4xl mx-auto">
-            <PublicationsSkeleton items={4} showMetrics={false} showFilters={false} />
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section id="publications" className="py-20 bg-gradient-coastal">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient-ocean">
-              {t('publications.title')}
-            </h2>
-            <Card className="max-w-2xl mx-auto shadow-coastal">
-              <CardContent className="p-8">
-                <div className="text-red-600 mb-4">
-                  <FileText size={48} className="mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold mb-2">{t('publications.unableToLoad')}</h3>
-                  <p className="text-sm">{error}</p>
-                </div>
-                <p className="text-muted-foreground text-sm">
-                  {t('publications.dataUpdatedWeekly')}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section id="publications" className="py-20 bg-gradient-coastal">
+    <section id="publications" className="py-20 md:py-28 bg-sunken">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            {t('publications.title')}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('publications.description')}
-          </p>
-          {lastUpdated && (
-            <p className="text-sm text-muted-foreground mt-2">
-              {t('publications.lastUpdated')} {new Date(lastUpdated).toLocaleDateString()}
-            </p>
-          )}
+        <Reveal>
+          <div className="flex items-center gap-4 mb-12 md:mb-16">
+            <span className="font-mono text-sm text-accent">04</span>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+        </Reveal>
+
+        <div className="grid gap-12 lg:grid-cols-[300px_1fr] xl:grid-cols-[340px_1fr]">
+          {/* Sticky rail */}
+          <Reveal>
+            <div className="lg:sticky lg:top-24">
+              <h2 className="font-display font-semibold text-headline text-foreground">
+                {t('publications.title')}
+              </h2>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                {t('publications.description')}
+              </p>
+
+              {!loading && !error && publications.length > 0 && (
+                <dl className="mt-8 grid grid-cols-2 gap-6">
+                  {stats.map((stat) => (
+                    <div key={stat.label} className="flex flex-col">
+                      <dt className="order-2 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                        {stat.label}
+                      </dt>
+                      <dd className="order-1 font-display text-3xl font-semibold text-foreground">
+                        {stat.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+
+              {lastUpdated && (
+                <p className="mt-8 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                  {t('publications.lastUpdated')} {new Date(lastUpdated).toLocaleDateString()}
+                </p>
+              )}
+            </div>
+          </Reveal>
+
+          {/* Entry ledger */}
+          <div>
+            {loading && <PublicationsSkeleton items={4} showMetrics={false} showFilters={false} />}
+            {error && (
+              <div className="text-muted-foreground">
+                <FileText size={32} className="mb-3 text-destructive" />
+                <h3 className="font-medium text-foreground mb-1">{t('publications.unableToLoad')}</h3>
+                <p className="text-sm">{t('publications.dataUpdatedWeekly')}</p>
+              </div>
+            )}
+            {!loading && !error && (
+              <div className="border-t border-border">
+                {publications.map((publication, index) => (
+                  <PublicationRow key={publication.id} publication={publication} index={index} />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-
-        {publications.length > 0 && (
-          <>
-            {/* Publications List */}
-            <div className="max-w-4xl mx-auto space-y-4">
-              {publications.map((publication, index) => (
-                <div 
-                  key={publication.id}
-                  className="animate-fade-up"
-                  style={{animationDelay: `${index * 0.1}s`}}
-                >
-                  <PublicationCard publication={publication} />
-                </div>
-              ))}
-            </div>
-
-            {/* Research Metrics */}
-            <div className="mt-16 text-center">
-              <Card className="max-w-4xl mx-auto shadow-coastal border-0">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold mb-6 text-primary">{t('publications.researchImpact')}</h3>
-                  <div className={`grid grid-cols-2 gap-6 ${visibleStats.length >= 4 ? 'md:grid-cols-4' : 'md:grid-cols-3'}`}>
-                    {visibleStats.map((stat) => (
-                      <div key={stat.label} className="text-center">
-                        <div className="text-3xl font-bold text-accent mb-2">{stat.value}</div>
-                        <div className="text-sm text-muted-foreground">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Category breakdown */}
-                  <div className="mt-6 flex flex-wrap justify-center gap-2">
-                    {Object.entries(categoryCounts).map(([category, count]) => (
-                      <span 
-                        key={category}
-                        className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary"
-                      >
-                        {category}: {count}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </>
-        )}
       </div>
     </section>
   );

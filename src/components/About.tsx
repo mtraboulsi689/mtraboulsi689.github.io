@@ -1,94 +1,96 @@
-import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, Award, Languages, Building2, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
+import Section from '@/components/Section';
+import Reveal from '@/components/Reveal';
+import ContourLines from '@/components/ContourLines';
 
 const About = () => {
   const { t } = useLanguage();
 
-  return (
-    <section id="about" className="py-20 bg-gradient-coastal">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            {t('about.title')}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('about.description')}
-          </p>
-        </div>
+  const facts = [
+    { Icon: Languages, label: t('about.languages'), text: t('about.languagesText') },
+    { Icon: Building2, label: t('about.institutionsLabel'), text: t('about.institutionsList') },
+    { Icon: MapPin, label: t('contact.location'), text: t('about.basedInFrance') },
+  ];
 
-        <div className="grid md:grid-cols-[minmax(0,280px)_1fr] gap-12 items-start max-w-4xl mx-auto">
-          <div className="flex justify-center md:justify-start">
+  return (
+    <Section id="about" index="07" title={t('about.title')} lede={t('about.description')} variant="sunken">
+      <div className="grid gap-12 md:grid-cols-[minmax(0,300px)_1fr] md:gap-16 items-start max-w-5xl">
+        <Reveal>
+          <div className="relative">
+            {/* Contour accent behind the portrait */}
+            <div
+              className="absolute -left-6 -top-6 h-full w-full text-primary/40 pointer-events-none"
+              aria-hidden="true"
+            >
+              <ContourLines className="h-full w-full" />
+            </div>
             <img
               src="/headshot.jpg"
               alt={t('about.photoAlt')}
-              className="w-48 h-60 md:w-full md:h-auto rounded-lg object-cover shadow-ocean"
+              className="relative w-56 md:w-full rounded-md object-cover shadow-ocean"
             />
           </div>
+        </Reveal>
 
-          <div className="space-y-6">
-            <div className="animate-fade-up">
-              <h3 className="text-2xl font-semibold mb-4 text-primary">
-                {t('about.professionalFocus')}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
+        <div className="space-y-8">
+          <Reveal delay={80}>
+            <div>
+              <p className="eyebrow mb-3">{t('about.professionalFocus')}</p>
+              <p className="leading-relaxed text-muted-foreground mb-4">
                 {t('about.professionalFocusText1')}
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="leading-relaxed text-muted-foreground">
                 {t('about.professionalFocusText2')}
               </p>
             </div>
+          </Reveal>
 
-            <div className="flex items-center space-x-4 text-muted-foreground">
-              <MapPin className="text-accent flex-shrink-0" size={20} />
-              <span>{t('about.basedInFrance')}</span>
-            </div>
-
-            <Card className="shadow-coastal">
-              <CardContent className="p-6 space-y-4">
-                <div className="flex items-start gap-3">
-                  <Languages className="text-accent flex-shrink-0 mt-0.5" size={20} />
+          <Reveal delay={140}>
+            <dl className="grid gap-5 sm:grid-cols-2">
+              {facts.map(({ Icon, label, text }) => (
+                <div key={label} className="flex items-start gap-3">
+                  <Icon className="mt-0.5 shrink-0 text-accent" size={17} />
                   <div>
-                    <p className="font-medium text-sm text-primary mb-1">{t('about.languages')}</p>
-                    <p className="text-sm text-muted-foreground">{t('about.languagesText')}</p>
+                    <dt className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                      {label}
+                    </dt>
+                    <dd className="mt-0.5 text-sm text-foreground">{text}</dd>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <Building2 className="text-accent flex-shrink-0 mt-0.5" size={20} />
-                  <div>
-                    <p className="font-medium text-sm text-primary mb-1">{t('about.institutionsLabel')}</p>
-                    <p className="text-sm text-muted-foreground">{t('about.institutionsList')}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Award className="text-accent flex-shrink-0 mt-0.5" size={20} />
-                  <div>
-                    <p className="font-medium text-sm text-primary mb-1">{t('about.keyAchievements')}</p>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• {t('about.crnaGrant')}</li>
-                      <li>• {t('about.rankedFirst')}</li>
-                      <li>• {t('about.publishedResearch')}</li>
+              ))}
+              <div className="flex items-start gap-3">
+                <Award className="mt-0.5 shrink-0 text-accent" size={17} />
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                    {t('about.keyAchievements')}
+                  </dt>
+                  <dd className="mt-0.5 text-sm text-foreground">
+                    <ul className="space-y-0.5">
+                      <li>{t('about.crnaGrant')}</li>
+                      <li>{t('about.rankedFirst')}</li>
+                      <li>{t('about.publishedResearch')}</li>
                     </ul>
-                  </div>
+                  </dd>
                 </div>
+              </div>
+            </dl>
+          </Reveal>
 
-                <a
-                  href="https://theses.fr/29332249X"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:text-accent-light transition-colors"
-                >
-                  {t('about.thesisLink')}
-                  <ExternalLink size={14} />
-                </a>
-              </CardContent>
-            </Card>
-          </div>
+          <Reveal delay={200}>
+            <a
+              href="https://theses.fr/29332249X"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-sm border border-border bg-background px-3 py-1.5 font-mono text-xs text-foreground transition-colors hover:border-accent/60 hover:text-accent"
+            >
+              {t('about.thesisLink')}
+              <ExternalLink size={12} />
+            </a>
+          </Reveal>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

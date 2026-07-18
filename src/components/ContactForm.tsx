@@ -1,12 +1,12 @@
 import { useState, useRef } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageSquare, CheckCircle, AlertCircle, RefreshCw } from 'lucide-react';
+import { Mail, MapPin, Send, Github, Linkedin, MessageSquare, CheckCircle, AlertCircle, RefreshCw } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
 import { trackFormSubmission, trackExternalLink } from '@/utils/analytics';
+import Reveal from '@/components/Reveal';
 
 interface FormData {
   name: string;
@@ -200,100 +200,87 @@ const ContactForm = () => {
   const selectedPurpose = purposeOptions.find(p => p.value === formData.purpose);
 
   return (
-    <section id="contact" className="py-20 bg-gradient-coastal scroll-mt-20">
+    <section id="contact" className="py-20 md:py-28 bg-background scroll-mt-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            {t('contact.title')}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-2">
-            {t('contact.description')}
-          </p>
-          <p className="text-sm text-muted-foreground">
-            {t('contact.replyTime')}
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <Card className="shadow-coastal">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Mail className="text-primary" size={24} />
-                  <span>{t('contact.getInTouch')}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <Mail className="text-accent flex-shrink-0" size={20} />
-                  <div>
-                    <p className="font-medium">{t('contact.formLabels.email')}</p>
-                    <a 
-                      href="mailto:traboulsimohamed@gmail.com" 
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      traboulsimohamed@gmail.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <MapPin className="text-accent flex-shrink-0" size={20} />
-                  <div>
-                    <p className="font-medium">{t('contact.location')}</p>
-                    <p className="text-muted-foreground">{t('contact.locationDetail')}</p>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-border">
-                  <p className="font-medium mb-4">{t('contact.followMe')}</p>
-                  <div className="flex space-x-4">
-                    <a 
-                      href="https://github.com/mtraboulsi689" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      onClick={() => trackExternalLink('https://github.com/mtraboulsi689', 'contact_social')}
-                      className="flex items-center justify-center w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                      aria-label="GitHub Profile"
-                    >
-                      <Github size={20} className="text-primary" />
-                    </a>
-                    <a 
-                      href="https://www.linkedin.com/in/mtraboulsi/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      onClick={() => trackExternalLink('https://www.linkedin.com/in/mtraboulsi/', 'contact_social')}
-                      className="flex items-center justify-center w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                      aria-label="LinkedIn Profile"
-                    >
-                      <Linkedin size={20} className="text-primary" />
-                    </a>
-                    <a 
-                      href="https://www.researchgate.net/profile/Mohammad-Traboulsi" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      onClick={() => trackExternalLink('https://www.researchgate.net/profile/Mohammad-Traboulsi', 'contact_social')}
-                      className="flex items-center justify-center w-10 h-10 bg-primary/10 hover:bg-primary/20 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                      aria-label="ResearchGate Profile"
-                    >
-                      <MessageSquare size={20} className="text-primary" />
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+        <Reveal>
+          <div className="flex items-center gap-4 mb-12 md:mb-16">
+            <span className="font-mono text-sm text-accent">08</span>
+            <span className="h-px flex-1 bg-border" />
           </div>
+        </Reveal>
+
+        <div className="grid gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+          {/* Editorial left: headline + direct contact */}
+          <Reveal>
+            <div>
+              <h2 className="font-display font-semibold text-headline text-foreground">
+                {t('contact.title')}
+              </h2>
+              <p className="mt-4 max-w-md text-lg leading-relaxed text-muted-foreground">
+                {t('contact.description')}
+              </p>
+              <p className="mt-3 font-mono text-xs text-muted-foreground">
+                {t('contact.replyTime')}
+              </p>
+
+              <div className="mt-10 space-y-5">
+                <div className="flex items-center gap-4">
+                  <Mail className="shrink-0 text-accent" size={18} />
+                  <a
+                    href="mailto:traboulsimohamed@gmail.com"
+                    className="text-foreground transition-colors hover:text-accent"
+                  >
+                    traboulsimohamed@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-4">
+                  <MapPin className="shrink-0 text-accent" size={18} />
+                  <span className="text-muted-foreground">{t('contact.locationDetail')}</span>
+                </div>
+              </div>
+
+              <div className="mt-10 flex gap-3">
+                <a
+                  href="https://github.com/mtraboulsi689"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackExternalLink('https://github.com/mtraboulsi689', 'contact_social')}
+                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent focus:outline-none focus:ring-2 focus:ring-ring"
+                  aria-label="GitHub Profile"
+                >
+                  <Github size={18} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mtraboulsi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackExternalLink('https://www.linkedin.com/in/mtraboulsi/', 'contact_social')}
+                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent focus:outline-none focus:ring-2 focus:ring-ring"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin size={18} />
+                </a>
+                <a
+                  href="https://www.researchgate.net/profile/Mohammad-Traboulsi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackExternalLink('https://www.researchgate.net/profile/Mohammad-Traboulsi', 'contact_social')}
+                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent focus:outline-none focus:ring-2 focus:ring-ring"
+                  aria-label="ResearchGate Profile"
+                >
+                  <MessageSquare size={18} />
+                </a>
+              </div>
+            </div>
+          </Reveal>
 
           {/* Contact Form */}
-          <Card className="shadow-coastal">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Send className="text-primary" size={24} />
-                <span>{t('contact.sendMessage')}</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+          <Reveal delay={100}>
+            <div className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <p className="eyebrow mb-6 flex items-center gap-2">
+                <Send size={13} className="text-accent" />
+                {t('contact.sendMessage')}
+              </p>
               {/* Status Message */}
               <div 
                 ref={statusRef}
@@ -303,12 +290,12 @@ const ContactForm = () => {
                 tabIndex={-1}
               >
                 {formStatus.type === 'success' && (
-                  <div className="flex items-start space-x-3 p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <CheckCircle className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
+                  <div className="flex items-start space-x-3 p-4 bg-green-50 dark:bg-green-950/40 border border-green-200 dark:border-green-900 rounded-lg">
+                    <CheckCircle className="text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" size={20} />
                     <div>
-                      <p className="text-green-800 font-medium">{t('contact.form.successTitle')}</p>
-                      <p className="text-green-700 text-sm mt-1">{formStatus.message}</p>
-                      <p className="text-green-600 text-xs mt-2">
+                      <p className="text-green-800 dark:text-green-300 font-medium">{t('contact.form.successTitle')}</p>
+                      <p className="text-green-700 dark:text-green-400 text-sm mt-1">{formStatus.message}</p>
+                      <p className="text-green-600 dark:text-green-500 text-xs mt-2">
                         {t('contact.form.successNote')}
                       </p>
                     </div>
@@ -316,16 +303,16 @@ const ContactForm = () => {
                 )}
 
                 {formStatus.type === 'error' && (
-                  <div className="flex items-start space-x-3 p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
+                  <div className="flex items-start space-x-3 p-4 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-lg">
+                    <AlertCircle className="text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" size={20} />
                     <div className="flex-1">
-                      <p className="text-red-800 font-medium">{t('contact.form.errorTitle')}</p>
-                      <p className="text-red-700 text-sm mt-1">{formStatus.message}</p>
+                      <p className="text-red-800 dark:text-red-300 font-medium">{t('contact.form.errorTitle')}</p>
+                      <p className="text-red-700 dark:text-red-400 text-sm mt-1">{formStatus.message}</p>
                       <Button
                         onClick={handleRetry}
                         variant="outline"
                         size="sm"
-                        className="mt-3 text-red-700 border-red-300 hover:bg-red-50"
+                        className="mt-3 text-red-700 dark:text-red-400 border-red-300 dark:border-red-800 hover:bg-red-50 dark:hover:bg-red-950/60"
                       >
                         <RefreshCw size={14} className="mr-1" />
                         {t('contact.form.tryAgain')}
@@ -472,10 +459,10 @@ const ContactForm = () => {
                   )}
                 </div>
 
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   disabled={formStatus.type === 'submitting'}
-                  className="w-full bg-gradient-ocean hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="w-full bg-accent hover:bg-accent-light text-accent-foreground font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-ring focus:ring-offset-2"
                 >
                   {formStatus.type === 'submitting' ? (
                     <>
@@ -490,8 +477,8 @@ const ContactForm = () => {
                   )}
                 </Button>
               </form>
-            </CardContent>
-          </Card>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

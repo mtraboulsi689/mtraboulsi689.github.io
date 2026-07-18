@@ -68,32 +68,28 @@ const LinkedInFeed = () => {
   }
 
   return (
-    <section id="linkedin-feed" className="py-16 bg-gradient-to-br from-primary/5 via-background to-accent/5">
+    <section id="linkedin-feed" className="py-16 bg-background border-t border-border">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
-          <div className="mb-4 flex justify-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <Linkedin size={22} />
-            </div>
+        <div className="mb-10 flex items-center gap-3">
+          <Linkedin size={16} className="text-accent" />
+          <div>
+            <h2 className="font-display text-lg font-medium text-foreground">
+              {t('linkedinFeed.title')}
+            </h2>
+            <p className="text-sm text-muted-foreground">{t('linkedinFeed.description')}</p>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            {t('linkedinFeed.title')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('linkedinFeed.description')}
-          </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3 max-w-6xl mx-auto">
+        <div className="grid gap-4 md:grid-cols-3">
           {posts.map((post) => {
             const formattedDate = formatPostDate(post.date);
 
             return (
-              <Card key={post.id} className="shadow-coastal">
+              <Card key={post.id} className="border border-border shadow-none hover-raise">
                 <CardContent className="flex h-full flex-col gap-4 p-5">
                   {formattedDate && (
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Calendar size={15} />
+                    <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                      <Calendar size={13} />
                       <span>{formattedDate}</span>
                     </div>
                   )}
@@ -107,10 +103,10 @@ const LinkedInFeed = () => {
                       href={post.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-light"
+                      className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-light"
                     >
                       {t('linkedinFeed.viewPost')}
-                      <ExternalLink size={15} />
+                      <ExternalLink size={14} />
                     </a>
                   )}
                 </CardContent>

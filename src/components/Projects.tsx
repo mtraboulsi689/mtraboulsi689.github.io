@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, BarChart3 } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
+import Section from '@/components/Section';
+import Reveal from '@/components/Reveal';
 
 interface Project {
   title: string;
@@ -36,168 +36,73 @@ const Projects = () => {
 
   const parseMarkdown = (markdown: string): Project[] => {
     const projects: Project[] = [];
-    
+
     // Split by --- to get individual project sections
     const sections = markdown.split('---').filter(section => section.trim());
-    
+
     sections.forEach(section => {
       const lines = section.trim().split('\n').filter(line => line.trim());
-      
+
       // Skip sections that don't have links (like headers or "Other Projects")
       const linkLine = lines.find(line => line.includes(']('));
       if (!linkLine) return;
-      
+
       // Extract title and link from markdown link format [title](link)
       const linkMatch = linkLine.match(/\[(.+?)\]\((.+?)\)/);
       if (!linkMatch) return;
-      
+
       const title = linkMatch[1];
       const link = linkMatch[2];
-      
+
       // Extract description (text that's not a link, image, or header)
       const description = lines
-        .filter(line => 
-          !line.includes('](') && 
-          !line.startsWith('#') && 
+        .filter(line =>
+          !line.includes('](') &&
+          !line.startsWith('#') &&
           !line.startsWith('<img') &&
           line.trim() !== ''
         )
         .join(' ')
         .trim();
-      
-      // Extract image if present
-      const imgLine = lines.find(line => line.startsWith('<img'));
-      let image;
-      if (imgLine) {
-        const imgMatch = imgLine.match(/src="(.+?)"/);
-        if (imgMatch) {
-          image = imgMatch[1];
-        }
-      }
-      
-      // Look for GitHub link
-      const githubLine = lines.find(line => 
-        line.toLowerCase().includes('github') && line.includes('](')
-      );
-      let githubLink;
-      if (githubLine) {
-        const githubMatch = githubLine.match(/\[.+?\]\((.+?)\)/);
-        if (githubMatch) {
-          githubLink = githubMatch[1];
-        }
-      }
-      
-      projects.push({
-        title,
-        link,
-        description,
-        image,
-        githubLink
-      });
+
+      projects.push({ title, link, description });
     });
-    
+
     return projects;
   };
 
-  if (loading) {
-    return (
-      <section id="projects" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-              {t('projects.title')}
-            </h2>
-            <p className="text-xl text-muted-foreground">{t('common.loading')}</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section id="projects" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            {t('projects.title')}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('projects.description')}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.slice(0, 3).map((project, index) => (
-            <div key={index} className="animate-fade-up" style={{animationDelay: `${index * 0.1}s`}}>
-              <Card className="h-full shadow-coastal hover:shadow-ocean transition-all duration-300 group">
-                {project.image && (
-                  <div className="relative overflow-hidden rounded-t-lg">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      onError={(e) => {
-                        // Hide image if it fails to load
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                )}
-                
-                <CardHeader>
-                  <CardTitle className="flex items-center justify-between">
-                    <span className="text-lg font-semibold text-primary group-hover:text-accent transition-colors">
-                      {project.title}
-                    </span>
-                    <BarChart3 className="text-accent" size={20} />
-                  </CardTitle>
-                </CardHeader>
-                
-                <CardContent className="flex-1 flex flex-col">
-                  <p className="text-muted-foreground mb-6 flex-1 leading-relaxed">
+    <Section id="projects" index="05" title={t('projects.title')} lede={t('projects.description')}>
+      {loading ? (
+        <p className="font-mono text-sm text-muted-foreground">{t('common.loading')}</p>
+      ) : (
+        <div className="border-t border-border">
+          {projects.map((project, index) => (
+            <Reveal key={project.title} delay={index * 80}>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group grid grid-cols-[1fr_auto] items-baseline gap-x-6 border-b border-border py-6 md:py-7 transition-colors hover:bg-sunken"
+              >
+                <span>
+                  <span className="font-mono text-base md:text-lg text-foreground transition-colors group-hover:text-accent">
+                    {project.title}
+                  </span>
+                  <span className="mt-1.5 block max-w-3xl text-sm leading-relaxed text-muted-foreground">
                     {project.description}
-                  </p>
-                  
-                  <div className="flex gap-3 mt-auto">
-                    <Button 
-                      variant="default"
-                      size="sm"
-                      className="flex-1 bg-accent hover:bg-accent-light"
-                      asChild
-                    >
-                      <a 
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink size={16} className="mr-2" />
-                        {t('projects.viewProject')}
-                      </a>
-                    </Button>
-                    
-                    {project.githubLink && (
-                      <Button 
-                        variant="outline"
-                        size="sm"
-                        asChild
-                      >
-                        <a 
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github size={16} />
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  </span>
+                </span>
+                <ArrowUpRight
+                  size={18}
+                  className="self-center text-muted-foreground transition-all duration-300 group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+            </Reveal>
           ))}
         </div>
-      </div>
-    </section>
+      )}
+    </Section>
   );
 };
 

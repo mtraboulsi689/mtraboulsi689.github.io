@@ -1,57 +1,60 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Waves, Cpu, ClipboardCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
+import Section from '@/components/Section';
+import Reveal from '@/components/Reveal';
 
 const WhatIDo = () => {
   const { t } = useLanguage();
 
   const services = [
     {
-      icon: Waves,
+      index: '01',
       title: t('whatIDo.studies.title'),
       description: t('whatIDo.studies.description'),
     },
     {
-      icon: Cpu,
+      index: '02',
       title: t('whatIDo.modelDev.title'),
       description: t('whatIDo.modelDev.description'),
     },
     {
-      icon: ClipboardCheck,
+      index: '03',
       title: t('whatIDo.review.title'),
       description: t('whatIDo.review.description'),
     },
   ];
 
-  return (
-    <section id="services" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            {t('whatIDo.title')}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {t('whatIDo.description')}
-          </p>
-        </div>
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {services.map((service) => (
-            <Card key={service.title} className="h-full shadow-coastal hover:shadow-ocean transition-all duration-300">
-              <CardHeader>
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent mb-4">
-                  <service.icon size={24} />
-                </div>
-                <CardTitle className="text-xl text-primary">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+  return (
+    <Section id="services" index="01" title={t('whatIDo.title')} lede={t('whatIDo.description')}>
+      <div className="border-t border-border">
+        {services.map((service, i) => (
+          <Reveal key={service.index} delay={i * 80}>
+            <button
+              onClick={scrollToContact}
+              className="group grid w-full grid-cols-[auto_1fr_auto] items-baseline gap-x-5 md:gap-x-10 border-b border-border py-7 md:py-9 text-left transition-colors hover:bg-sunken"
+            >
+              <span className="font-mono text-sm text-accent">{service.index}</span>
+              <span>
+                <span className="block font-display text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors">
+                  {service.title}
+                </span>
+                <span className="mt-2 block max-w-2xl text-sm md:text-base leading-relaxed text-muted-foreground">
+                  {service.description}
+                </span>
+              </span>
+              <ArrowRight
+                size={20}
+                className="self-center text-muted-foreground transition-all duration-300 group-hover:text-accent group-hover:translate-x-1"
+              />
+            </button>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 };
 

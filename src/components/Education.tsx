@@ -1,6 +1,7 @@
 
 import VerticalTimeline, { TimelineItem } from '@/components/VerticalTimeline';
 import { useLanguage } from '@/components/language-provider';
+import Section from '@/components/Section';
 
 const educationData: TimelineItem[] = [
   {
@@ -91,22 +92,11 @@ const educationData: TimelineItem[] = [
 
 const Education = () => {
   const { t } = useLanguage();
-  
-  return (
-    <section id="education" className="py-16 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient-ocean">
-            {t('education.title')}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('education.description')}
-          </p>
-        </div>
 
-        <VerticalTimeline items={educationData} category="education" detailsLabel={t('education.highlightsLabel')} />
-      </div>
-    </section>
+  return (
+    <Section id="education" index="06" title={t('education.title')} lede={t('education.description')}>
+      <VerticalTimeline items={educationData} detailsLabel={t('education.highlightsLabel')} />
+    </Section>
   );
 };
 
