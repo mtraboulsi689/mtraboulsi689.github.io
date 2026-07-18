@@ -1,0 +1,206 @@
+<!--
+  Source for public/capabilities.pdf. Content mirrors the site's Hero,
+  WhatIDo, and experience.json — keep them in sync when either changes.
+
+  Regenerate: open this file in a Chromium-based browser, Print ->
+  Save as PDF, paper size A4, background graphics on. Save the result
+  over public/capabilities.pdf.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Mohammad Traboulsi — Capability Statement</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 40px 48px;
+    color: #1e293b;
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+  .header {
+    border-bottom: 3px solid #0369a1;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+  }
+  h1 {
+    margin: 0 0 2px 0;
+    font-size: 24px;
+    color: #0c4a6e;
+  }
+  .credential {
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  .positioning {
+    font-size: 12px;
+    color: #334155;
+    max-width: 640px;
+  }
+  h2 {
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #0369a1;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin: 20px 0 10px 0;
+  }
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .service-title {
+    font-weight: 700;
+    color: #0c4a6e;
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+  .service-desc {
+    color: #475569;
+    font-size: 10px;
+  }
+  .case-study {
+    margin-bottom: 12px;
+  }
+  .case-study-title {
+    font-weight: 700;
+    color: #0c4a6e;
+    font-size: 11px;
+  }
+  .case-study-meta {
+    color: #94a3b8;
+    font-size: 9.5px;
+    margin-bottom: 3px;
+  }
+  .case-study-desc {
+    color: #475569;
+  }
+  .case-study-link {
+    color: #ea580c;
+    font-size: 9.5px;
+    text-decoration: none;
+  }
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 6px;
+  }
+  .credentials-list li {
+    margin-bottom: 4px;
+    color: #475569;
+  }
+  .contact-line {
+    margin-bottom: 4px;
+  }
+  .contact-label {
+    color: #94a3b8;
+    display: inline-block;
+    width: 70px;
+  }
+  a { color: #0369a1; }
+  ul { margin: 0; padding-left: 16px; }
+  .footer-note {
+    margin-top: 22px;
+    padding-top: 10px;
+    border-top: 1px solid #e2e8f0;
+    color: #94a3b8;
+    font-size: 9px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Mohammad Traboulsi, PhD</h1>
+    <div class="credential">Consulting engineer — coastal &amp; shoreline modelling</div>
+    <div class="positioning">
+      I help engineering firms and coastal territories quantify shoreline retreat under sea-level rise,
+      with numerical models I build and validate myself. Developer of the LX-ST shoreline evolution model ·
+      Coastal Risk Engineer at BRGM.
+    </div>
+  </div>
+
+  <h2>Services</h2>
+  <div class="services">
+    <div>
+      <div class="service-title">Shoreline &amp; Coastal Evolution Studies</div>
+      <div class="service-desc">Trait-de-côte projections at 30- and 100-year horizons, with uncertainty bands, for regulatory studies and adaptation planning.</div>
+    </div>
+    <div>
+      <div class="service-title">Model Development &amp; Engineering</div>
+      <div class="service-desc">Custom morphodynamic models, MATLAB-to-Fortran/Python industrialization, and coupled Telemac systems built for your case.</div>
+    </div>
+    <div>
+      <div class="service-title">Expert Review &amp; Training</div>
+      <div class="service-desc">Independent audits of existing coastal models, and hands-on training in Telemac and shoreline-modelling methods.</div>
+    </div>
+  </div>
+
+  <h2>Selected Case Studies</h2>
+
+  <div class="case-study">
+    <div class="case-study-title">Lacanau Shoreline Evolution Model — BRGM</div>
+    <div class="case-study-meta">Coastal Risk Engineer · Nov 2022 – Present</div>
+    <div class="case-study-desc">
+      Built and validated the coupled LX-ST model (cross-shore + longshore sediment transport) and applied it to the
+      5&nbsp;km Lacanau coastline, running SSP2-4.5, SSP5-8.5, and High-End scenarios to 2100 with sensitivity testing.
+      Published in <em>Environmental Modelling &amp; Software</em> (2025).
+    </div>
+    <a class="case-study-link" href="https://doi.org/10.1016/j.envsoft.2025.106624">doi.org/10.1016/j.envsoft.2025.106624</a>
+  </div>
+
+  <div class="case-study">
+    <div class="case-study-title">ShoreTrans: Research Code to Engineering Software — BRGM</div>
+    <div class="case-study-meta">Internship · Feb 2022 – Aug 2022</div>
+    <div class="case-study-desc">
+      Turned the published ShoreTrans model (MATLAB) into fast, portable Fortran software, adding 2D capability for
+      complex coastal geometries. Open-sourced and validated against observed coastal-evolution data.
+    </div>
+    <a class="case-study-link" href="https://github.com/mtraboulsi689/ShoreTrans-fortran">github.com/mtraboulsi689/ShoreTrans-fortran</a>
+  </div>
+
+  <div class="case-study">
+    <div class="case-study-title">Gironde Estuary Climate Impact — Cerema (ECCLIPSE Project)</div>
+    <div class="case-study-meta">Internship · Mar 2021 – Sep 2021</div>
+    <div class="case-study-desc">
+      Built coupled Telemac2D/Telemac3D models of France's largest estuary, modelling flood and drought scenarios to
+      2100 and quantifying dredging impacts on circulation. Findings contributed to French national climate-adaptation
+      strategy; published in JNGCGC (2022).
+    </div>
+    <a class="case-study-link" href="https://doi.org/10.5150/jngcgc.2022.020">doi.org/10.5150/jngcgc.2022.020</a>
+  </div>
+
+  <div class="bottom-grid">
+    <div>
+      <h2>Credentials</h2>
+      <ul class="credentials-list">
+        <li>PhD in Coastal Engineering — University of Bordeaux &amp; BRGM (2022–2025)</li>
+        <li>Institutions: BRGM · Cerema · University of Bordeaux · EPOC</li>
+        <li>Languages: Arabic (native) · English (fluent) · French (professional)</li>
+        <li>Tools: Python, Fortran, MATLAB, Telemac, OpenFOAM, Linux/HPC</li>
+        <li><a href="https://theses.fr/29332249X">PhD Thesis — theses.fr</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <div class="contact-line"><span class="contact-label">Email</span> traboulsimohamed@gmail.com</div>
+      <div class="contact-line"><span class="contact-label">LinkedIn</span> linkedin.com/in/mtraboulsi</div>
+      <div class="contact-line"><span class="contact-label">Website</span> mtraboulsi689.github.io</div>
+      <div class="contact-line"><span class="contact-label">Location</span> France</div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Mohammad Traboulsi · Capability statement generated from mtraboulsi689.github.io
+  </div>
+
+</body>
+</html>

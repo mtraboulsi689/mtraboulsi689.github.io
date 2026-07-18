@@ -1,5 +1,5 @@
 
-import { ArrowDown, ArrowRight, ExternalLink, Mail, Github, Linkedin, FileText, GraduationCap, Play } from 'lucide-react';
+import { ArrowDown, ArrowRight, ExternalLink, Mail, Github, Linkedin, FileText, ClipboardList, GraduationCap, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/components/language-provider';
 
@@ -113,6 +113,14 @@ const Hero = () => {
               title="Download CV"
             >
               <FileText size={20} />
+            </a>
+            <a
+              href="/capabilities.pdf"
+              download="Mohammad_Traboulsi_Capability_Statement.pdf"
+              className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
+              title="Download Capability Statement"
+            >
+              <ClipboardList size={20} />
             </a>
           </div>
 
