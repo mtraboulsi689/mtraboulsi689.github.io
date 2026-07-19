@@ -57,8 +57,8 @@ const CaseStudyRow = ({
 
   return (
     <Reveal delay={index * 80}>
-      <article className="border-b border-border py-10 md:py-12">
-        <div className="grid gap-x-10 gap-y-4 md:grid-cols-[72px_1fr]">
+      <article className="border-b border-border py-9 md:py-10">
+        <div className="grid gap-x-8 gap-y-4 md:grid-cols-[84px_1fr] lg:grid-cols-[84px_1fr_220px]">
           <span className="font-display text-3xl md:text-4xl font-bold text-border leading-none pt-1" aria-hidden="true">
             {String(index + 1).padStart(2, '0')}
           </span>
@@ -99,7 +99,7 @@ const CaseStudyRow = ({
               )}
             </div>
 
-            <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">{item.summary}</p>
+            <p className="mt-3.5 max-w-3xl leading-relaxed text-muted-foreground">{item.summary}</p>
 
             {hasDetails && expanded && (
               <div className="mt-6 max-w-3xl border-l-2 border-accent/40 pl-5 animate-fade-up">
@@ -112,33 +112,35 @@ const CaseStudyRow = ({
               </div>
             )}
 
-            {item.links && item.links.length > 0 && (
-              <div className="mt-5 flex flex-wrap gap-2">
-                {item.links.map((link, idx) => (
-                  <span key={idx} className="flex gap-1">
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-md bg-primary px-4 py-1.5 text-[13px] font-semibold text-primary-foreground transition-colors hover:bg-primary-light"
-                    >
-                      {link.label}
-                      <ExternalLink size={12} />
-                    </a>
-                    {link.label.toLowerCase().includes('doi') && (
-                      <button
-                        onClick={() => copyToClipboard(link.url)}
-                        className="inline-flex items-center rounded-md border border-border px-2.5 py-1.5 text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent"
-                        title="Copy DOI"
-                      >
-                        <Copy size={12} />
-                      </button>
-                    )}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
+
+          {/* Reference layout: link buttons right-aligned in their own column */}
+          {item.links && item.links.length > 0 && (
+            <div className="md:col-start-2 lg:col-start-3 flex flex-wrap gap-2 lg:flex-col lg:items-end lg:justify-self-end lg:text-right">
+              {item.links.map((link, idx) => (
+                <span key={idx} className="flex gap-1">
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-md bg-primary px-4 py-2 text-[13px] font-semibold text-primary-foreground transition-colors hover:bg-primary-light"
+                  >
+                    {link.label}
+                    <ExternalLink size={12} className="shrink-0" />
+                  </a>
+                  {link.label.toLowerCase().includes('doi') && (
+                    <button
+                      onClick={() => copyToClipboard(link.url)}
+                      className="inline-flex items-center rounded-md border border-border px-2.5 py-1.5 text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent"
+                      title="Copy DOI"
+                    >
+                      <Copy size={12} />
+                    </button>
+                  )}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </article>
     </Reveal>

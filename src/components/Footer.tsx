@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, GraduationCap } from 'lucide-react';
+import { Github, Linkedin, Mail, GraduationCap, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
 
 const Footer = () => {
@@ -62,6 +62,15 @@ const Footer = () => {
                 title="LinkedIn"
               >
                 <Linkedin size={17} />
+              </a>
+              <a
+                href="https://www.researchgate.net/profile/Mohammad-Traboulsi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-abyss-foreground/50 transition-colors hover:text-abyss-foreground"
+                title="ResearchGate"
+              >
+                <ExternalLink size={17} />
               </a>
             </div>
           </div>

@@ -49,7 +49,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 w-full z-50 glass">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-16 md:h-[72px]">
           <button
             onClick={scrollToTop}
             className="font-display font-bold text-xl tracking-tight text-foreground"

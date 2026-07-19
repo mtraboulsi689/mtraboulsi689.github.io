@@ -14,8 +14,9 @@ export default {
 		container: {
 			center: true,
 			padding: '2rem',
+			// Mockup content column is 1180px; 1240 - 2x2rem padding ≈ 1176.
 			screens: {
-				'2xl': '1400px'
+				'2xl': '1240px'
 			}
 		},
 		extend: {

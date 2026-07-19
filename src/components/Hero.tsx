@@ -1,14 +1,6 @@
-import { ArrowRight, ExternalLink, Mail, Github, Linkedin, FileText, ClipboardList, GraduationCap, Play } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/components/language-provider';
-
-const socialLinks = [
-  { href: 'mailto:traboulsimohamed@gmail.com', title: 'Email', Icon: Mail },
-  { href: 'https://scholar.google.com/citations?user=2sx0LHgAAAAJ', title: 'Google Scholar', Icon: GraduationCap, external: true },
-  { href: 'https://github.com/mtraboulsi689', title: 'GitHub', Icon: Github, external: true },
-  { href: 'https://www.linkedin.com/in/mtraboulsi/', title: 'LinkedIn', Icon: Linkedin, external: true },
-  { href: 'https://www.researchgate.net/profile/Mohammad-Traboulsi', title: 'ResearchGate', Icon: ExternalLink, external: true },
-];
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -28,7 +20,7 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden gradient-hero text-white">
-      <div className="container mx-auto px-4 relative z-10 pt-32 pb-14 md:pt-40 md:pb-16">
+      <div className="container mx-auto px-4 relative z-10 pt-40 pb-20 md:pt-44">
         <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-accent-light/50 px-4 py-1.5 text-[13px] font-semibold tracking-wide text-gold animate-fade-up">
           {t('hero.subtitle')}
         </div>
@@ -40,7 +32,7 @@ const Hero = () => {
           <span className="text-accent-light">.PhD</span>
         </h1>
 
-        <p className="text-lg md:text-xl leading-relaxed text-abyss-foreground max-w-2xl mb-4 animate-fade-up" style={{ animationDelay: '0.16s' }}>
+        <p className="text-lg md:text-[19px] leading-relaxed text-abyss-foreground max-w-2xl mb-4 animate-fade-up" style={{ animationDelay: '0.16s' }}>
           {t('hero.specialization')}
         </p>
 
@@ -48,7 +40,7 @@ const Hero = () => {
           {t('hero.credentials')}
         </p>
 
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-16 animate-fade-up" style={{ animationDelay: '0.3s' }}>
           <Button
             size="lg"
             className="bg-accent hover:bg-accent/85 text-accent-foreground font-semibold px-7 text-[15px]"
@@ -76,39 +68,8 @@ const Hero = () => {
           </Button>
         </div>
 
-        <div className="flex items-center gap-5 mb-14 animate-fade-up" style={{ animationDelay: '0.38s' }}>
-          {socialLinks.map(({ href, title, Icon, external }) => (
-            <a
-              key={title}
-              href={href}
-              {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="text-abyss-foreground/60 hover:text-white transition-colors duration-300"
-              title={title}
-            >
-              <Icon size={19} />
-            </a>
-          ))}
-          <span className="h-4 w-px bg-white/20" />
-          <a
-            href="/cv.pdf"
-            download="Mohammad_Traboulsi_CV.pdf"
-            className="text-abyss-foreground/60 hover:text-white transition-colors duration-300"
-            title="Download CV"
-          >
-            <FileText size={19} />
-          </a>
-          <a
-            href="/capabilities.pdf"
-            download="Mohammad_Traboulsi_Capability_Statement.pdf"
-            className="text-abyss-foreground/60 hover:text-white transition-colors duration-300"
-            title="Download Capability Statement"
-          >
-            <ClipboardList size={19} />
-          </a>
-        </div>
-
         {/* Stat strip: real numbers from the work + latest publication */}
-        <div className="flex flex-wrap items-end gap-x-14 gap-y-6 border-t border-white/15 pt-8 animate-fade-up" style={{ animationDelay: '0.44s' }}>
+        <div className="flex flex-wrap items-end gap-x-14 gap-y-6 border-t border-white/15 pt-8 animate-fade-up" style={{ animationDelay: '0.38s' }}>
           {stats.map((stat) => (
             <div key={stat.label}>
               <div className="font-display text-3xl font-bold text-white">{stat.value}</div>

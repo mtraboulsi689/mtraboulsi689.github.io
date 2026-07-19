@@ -18,7 +18,7 @@ const Spotlight = () => {
   ];
 
   return (
-    <section id="spotlight" className="py-20 md:py-28 bg-abyss">
+    <section id="spotlight" className="py-24 md:py-[120px] bg-abyss">
       <div className="container mx-auto px-4">
         <Reveal>
           <div className="mb-12 flex items-baseline gap-4">

@@ -10,11 +10,11 @@ export function LanguageToggle() {
 
   return (
     <Button
-      variant="ghost"
+      variant="outline"
       size="sm"
       onClick={toggleLanguage}
       title={language === "en" ? "Switch to French" : "Passer à l'anglais"}
-      className="w-12 h-9 p-0 font-medium"
+      className="w-12 h-9 p-0 text-[13px] font-semibold"
     >
       {language === "en" ? "FR" : "EN"}
       <span className="sr-only">Toggle language</span>

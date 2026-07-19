@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Mail, MapPin, Send, Github, Linkedin, MessageSquare, CheckCircle, AlertCircle, RefreshCw } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, RefreshCw } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
-import { trackFormSubmission, trackExternalLink } from '@/utils/analytics';
+import { trackFormSubmission } from '@/utils/analytics';
 import Reveal from '@/components/Reveal';
 
 interface FormData {
@@ -200,15 +200,15 @@ const ContactForm = () => {
   const selectedPurpose = purposeOptions.find(p => p.value === formData.purpose);
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-abyss scroll-mt-20">
+    <section id="contact" className="py-24 md:py-[120px] bg-abyss scroll-mt-20">
       <div className="container mx-auto px-4">
         <Reveal>
-          <div className="mb-12 md:mb-16">
+          <div className="mb-12 md:mb-14">
             <div className="flex items-baseline gap-4">
               <span className="font-display text-sm font-bold text-accent-light">08</span>
               <h2 className="font-display font-bold text-headline text-white">{t('contact.title')}</h2>
             </div>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-abyss-foreground/90">
+            <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-abyss-foreground/90">
               {t('contact.description')}
             </p>
             <p className="mt-2 text-sm text-abyss-foreground/60">{t('contact.replyTime')}</p>
@@ -226,9 +226,8 @@ const ContactForm = () => {
                   </p>
                   <a
                     href="mailto:traboulsimohamed@gmail.com"
-                    className="inline-flex items-center gap-3 text-lg font-semibold text-white transition-colors hover:text-accent-light"
+                    className="text-[17px] font-semibold text-white transition-colors hover:text-accent-light"
                   >
-                    <Mail className="shrink-0" size={18} />
                     traboulsimohamed@gmail.com
                   </a>
                 </div>
@@ -236,14 +235,11 @@ const ContactForm = () => {
                   <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-abyss-foreground/60">
                     {t('contact.location')}
                   </p>
-                  <p className="inline-flex items-center gap-3 text-lg font-semibold text-white">
-                    <MapPin className="shrink-0" size={18} />
-                    {t('contact.locationDetail')}
-                  </p>
+                  <p className="text-[17px] font-semibold text-white">{t('contact.locationDetail')}</p>
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-2.5">
+              <div className="mt-9 flex flex-wrap gap-2.5">
                 <a
                   href="/cv.pdf"
                   download="Mohammad_Traboulsi_CV.pdf"
@@ -260,38 +256,6 @@ const ContactForm = () => {
                 </a>
               </div>
 
-              <div className="mt-10 flex gap-3">
-                <a
-                  href="https://github.com/mtraboulsi689"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackExternalLink('https://github.com/mtraboulsi689', 'contact_social')}
-                  className="flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-abyss-foreground/70 transition-colors hover:border-accent-light/60 hover:text-white focus:outline-none focus:ring-2 focus:ring-accent-light"
-                  aria-label="GitHub Profile"
-                >
-                  <Github size={18} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/mtraboulsi/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackExternalLink('https://www.linkedin.com/in/mtraboulsi/', 'contact_social')}
-                  className="flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-abyss-foreground/70 transition-colors hover:border-accent-light/60 hover:text-white focus:outline-none focus:ring-2 focus:ring-accent-light"
-                  aria-label="LinkedIn Profile"
-                >
-                  <Linkedin size={18} />
-                </a>
-                <a
-                  href="https://www.researchgate.net/profile/Mohammad-Traboulsi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackExternalLink('https://www.researchgate.net/profile/Mohammad-Traboulsi', 'contact_social')}
-                  className="flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-abyss-foreground/70 transition-colors hover:border-accent-light/60 hover:text-white focus:outline-none focus:ring-2 focus:ring-accent-light"
-                  aria-label="ResearchGate Profile"
-                >
-                  <MessageSquare size={18} />
-                </a>
-              </div>
             </div>
           </Reveal>
 
@@ -358,17 +322,18 @@ const ContactForm = () => {
                 {/* Required Fields Row */}
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2 text-abyss-foreground">
+                    <label htmlFor="name" className="sr-only">
                       {t('contact.formLabels.name')} <span className="text-red-400">{t('contact.formLabels.required')}</span>
                     </label>
                     <Input
                       id="name"
                       name="name"
                       type="text"
+                      placeholder={`${t('contact.formLabels.name')} *`}
                       required
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
-                      className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
+                      className={`border-white/15 bg-abyss text-white placeholder:text-abyss-foreground/50 focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
                         validationErrors.name ? 'border-red-500' : ''
                       }`}
                       aria-describedby={validationErrors.name ? "name-error" : undefined}
@@ -378,17 +343,18 @@ const ContactForm = () => {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2 text-abyss-foreground">
+                    <label htmlFor="email" className="sr-only">
                       {t('contact.formLabels.email')} <span className="text-red-400">{t('contact.formLabels.required')}</span>
                     </label>
                     <Input
                       id="email"
                       name="email"
                       type="email"
+                      placeholder={`${t('contact.formLabels.email')} *`}
                       required
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
+                      className={`border-white/15 bg-abyss text-white placeholder:text-abyss-foreground/50 focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
                         validationErrors.email ? 'border-red-500' : ''
                       }`}
                       aria-describedby={validationErrors.email ? "email-error" : undefined}
@@ -401,16 +367,17 @@ const ContactForm = () => {
 
                 {/* Phone */}
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2 text-abyss-foreground">
+                  <label htmlFor="phone" className="sr-only">
                     {t('contact.formLabels.phone')}
                   </label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
+                    placeholder={t('contact.formLabels.phone')}
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
+                    className={`border-white/15 bg-abyss text-white placeholder:text-abyss-foreground/50 focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
                       validationErrors.phone ? 'border-red-500' : ''
                     }`}
                     aria-describedby={validationErrors.phone ? "phone-error" : undefined}
@@ -422,7 +389,7 @@ const ContactForm = () => {
 
                 {/* Purpose Selector */}
                 <div>
-                  <label htmlFor="purpose" className="block text-sm font-medium mb-2 text-abyss-foreground">
+                  <label htmlFor="purpose" className="sr-only">
                     {t('contact.formLabels.purpose')} <span className="text-red-400">{t('contact.formLabels.required')}</span>
                   </label>
                   <Select 
@@ -430,7 +397,7 @@ const ContactForm = () => {
                     onValueChange={(value) => handleInputChange('purpose', value)}
                   >
                     <SelectTrigger 
-                      className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
+                      className={`border-white/15 bg-abyss text-white placeholder:text-abyss-foreground/50 focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
                         validationErrors.purpose ? 'border-red-500' : ''
                       }`}
                       aria-describedby={validationErrors.purpose ? "purpose-error" : selectedPurpose ? "purpose-hint" : undefined}
@@ -459,7 +426,7 @@ const ContactForm = () => {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2 text-abyss-foreground">
+                  <label htmlFor="message" className="sr-only">
                     {t('contact.formLabels.message')} <span className="text-red-400">{t('contact.formLabels.required')}</span>
                   </label>
                   <Textarea
@@ -469,10 +436,10 @@ const ContactForm = () => {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
-                    className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 resize-none ${
+                    className={`border-white/15 bg-abyss text-white placeholder:text-abyss-foreground/50 focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 resize-none ${
                       validationErrors.message ? 'border-red-500' : ''
                     }`}
-                    placeholder={t('contact.form.messagePlaceholder')}
+                    placeholder={`${t('contact.form.messagePlaceholder')} *`}
                     aria-describedby={validationErrors.message ? "message-error" : undefined}
                   />
                   {validationErrors.message && (

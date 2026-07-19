@@ -25,10 +25,10 @@ const Section = ({ id, index, title, lede, variant = 'base', className = '', chi
   const onAbyss = variant === 'abyss';
 
   return (
-    <section id={id} className={`py-20 md:py-28 ${variantClasses[variant]} ${className}`}>
+    <section id={id} className={`py-24 md:py-[120px] ${variantClasses[variant]} ${className}`}>
       <div className="container mx-auto px-4">
         <Reveal>
-          <div className="mb-12 md:mb-16">
+          <div className="mb-12 md:mb-14">
             <div className="flex items-baseline gap-4">
               {index && (
                 <span className={`font-display text-sm font-bold ${onAbyss ? 'text-accent-light' : 'text-accent'}`}>
@@ -40,7 +40,7 @@ const Section = ({ id, index, title, lede, variant = 'base', className = '', chi
               </h2>
             </div>
             {lede && (
-              <p className={`mt-4 max-w-2xl text-lg leading-relaxed ${onAbyss ? 'text-abyss-foreground/80' : 'text-muted-foreground'}`}>
+              <p className={`mt-3 max-w-xl text-[17px] leading-relaxed ${onAbyss ? 'text-abyss-foreground/80' : 'text-muted-foreground'}`}>
                 {lede}
               </p>
             )}

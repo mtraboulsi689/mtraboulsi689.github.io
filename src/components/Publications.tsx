@@ -210,7 +210,7 @@ const Publications = () => {
               </div>
             ))}
             {lastUpdated && (
-              <p className="ml-auto text-[13px] text-muted-foreground">
+              <p className="self-end pb-0.5 text-[13px] text-muted-foreground">
                 {t('publications.lastUpdated')} {new Date(lastUpdated).toLocaleDateString()}
               </p>
             )}

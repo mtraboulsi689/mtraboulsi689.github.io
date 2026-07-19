@@ -24,11 +24,11 @@
     --secondary-foreground: 211 23% 24%;
     --secondary-dark: 40 15% 65%;
 
-    /* Accent - teal. The mockup's oklch(58% 0.10 200) darkened just enough
-       that small teal text passes WCAG AA on the cream background and white
-       text passes on teal buttons. --accent-light is the mockup's original
-       teal, reserved for dark bands and hovers. */
-    --accent: 183 100% 24%;
+    /* Accent - teal, matching the mockup's oklch(58% 0.10 200) exactly.
+       Note: ~3.6:1 on the cream background, below AA for small text — kept
+       per the reference design. --accent-light is the lighter teal used on
+       dark navy bands. */
+    --accent: 183 100% 29%;
     --accent-foreground: 0 0% 100%;
     --accent-light: 183 45% 44%;
 
@@ -162,15 +162,15 @@
     color: hsl(var(--abyss-foreground));
   }
 
-  /* Fluid type scale */
+  /* Fluid type scale — caps match the mockup (76px display, 40px headline) */
   .text-display {
-    font-size: clamp(3rem, 2rem + 5vw, 5.5rem);
+    font-size: clamp(3rem, 2rem + 4vw, 4.75rem);
     line-height: 1.02;
     letter-spacing: -0.03em;
   }
 
   .text-headline {
-    font-size: clamp(1.9rem, 1.4rem + 2vw, 2.75rem);
+    font-size: clamp(1.8rem, 1.3rem + 1.8vw, 2.5rem);
     line-height: 1.1;
     letter-spacing: -0.02em;
   }
