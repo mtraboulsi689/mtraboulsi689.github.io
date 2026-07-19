@@ -1,0 +1,26 @@
+{
+  "updated_at": "2026-07-19T00:00:00.000Z",
+  "items": [
+    {
+      "id": "shoretrans-fortran",
+      "title": "ShoreTrans-fortran",
+      "link": "https://github.com/mtraboulsi689/ShoreTrans-fortran",
+      "description": {
+        "en": "A Fortran translation of the ShoreTrans model (McCarroll et al., 2021). The original MATLAB model simulates long-term (10-100 year) coastal change in response to sea-level rise and sediment supply, accounting for sediment budgeting, shoreface translation, and multiple real-world coastal constraints. This version includes all main features but does not include some developments found in the original version (e.g. storm demand, dune growth). Developed as part of my Master's/PhD work in a collaboration between BRGM and EPOC.",
+        "fr": "Une traduction en Fortran du modèle ShoreTrans (McCarroll et al., 2021). Le modèle MATLAB d'origine simule l'évolution côtière à long terme (10-100 ans) en réponse à la montée du niveau marin et aux apports sédimentaires, en tenant compte du bilan sédimentaire, de la translation de l'avant-côte et de multiples contraintes côtières réelles. Cette version inclut toutes les fonctionnalités principales, à l'exception de certains développements de la version d'origine (p. ex. demande de tempête, croissance dunaire). Développée dans le cadre de mon master et de mon doctorat, en collaboration entre le BRGM et l'EPOC."
+      }
+    },
+    {
+      "id": "data-science-coursework",
+      "title": {
+        "en": "Earlier data-science coursework",
+        "fr": "Travaux antérieurs en science des données"
+      },
+      "link": "https://github.com/mtraboulsi689?tab=repositories",
+      "description": {
+        "en": "A few machine-learning and statistics exercises from a 2021 data-analysis bootcamp (weather prediction, exploratory data analysis) are on GitHub for reference.",
+        "fr": "Quelques exercices d'apprentissage automatique et de statistiques issus d'un bootcamp d'analyse de données de 2021 (prédiction météo, analyse exploratoire) sont disponibles sur GitHub pour référence."
+      }
+    }
+  ]
+}

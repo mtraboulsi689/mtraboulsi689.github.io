@@ -163,6 +163,7 @@ const translations = {
 
     // Experience Section
     "experience.errorLoading": "Error loading experience data:",
+    "experience.present": "Present",
 
     // Publications Extra
     "publications.lastUpdated": "Last updated:",
@@ -171,6 +172,15 @@ const translations = {
     "publications.citations": "Citations",
     "publications.openAccess": "Open Access",
     "publications.categories": "Categories",
+    "publications.moreAuthors": "more",
+    "publications.showLessAuthors": "show less",
+    "publications.readAbstract": "Read full abstract",
+    "publications.showLessAbstract": "Show less",
+    "publications.copyDoi": "Click to copy DOI",
+    "publications.doiCopied": "DOI copied!",
+    "publications.category.article": "Article",
+    "publications.category.preprint": "Preprint",
+    "publications.category.conference": "Conference",
 
     // Footer
     "footer.copyright": "Mohammad Traboulsi. All rights reserved.",
@@ -323,6 +333,7 @@ const translations = {
 
     // Experience Section
     "experience.errorLoading": "Erreur de chargement des données d'expérience :",
+    "experience.present": "aujourd'hui",
 
     // Publications Extra
     "publications.lastUpdated": "Dernière mise à jour :",
@@ -331,6 +342,15 @@ const translations = {
     "publications.citations": "Citations",
     "publications.openAccess": "Accès Libre",
     "publications.categories": "Catégories",
+    "publications.moreAuthors": "de plus",
+    "publications.showLessAuthors": "réduire",
+    "publications.readAbstract": "Lire le résumé complet",
+    "publications.showLessAbstract": "Réduire",
+    "publications.copyDoi": "Cliquer pour copier le DOI",
+    "publications.doiCopied": "DOI copié !",
+    "publications.category.article": "Article",
+    "publications.category.preprint": "Prépublication",
+    "publications.category.conference": "Conférence",
 
     // Footer
     "footer.copyright": "Mohammad Traboulsi. Tous droits réservés.",

@@ -16,7 +16,7 @@ interface LinkedInFeedData {
   items: LinkedInPost[];
 }
 
-const formatPostDate = (date: string | null) => {
+const formatPostDate = (date: string | null, locale: string) => {
   if (!date) {
     return null;
   }
@@ -26,7 +26,7 @@ const formatPostDate = (date: string | null) => {
     return date;
   }
 
-  return parsedDate.toLocaleDateString('en-US', {
+  return parsedDate.toLocaleDateString(locale, {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
@@ -34,7 +34,7 @@ const formatPostDate = (date: string | null) => {
 };
 
 const LinkedInFeed = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [posts, setPosts] = useState<LinkedInPost[]>([]);
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const LinkedInFeed = () => {
 
         <div className="grid gap-4 md:grid-cols-3">
           {posts.map((post) => {
-            const formattedDate = formatPostDate(post.date);
+            const formattedDate = formatPostDate(post.date, language === 'fr' ? 'fr-FR' : 'en-US');
 
             return (
               <Card key={post.id} className="border border-border shadow-none hover-raise">

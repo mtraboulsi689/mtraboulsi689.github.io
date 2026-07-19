@@ -1,24 +1,45 @@
 {
-  "updated_at": "2026-07-18T00:00:00.000Z",
+  "updated_at": "2026-07-19T00:00:00.000Z",
   "items": [
     {
       "id": "brgm-coastal-risk-engineer",
       "category": "experience",
       "start_date": "2022-11",
       "end_date": null,
-      "title": "Coastal Risk Engineer",
+      "title": {
+        "en": "Coastal Risk Engineer",
+        "fr": "Ingénieur des risques côtiers"
+      },
       "organization": "BRGM",
       "location": "France",
-      "summary": "Built and validated a long-term shoreline-evolution model for one of France's most exposed tourist coastlines, projecting retreat at Lacanau (5 km) to 2100 under multiple sea-level-rise scenarios.",
+      "summary": {
+        "en": "Built and validated a long-term shoreline-evolution model for one of France's most exposed tourist coastlines, projecting retreat at Lacanau (5 km) to 2100 under multiple sea-level-rise scenarios.",
+        "fr": "Construction et validation d'un modèle d'évolution du trait de côte à long terme pour l'un des littoraux touristiques les plus exposés de France, avec des projections de recul à Lacanau (5 km) jusqu'en 2100 sous plusieurs scénarios de montée du niveau marin."
+      },
       "bullets": [
-        "Problem — Lacanau's beachfront needed defensible long-term erosion projections to support coastal-risk planning under sea-level rise.",
-        "Approach — Developed the coupled LX-ST model, integrating cross-shore (ShoreTrans) and longshore sediment transport, and ran SSP2-4.5, SSP5-8.5, and High-End climate scenarios with sensitivity testing.",
-        "Deliverable — A validated, peer-reviewed shoreline-evolution model applied to the 5 km Lacanau site, with erosion-rate sensitivity bands for planning.",
-        "Evidence — Published in Environmental Modelling & Software (2025); method and results are peer-reviewed."
+        {
+          "en": "Problem — Lacanau's beachfront needed defensible long-term erosion projections to support coastal-risk planning under sea-level rise.",
+          "fr": "Problème — Le front de mer de Lacanau nécessitait des projections d'érosion à long terme défendables pour appuyer la planification du risque côtier face à la montée du niveau marin."
+        },
+        {
+          "en": "Approach — Developed the coupled LX-ST model, integrating cross-shore (ShoreTrans) and longshore sediment transport, and ran SSP2-4.5, SSP5-8.5, and High-End climate scenarios with sensitivity testing.",
+          "fr": "Approche — Développement du modèle couplé LX-ST, intégrant les transports sédimentaires transversal (ShoreTrans) et longitudinal, avec des simulations sous scénarios climatiques SSP2-4.5, SSP5-8.5 et High-End et des tests de sensibilité."
+        },
+        {
+          "en": "Deliverable — A validated, peer-reviewed shoreline-evolution model applied to the 5 km Lacanau site, with erosion-rate sensitivity bands for planning.",
+          "fr": "Livrable — Un modèle d'évolution du trait de côte validé et évalué par les pairs, appliqué aux 5 km du site de Lacanau, avec des bandes de sensibilité des taux d'érosion pour la planification."
+        },
+        {
+          "en": "Evidence — Published in Environmental Modelling & Software (2025); method and results are peer-reviewed.",
+          "fr": "Preuve — Publié dans Environmental Modelling & Software (2025) ; méthode et résultats évalués par les pairs."
+        }
       ],
       "links": [
         {
-          "label": "LX-ST Publication",
+          "label": {
+            "en": "LX-ST Publication",
+            "fr": "Publication LX-ST"
+          },
           "url": "https://doi.org/10.1016/j.envsoft.2025.106624"
         }
       ]
@@ -28,20 +49,44 @@
       "category": "experience",
       "start_date": "2022-02",
       "end_date": "2022-08",
-      "title": "Numerical Modeling of Coastline & Sandy Beaches under Sea-Level Rise",
-      "role": "Internship",
+      "title": {
+        "en": "Numerical Modeling of Coastline & Sandy Beaches under Sea-Level Rise",
+        "fr": "Modélisation numérique du trait de côte et des plages sableuses face à la montée du niveau marin"
+      },
+      "role": {
+        "en": "Internship",
+        "fr": "Stage"
+      },
       "organization": "BRGM",
       "location": "France",
-      "summary": "Turned a MATLAB research model (ShoreTrans) into fast, portable Fortran engineering software, adding 2D capability for real coastal geometries.",
+      "summary": {
+        "en": "Turned a MATLAB research model (ShoreTrans) into fast, portable Fortran engineering software, adding 2D capability for real coastal geometries.",
+        "fr": "Transformation d'un modèle de recherche MATLAB (ShoreTrans) en logiciel d'ingénierie Fortran rapide et portable, avec ajout d'une capacité 2D pour des géométries côtières réelles."
+      },
       "bullets": [
-        "Problem — The published ShoreTrans model (McCarroll et al., 2021) ran in MATLAB, was slow for repeated engineering-scale runs, and lacked 2D capability for complex coastlines.",
-        "Approach — Enhanced BRGM's LX-Shore code with a Fortran ShoreTrans module, adding 2D modeling capability and refined sediment-transport algorithms.",
-        "Deliverable — A faster, portable shoreline-evolution codebase, validated against observed coastal-evolution data.",
-        "Evidence — Open-sourced as ShoreTrans-fortran; see the repository for the full implementation."
+        {
+          "en": "Problem — The published ShoreTrans model (McCarroll et al., 2021) ran in MATLAB, was slow for repeated engineering-scale runs, and lacked 2D capability for complex coastlines.",
+          "fr": "Problème — Le modèle publié ShoreTrans (McCarroll et al., 2021) tournait sous MATLAB, était lent pour des simulations répétées à l'échelle de l'ingénierie et ne disposait pas de capacité 2D pour les littoraux complexes."
+        },
+        {
+          "en": "Approach — Enhanced BRGM's LX-Shore code with a Fortran ShoreTrans module, adding 2D modeling capability and refined sediment-transport algorithms.",
+          "fr": "Approche — Enrichissement du code LX-Shore du BRGM avec un module ShoreTrans en Fortran, ajout d'une capacité de modélisation 2D et d'algorithmes de transport sédimentaire affinés."
+        },
+        {
+          "en": "Deliverable — A faster, portable shoreline-evolution codebase, validated against observed coastal-evolution data.",
+          "fr": "Livrable — Un code d'évolution du trait de côte plus rapide et portable, validé sur des données observées d'évolution côtière."
+        },
+        {
+          "en": "Evidence — Open-sourced as ShoreTrans-fortran; see the repository for the full implementation.",
+          "fr": "Preuve — Publié en open source sous le nom ShoreTrans-fortran ; voir le dépôt pour l'implémentation complète."
+        }
       ],
       "links": [
         {
-          "label": "ShoreTrans-fortran on GitHub",
+          "label": {
+            "en": "ShoreTrans-fortran on GitHub",
+            "fr": "ShoreTrans-fortran sur GitHub"
+          },
           "url": "https://github.com/mtraboulsi689/ShoreTrans-fortran"
         }
       ]
@@ -51,16 +96,37 @@
       "category": "experience",
       "start_date": "2021-03",
       "end_date": "2021-09",
-      "title": "Impact of Climate Change on Gironde Estuary Hydrodynamics",
-      "role": "Internship - ECCLIPSE Project",
+      "title": {
+        "en": "Impact of Climate Change on Gironde Estuary Hydrodynamics",
+        "fr": "Impact du changement climatique sur l'hydrodynamique de l'estuaire de la Gironde"
+      },
+      "role": {
+        "en": "Internship - ECCLIPSE Project",
+        "fr": "Stage – Projet ECCLIPSE"
+      },
       "organization": "Cerema",
       "location": "Margny-lès-Compiègne, France",
-      "summary": "Stress-tested France's largest estuary against climate change, modeling flood and drought scenarios to 2100 for the Gironde and its Garonne and Dordogne tributaries.",
+      "summary": {
+        "en": "Stress-tested France's largest estuary against climate change, modeling flood and drought scenarios to 2100 for the Gironde and its Garonne and Dordogne tributaries.",
+        "fr": "Mise à l'épreuve du plus grand estuaire de France face au changement climatique, en modélisant des scénarios de crue et d'étiage jusqu'en 2100 pour la Gironde et ses affluents, la Garonne et la Dordogne."
+      },
       "bullets": [
-        "Problem — The Gironde estuary, France's largest, needed a hydrodynamic assessment of climate-driven flood and drought risk, including dredging impacts on circulation.",
-        "Approach — Built coupled Telemac2D/Telemac3D models of the estuary and its Garonne and Dordogne tributaries, running climate-scenario projections to 2100.",
-        "Deliverable — A validated hydrodynamic model quantifying dredging impacts and long-term circulation change.",
-        "Evidence — Findings contributed to French national climate-adaptation strategy and were published in JNGCGC (2022)."
+        {
+          "en": "Problem — The Gironde estuary, France's largest, needed a hydrodynamic assessment of climate-driven flood and drought risk, including dredging impacts on circulation.",
+          "fr": "Problème — L'estuaire de la Gironde, le plus grand de France, nécessitait une évaluation hydrodynamique des risques de crue et d'étiage liés au climat, y compris l'impact du dragage sur la circulation."
+        },
+        {
+          "en": "Approach — Built coupled Telemac2D/Telemac3D models of the estuary and its Garonne and Dordogne tributaries, running climate-scenario projections to 2100.",
+          "fr": "Approche — Construction de modèles couplés Telemac2D/Telemac3D de l'estuaire et de ses affluents (Garonne, Dordogne), avec des projections de scénarios climatiques jusqu'en 2100."
+        },
+        {
+          "en": "Deliverable — A validated hydrodynamic model quantifying dredging impacts and long-term circulation change.",
+          "fr": "Livrable — Un modèle hydrodynamique validé quantifiant les impacts du dragage et l'évolution de la circulation à long terme."
+        },
+        {
+          "en": "Evidence — Findings contributed to French national climate-adaptation strategy and were published in JNGCGC (2022).",
+          "fr": "Preuve — Résultats intégrés aux études nationales françaises d'adaptation au climat et publiés aux JNGCGC (2022)."
+        }
       ],
       "links": [
         {

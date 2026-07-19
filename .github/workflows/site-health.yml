@@ -31,7 +31,6 @@ jobs:
             --exclude 'formspree.io'
             --exclude 'linkedin\.com'
             'public/**/*.json'
-            'public/index.md'
             'src/components/*.tsx'
             'index.html'
           fail: true

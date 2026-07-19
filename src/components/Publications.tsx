@@ -32,6 +32,16 @@ interface PublicationsData {
 const formatCategory = (category: string) =>
   category.charAt(0).toUpperCase() + category.slice(1);
 
+// Translated category label when a key exists, otherwise the raw category.
+const useCategoryLabel = () => {
+  const { t } = useLanguage();
+  return (category: string) => {
+    const key = `publications.category.${category}`;
+    const translated = t(key);
+    return translated === key ? formatCategory(category) : translated;
+  };
+};
+
 const StatValue = ({ value }: { value: number }) => {
   const { ref, value: displayed } = useCountUp(value);
   return (
@@ -40,6 +50,8 @@ const StatValue = ({ value }: { value: number }) => {
 };
 
 const PublicationRow = ({ publication, index }: { publication: Publication; index: number }) => {
+  const { t, language } = useLanguage();
+  const categoryLabel = useCategoryLabel();
   const [showFullAbstract, setShowFullAbstract] = useState(false);
   const [showAllAuthors, setShowAllAuthors] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -87,7 +99,9 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
                   onClick={() => setShowAllAuthors(!showAllAuthors)}
                   className="font-medium text-accent hover:text-accent/80"
                 >
-                  {showAllAuthors ? 'show less' : `+${publication.authors.length - 3} more`}
+                  {showAllAuthors
+                    ? t('publications.showLessAuthors')
+                    : `+${publication.authors.length - 3} ${t('publications.moreAuthors')}`}
                 </button>
               </>
             )}
@@ -102,7 +116,7 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
                   className="mt-1.5 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent/80"
                 >
                   {showFullAbstract ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
-                  {showFullAbstract ? 'Show less' : 'Read full abstract'}
+                  {showFullAbstract ? t('publications.showLessAbstract') : t('publications.readAbstract')}
                 </button>
               )}
             </div>
@@ -118,7 +132,7 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
               <button
                 onClick={copyDOI}
                 className="inline-flex items-center gap-1.5 rounded-full border border-border px-2.5 py-0.5 font-mono text-[11px] text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent"
-                title={copied ? 'DOI copied!' : 'Click to copy DOI'}
+                title={copied ? t('publications.doiCopied') : t('publications.copyDoi')}
               >
                 {publication.doi.length > 30 ? `${publication.doi.split('/')[0]}/…` : publication.doi}
                 <Copy size={11} className={copied ? 'text-accent' : ''} />
@@ -129,7 +143,7 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
 
         <div className="col-start-2 row-start-2 mt-3 flex flex-wrap gap-2 md:col-start-3 md:row-start-1 md:mt-0 md:max-w-[150px] md:justify-end">
           <span className="h-fit rounded-full bg-muted px-2.5 py-1 text-[11px] font-semibold text-secondary-foreground">
-            {formatCategory(publication.category)}
+            {categoryLabel(publication.category)}
           </span>
           {publication.isOpenAccess && (
             <span className="h-fit rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300">
@@ -143,7 +157,7 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
 };
 
 const Publications = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [publications, setPublications] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -211,7 +225,8 @@ const Publications = () => {
             ))}
             {lastUpdated && (
               <p className="self-end pb-0.5 text-[13px] text-muted-foreground">
-                {t('publications.lastUpdated')} {new Date(lastUpdated).toLocaleDateString()}
+                {t('publications.lastUpdated')}{' '}
+                {new Date(lastUpdated).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US')}
               </p>
             )}
           </dl>

@@ -1,20 +1,25 @@
 import { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
+import { Localized, pickLocalized } from '@/lib/i18n';
 import Section from '@/components/Section';
 import Reveal from '@/components/Reveal';
 
 interface Project {
-  title: string;
+  id: string;
+  title: Localized;
   link: string;
-  description: string;
-  image?: string;
-  githubLink?: string;
+  description: Localized;
+}
+
+interface ProjectsData {
+  updated_at: string;
+  items: Project[];
 }
 
 interface SkillGroup {
   titleKey: 'skills.programmingTitle' | 'skills.analysisTitle' | 'skills.toolsTitle';
-  names: string[];
+  names: Localized[];
 }
 
 const skillGroups: SkillGroup[] = [
@@ -24,7 +29,13 @@ const skillGroups: SkillGroup[] = [
   },
   {
     titleKey: 'skills.analysisTitle',
-    names: ['OpenFOAM', 'Telemac', 'Data Analysis', 'GIS & Remote Sensing', 'Statistics & ML'],
+    names: [
+      'OpenFOAM',
+      'Telemac',
+      { en: 'Data Analysis', fr: 'Analyse de données' },
+      { en: 'GIS & Remote Sensing', fr: 'SIG & Télédétection' },
+      { en: 'Statistics & ML', fr: 'Statistiques & ML' },
+    ],
   },
   {
     titleKey: 'skills.toolsTitle',
@@ -33,17 +44,19 @@ const skillGroups: SkillGroup[] = [
 ];
 
 const Projects = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/index.md');
-        const text = await response.text();
-        const parsedProjects = parseMarkdown(text);
-        setProjects(parsedProjects);
+        const response = await fetch('/data/projects.json');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch projects: ${response.status}`);
+        }
+        const data: ProjectsData = await response.json();
+        setProjects(data.items);
       } catch (error) {
         console.error('Error fetching projects:', error);
       } finally {
@@ -54,43 +67,6 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
-  const parseMarkdown = (markdown: string): Project[] => {
-    const projects: Project[] = [];
-
-    // Split by --- to get individual project sections
-    const sections = markdown.split('---').filter(section => section.trim());
-
-    sections.forEach(section => {
-      const lines = section.trim().split('\n').filter(line => line.trim());
-
-      // Skip sections that don't have links (like headers or "Other Projects")
-      const linkLine = lines.find(line => line.includes(']('));
-      if (!linkLine) return;
-
-      // Extract title and link from markdown link format [title](link)
-      const linkMatch = linkLine.match(/\[(.+?)\]\((.+?)\)/);
-      if (!linkMatch) return;
-
-      const title = linkMatch[1];
-      const link = linkMatch[2];
-
-      // Extract description (text that's not a link, image, or header)
-      const description = lines
-        .filter(line =>
-          !line.includes('](') &&
-          !line.startsWith('#') &&
-          !line.startsWith('<img') &&
-          line.trim() !== ''
-        )
-        .join(' ')
-        .trim();
-
-      projects.push({ title, link, description });
-    });
-
-    return projects;
-  };
-
   return (
     <Section id="projects" index="05" title={t('projects.title')} lede={t('projects.description')}>
       {loading ? (
@@ -98,7 +74,7 @@ const Projects = () => {
       ) : (
         <div className="grid gap-7 md:grid-cols-2">
           {projects.map((project, index) => (
-            <Reveal key={project.title} delay={index * 80}>
+            <Reveal key={project.id} delay={index * 80}>
               <a
                 href={project.link}
                 target="_blank"
@@ -107,7 +83,7 @@ const Projects = () => {
               >
                 <span className="flex items-baseline justify-between gap-4">
                   <span className="font-display text-lg font-semibold text-foreground transition-colors group-hover:text-accent">
-                    {project.title}
+                    {pickLocalized(project.title, language)}
                   </span>
                   <ArrowUpRight
                     size={18}
@@ -115,7 +91,7 @@ const Projects = () => {
                   />
                 </span>
                 <span className="mt-3 block text-sm leading-relaxed text-muted-foreground">
-                  {project.description}
+                  {pickLocalized(project.description, language)}
                 </span>
               </a>
             </Reveal>
@@ -138,14 +114,17 @@ const Projects = () => {
                   {t(group.titleKey)}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {group.names.map((name) => (
-                    <span
-                      key={name}
-                      className="rounded-md bg-abyss-card px-3 py-1.5 text-[13px] text-white"
-                    >
-                      {name}
-                    </span>
-                  ))}
+                  {group.names.map((name) => {
+                    const label = pickLocalized(name, language);
+                    return (
+                      <span
+                        key={label}
+                        className="rounded-md bg-abyss-card px-3 py-1.5 text-[13px] text-white"
+                      >
+                        {label}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
             </Reveal>
