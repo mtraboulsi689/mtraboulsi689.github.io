@@ -1,101 +1,79 @@
-
-import VerticalTimeline, { TimelineItem } from '@/components/VerticalTimeline';
 import { useLanguage } from '@/components/language-provider';
 import Section from '@/components/Section';
+import Reveal from '@/components/Reveal';
 
-const educationData: TimelineItem[] = [
+interface EducationEntry {
+  id: string;
+  dates: string;
+  degree: string;
+  school: string;
+  detail: string;
+}
+
+const educationData: EducationEntry[] = [
   {
-    id: "phd-coastal-engineering",
-    category: "education",
-    start_date: "2022-11",
-    end_date: "2025-12",
-    title: "PhD in Coastal Engineering",
-    organization: "University of Bordeaux, BRGM",
-    location: "Bordeaux, France",
-    summary: "Doctoral research focused on morphodynamic modelling of shoreline change under sea-level rise.",
-    bullets: [
-      "Thesis: Morphodynamic modelling of shoreline change under sea-level rise",
-      "Development of coupled coastal evolution models",
-      "Climate change impact assessment on coastal systems",
-      "Long-term shoreline prediction methodologies"
-    ]
+    id: 'phd-coastal-engineering',
+    dates: 'Nov 2022 – Dec 2025',
+    degree: 'PhD in Coastal Engineering',
+    school: 'University of Bordeaux, BRGM · Bordeaux, France',
+    detail: 'Doctoral research focused on morphodynamic modelling of shoreline change under sea-level rise.',
   },
   {
-    id: "master-uga",
-    category: "education",
-    start_date: "2021-09",
-    end_date: "2022-07",
-    title: "Master 2 — Environmental Fluid Mechanics",
-    organization: "Université Grenoble Alpes (UGA)",
-    location: "Grenoble, France",
-    summary: "Advanced research in environmental fluid mechanics with focus on computational and experimental methods.",
-    bullets: [
-      "Experimental & numerical methods in sediment transport",
-      "Turbulence analysis and signal processing",
-      "Machine learning applications in fluid mechanics",
-      "Wave dynamics and marine energy systems"
-    ]
+    id: 'master-uga',
+    dates: 'Sep 2021 – Jul 2022',
+    degree: 'Master 2 — Environmental Fluid Mechanics',
+    school: 'Université Grenoble Alpes (UGA) · Grenoble, France',
+    detail: 'Advanced research in environmental fluid mechanics with focus on computational and experimental methods.',
   },
   {
-    id: "master-uppa",
-    category: "education",
-    start_date: "2020-10",
-    end_date: "2021-09",
-    title: "Master 2 — Computations in Coastal & Civil Engineering",
-    role: "Rank: 1/11, Très Bien",
-    organization: "Université de Pau et des Pays de l'Adour (UPPA)",
-    location: "Anglet, France",
-    summary: "Specialized program in computational methods for coastal and civil engineering applications.",
-    bullets: [
-      "Simulation of free-surface flows using Telemac 2D",
-      "Advanced modeling with Artemis, OPENFOAM, SWAN",
-      "Structural analysis using BOSZ and Cast3M",
-      "Coastal engineering and wave modeling"
-    ]
+    id: 'master-uppa',
+    dates: 'Oct 2020 – Sep 2021',
+    degree: 'Master 2 — Computations in Coastal & Civil Engineering',
+    school: "Université de Pau et des Pays de l'Adour (UPPA) · Anglet, France",
+    detail: 'Rank 1/11, Très Bien. Specialized program in computational methods for coastal and civil engineering applications.',
   },
   {
-    id: "msc-rhu",
-    category: "education",
-    start_date: "2016-10",
-    end_date: "2019-01",
-    title: "MSc — Civil & Environmental Engineering",
-    role: "Excellent",
-    organization: "Rafik Hariri University",
-    location: "Damour, Lebanon",
-    summary: "Comprehensive program covering fundamental and advanced topics in civil and environmental engineering.",
-    bullets: [
-      "Fluid mechanics and hydraulic engineering",
-      "Soil mechanics and geotechnical analysis",
-      "Numerical analysis and non-linear methods",
-      "Environmental impact assessment"
-    ]
+    id: 'msc-rhu',
+    dates: 'Oct 2016 – Jan 2019',
+    degree: 'MSc — Civil & Environmental Engineering',
+    school: 'Rafik Hariri University · Damour, Lebanon',
+    detail: 'Excellent. Comprehensive program covering fundamental and advanced topics in civil and environmental engineering.',
   },
   {
-    id: "bsc-lebanese",
-    category: "education",
-    start_date: "2013-10",
-    end_date: "2016-08",
-    title: "BSc — Civil Engineering (Building & Public Works)",
-    role: "Très Bien",
-    organization: "Lebanese University",
-    location: "Saida, Lebanon",
-    summary: "Foundation degree in civil engineering with emphasis on structural design and construction.",
-    bullets: [
-      "Structural engineering and design",
-      "Construction management and materials",
-      "Hydraulics and water resources",
-      "Surveying and geomatics"
-    ]
-  }
+    id: 'bsc-lebanese',
+    dates: 'Oct 2013 – Aug 2016',
+    degree: 'BSc — Civil Engineering (Building & Public Works)',
+    school: 'Lebanese University · Saida, Lebanon',
+    detail: 'Très Bien. Foundation degree in civil engineering with emphasis on structural design and construction.',
+  },
 ];
-
 
 const Education = () => {
   const { t } = useLanguage();
 
   return (
-    <Section id="education" index="06" title={t('education.title')} lede={t('education.description')}>
-      <VerticalTimeline items={educationData} detailsLabel={t('education.highlightsLabel')} />
+    <Section
+      id="education"
+      index="06"
+      title={t('education.title')}
+      lede={t('education.description')}
+      variant="sunken"
+      className="border-t border-border"
+    >
+      <div>
+        {educationData.map((entry, index) => (
+          <Reveal key={entry.id} delay={index * 60}>
+            <article className="grid gap-x-8 gap-y-1.5 border-t border-border py-7 md:grid-cols-[200px_1fr]">
+              <p className="text-[13.5px] font-semibold text-accent">{entry.dates}</p>
+              <div>
+                <h3 className="font-display text-lg font-semibold text-foreground">{entry.degree}</h3>
+                <p className="mt-1 text-[13.5px] text-muted-foreground">{entry.school}</p>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">{entry.detail}</p>
+              </div>
+            </article>
+          </Reveal>
+        ))}
+      </div>
     </Section>
   );
 };

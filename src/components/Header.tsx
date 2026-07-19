@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -10,17 +10,8 @@ const NAV_IDS = ['services', 'experience', 'publications', 'projects', 'about'];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useLanguage();
   const activeId = useScrollspy(NAV_IDS);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navItems = useMemo(
     () => [
@@ -36,7 +27,6 @@ const Header = () => {
   const mobileItems = useMemo(
     () => [
       ...navItems,
-      { id: 'skills', label: t('nav.skills') },
       { id: 'education', label: t('nav.education') },
       { id: 'contact', label: t('nav.contact') },
     ],
@@ -56,24 +46,13 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  // Over the dark hero the bar is transparent with white text; once scrolled
-  // it becomes a glass bar using theme tokens.
-  const barClass = isScrolled ? 'glass' : 'bg-transparent text-white';
-  const linkClass = (id: string) => {
-    const active = activeId === id;
-    if (isScrolled) {
-      return active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground';
-    }
-    return active ? 'text-white' : 'text-white/70 hover:text-white';
-  };
-
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${barClass}`}>
+    <header className="fixed top-0 w-full z-50 glass">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14">
           <button
             onClick={scrollToTop}
-            className="font-display font-semibold text-lg tracking-tight"
+            className="font-display font-bold text-xl tracking-tight text-foreground"
             aria-label="Scroll to top"
           >
             MT<span className="text-accent">.</span>
@@ -85,7 +64,9 @@ const Header = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative text-sm font-medium transition-colors py-1 ${linkClass(item.id)}`}
+                className={`relative text-sm font-medium transition-colors py-1 ${
+                  activeId === item.id ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                }`}
               >
                 {item.label}
                 <span
@@ -103,7 +84,7 @@ const Header = () => {
             <Button
               size="sm"
               onClick={() => scrollToSection('contact')}
-              className="ml-2 bg-accent hover:bg-accent-light text-accent-foreground font-medium"
+              className="ml-2 bg-primary hover:bg-primary-light text-primary-foreground font-semibold"
             >
               {t('hero.getInTouch')}
             </Button>
@@ -113,7 +94,7 @@ const Header = () => {
           <Button
             variant="ghost"
             size="sm"
-            className={`md:hidden relative ${isScrolled ? '' : 'text-white hover:bg-white/10 hover:text-white'}`}
+            className="md:hidden relative"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -163,7 +144,7 @@ const Header = () => {
                 <Button
                   size="sm"
                   onClick={() => scrollToSection('contact')}
-                  className="bg-accent hover:bg-accent-light text-accent-foreground font-medium"
+                  className="bg-primary hover:bg-primary-light text-primary-foreground font-semibold"
                 >
                   {t('hero.getInTouch')}
                 </Button>

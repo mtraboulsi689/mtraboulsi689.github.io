@@ -103,7 +103,7 @@ const LinkedInFeed = () => {
                       href={post.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-light"
+                      className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accent/80"
                     >
                       {t('linkedinFeed.viewPost')}
                       <ExternalLink size={14} />

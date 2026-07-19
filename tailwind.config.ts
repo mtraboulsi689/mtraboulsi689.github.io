@@ -59,8 +59,11 @@ export default {
 				},
 				abyss: {
 					DEFAULT: 'hsl(var(--abyss))',
-					foreground: 'hsl(var(--abyss-foreground))'
+					foreground: 'hsl(var(--abyss-foreground))',
+					card: 'hsl(var(--abyss-card))',
+					deep: 'hsl(var(--abyss-deep))'
 				},
+				gold: 'hsl(var(--gold))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -68,8 +71,8 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
-				display: ['Space Grotesk Variable', 'Space Grotesk', 'Inter Variable', 'system-ui', 'sans-serif'],
+				sans: ['IBM Plex Sans Variable', 'IBM Plex Sans', 'system-ui', 'sans-serif'],
+				display: ['Space Grotesk Variable', 'Space Grotesk', 'system-ui', 'sans-serif'],
 				mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
 			},
 			animation: {

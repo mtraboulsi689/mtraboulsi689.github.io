@@ -2,87 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Coastal Engineering Design System — "Technical Editorial"
+/* Coastal Engineering Design System — "Warm Paper / Navy / Teal"
+   Palette ported from the design mockup (demo/, oklch) to HSL tokens.
    Fonts are self-hosted via @fontsource imports in src/main.tsx.
    Keyframes/animations live in tailwind.config.ts only. */
 
 @layer base {
   :root {
-    /* Core colors - HSL format */
-    --background: 220 20% 98%;
-    --foreground: 216 30% 12%;
+    /* Core colors - HSL format. Warm cream paper base, ink foreground. */
+    --background: 40 41% 93%;
+    --foreground: 211 34% 9%;
 
-    /* Primary palette - abyss navy */
-    --primary: 212 90% 20%;
-    --primary-foreground: 210 20% 98%;
-    --primary-light: 210 75% 32%;
-    --primary-dark: 214 95% 13%;
+    /* Primary palette - deep navy (solid CTA buttons, emphasis) */
+    --primary: 210 44% 11%;
+    --primary-foreground: 40 40% 97%;
+    --primary-light: 210 40% 22%;
+    --primary-dark: 212 60% 7%;
 
-    /* Secondary palette - Coastal tones */
-    --secondary: 200 15% 85%;
-    --secondary-foreground: 215 25% 25%;
-    --secondary-dark: 200 20% 65%;
+    /* Secondary palette - warm neutrals */
+    --secondary: 40 22% 86%;
+    --secondary-foreground: 211 23% 24%;
+    --secondary-dark: 40 15% 65%;
 
-    /* Accent - coral, used sparingly. Kept dark enough that small coral
-       text passes WCAG AA on white and white text passes on coral. */
-    --accent: 15 78% 45%;
-    --accent-foreground: 15 10% 98%;
-    --accent-light: 15 72% 55%;
+    /* Accent - teal. The mockup's oklch(58% 0.10 200) darkened just enough
+       that small teal text passes WCAG AA on the cream background and white
+       text passes on teal buttons. --accent-light is the mockup's original
+       teal, reserved for dark bands and hovers. */
+    --accent: 183 100% 24%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 183 45% 44%;
 
-    /* Neutral grays */
-    --muted: 215 15% 92%;
-    --muted-foreground: 215 12% 40%;
-    --border: 215 20% 87%;
-    --input: 215 20% 90%;
-    --ring: 212 90% 20%;
+    /* Gold - highlight color on dark navy bands only */
+    --gold: 35 57% 66%;
+
+    /* Neutral warm grays */
+    --muted: 40 22% 86%;
+    --muted-foreground: 211 11% 33%;
+    --border: 40 20% 82%;
+    --input: 40 20% 84%;
+    --ring: 183 100% 24%;
 
     /* Semantic colors */
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
     /* Component specific */
-    --card: 0 0% 100%;
-    --card-foreground: 216 30% 12%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 216 30% 12%;
+    --card: 40 40% 97%;
+    --card-foreground: 211 34% 9%;
+    --popover: 40 40% 97%;
+    --popover-foreground: 211 34% 9%;
 
-    /* Surface system: base (background) -> sunken (quiet sections) -> abyss (dark bands) */
-    --surface-sunken: 214 25% 94%;
-    --abyss: 214 60% 10%;
-    --abyss-foreground: 208 30% 92%;
+    /* Surface system: base (cream) -> sunken (raised paper white sections)
+       -> abyss (dark navy bands). Deep is the footer, card sits on abyss. */
+    --surface-sunken: 40 40% 97%;
+    --abyss: 210 62% 9%;
+    --abyss-foreground: 211 18% 81%;
+    --abyss-card: 210 49% 14%;
+    --abyss-deep: 212 73% 6%;
 
-    /* Hero gradient - toward the abyss end for contrast */
-    --gradient-hero: linear-gradient(150deg, hsl(214, 95%, 12%) 0%, hsl(212, 85%, 18%) 55%, hsl(200, 70%, 24%) 100%);
+    /* Hero: flat navy with a teal radial glow in the top-right corner */
+    --gradient-hero: radial-gradient(circle at 88% -12%, hsl(196 45% 33% / 0.55) 0%, transparent 42%), linear-gradient(hsl(210, 62%, 9%), hsl(210, 62%, 9%));
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 215 35% 7%;
-    --foreground: 210 20% 94%;
-    --primary: 208 75% 55%;
-    --primary-foreground: 215 35% 7%;
-    --primary-light: 205 75% 65%;
-    --primary-dark: 212 70% 40%;
-    --secondary: 215 25% 15%;
-    --secondary-foreground: 210 20% 85%;
-    --muted: 215 25% 12%;
-    --muted-foreground: 213 12% 68%;
-    --accent: 15 85% 62%;
-    --accent-foreground: 215 35% 7%;
-    --card: 215 30% 9%;
-    --card-foreground: 210 20% 94%;
-    --popover: 215 30% 9%;
-    --popover-foreground: 210 20% 94%;
-    --border: 215 22% 17%;
-    --input: 215 22% 17%;
-    --ring: 208 75% 55%;
+    --background: 210 57% 8%;
+    --foreground: 40 18% 89%;
+    --primary: 183 41% 48%;
+    --primary-foreground: 210 57% 8%;
+    --primary-light: 183 45% 58%;
+    --primary-dark: 183 41% 36%;
+    --secondary: 210 41% 17%;
+    --secondary-foreground: 211 18% 85%;
+    --muted: 210 48% 12%;
+    --muted-foreground: 211 12% 65%;
+    --accent: 183 41% 48%;
+    --accent-foreground: 210 57% 8%;
+    --accent-light: 183 45% 58%;
+    --gold: 35 57% 66%;
+    --card: 210 48% 12%;
+    --card-foreground: 40 18% 89%;
+    --popover: 210 48% 12%;
+    --popover-foreground: 40 18% 89%;
+    --border: 211 28% 19%;
+    --input: 211 28% 19%;
+    --ring: 183 41% 48%;
 
-    --surface-sunken: 215 32% 9%;
-    --abyss: 216 45% 5%;
-    --abyss-foreground: 208 30% 92%;
+    --surface-sunken: 211 68% 7%;
+    --abyss: 215 84% 4%;
+    --abyss-foreground: 211 18% 81%;
+    --abyss-card: 212 50% 9%;
+    --abyss-deep: 218 84% 3%;
 
-    --gradient-hero: linear-gradient(150deg, hsl(216, 60%, 5%) 0%, hsl(214, 55%, 9%) 55%, hsl(204, 50%, 14%) 100%);
+    --gradient-hero: radial-gradient(circle at 88% -12%, hsl(196 45% 24% / 0.5) 0%, transparent 42%), linear-gradient(hsl(215, 84%, 4%), hsl(215, 84%, 4%));
   }
 }
 
@@ -97,7 +110,6 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
   ::selection {
@@ -154,18 +166,18 @@
   .text-display {
     font-size: clamp(3rem, 2rem + 5vw, 5.5rem);
     line-height: 1.02;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   .text-headline {
-    font-size: clamp(1.9rem, 1.4rem + 2vw, 3rem);
+    font-size: clamp(1.9rem, 1.4rem + 2vw, 2.75rem);
     line-height: 1.1;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
   }
 
-  /* Mono eyebrow label: "01 — What I Do" */
+  /* Small uppercase label: "Languages", "Navigate" */
   .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground;
+    @apply text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground;
   }
 
   /* Scroll reveal (driven by src/components/Reveal.tsx) */
@@ -203,8 +215,8 @@
 
   /* Glassmorphism effect (header) */
   .glass {
-    background: hsl(var(--background) / 0.8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid hsl(var(--border) / 0.6);
+    background: hsl(var(--background) / 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid hsl(var(--border) / 0.8);
   }
 }

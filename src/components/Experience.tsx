@@ -1,10 +1,28 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown, ExternalLink, Copy } from 'lucide-react';
-import { TimelineItem } from '@/components/VerticalTimeline';
 import TimelineSkeleton from '@/components/skeletons/TimelineSkeleton';
 import { useLanguage } from '@/components/language-provider';
 import Section from '@/components/Section';
 import Reveal from '@/components/Reveal';
+
+interface TimelineLink {
+  label: string;
+  url: string;
+}
+
+interface TimelineItem {
+  id: string;
+  category: 'experience' | 'education';
+  start_date: string; // "YYYY-MM"
+  end_date: string | null; // "YYYY-MM" or null
+  title: string;
+  role?: string;
+  organization: string;
+  location?: string;
+  summary: string;
+  bullets?: string[];
+  links?: TimelineLink[];
+}
 
 interface ExperienceData {
   updated_at: string;
@@ -40,8 +58,8 @@ const CaseStudyRow = ({
   return (
     <Reveal delay={index * 80}>
       <article className="border-b border-border py-10 md:py-12">
-        <div className="grid gap-x-8 gap-y-4 md:grid-cols-[auto_1fr]">
-          <span className="font-mono text-2xl md:text-3xl text-accent/80 leading-none pt-1">
+        <div className="grid gap-x-10 gap-y-4 md:grid-cols-[72px_1fr]">
+          <span className="font-display text-3xl md:text-4xl font-bold text-border leading-none pt-1" aria-hidden="true">
             {String(index + 1).padStart(2, '0')}
           </span>
 
@@ -60,11 +78,11 @@ const CaseStudyRow = ({
               aria-expanded={hasDetails ? expanded : undefined}
             >
               <div>
-                <h3 className="font-display text-xl md:text-2xl font-medium text-foreground">
+                <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground">
                   {item.title}
                 </h3>
-                {item.role && <p className="mt-1 text-sm text-accent">{item.role}</p>}
-                <p className="mt-2 font-mono text-xs text-muted-foreground">
+                <p className="mt-1.5 text-[13.5px] font-semibold text-accent">
+                  {item.role && `${item.role} · `}
                   {item.organization}
                   {item.location && ` · ${item.location}`}
                   {' · '}
@@ -102,18 +120,18 @@ const CaseStudyRow = ({
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-sm border border-border bg-background px-3 py-1 font-mono text-xs text-foreground transition-colors hover:border-accent/60 hover:text-accent"
+                      className="inline-flex items-center gap-1.5 rounded-md bg-primary px-4 py-1.5 text-[13px] font-semibold text-primary-foreground transition-colors hover:bg-primary-light"
                     >
                       {link.label}
-                      <ExternalLink size={11} />
+                      <ExternalLink size={12} />
                     </a>
                     {link.label.toLowerCase().includes('doi') && (
                       <button
                         onClick={() => copyToClipboard(link.url)}
-                        className="inline-flex items-center rounded-sm border border-border bg-background px-2 py-1 text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent"
+                        className="inline-flex items-center rounded-md border border-border px-2.5 py-1.5 text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent"
                         title="Copy DOI"
                       >
-                        <Copy size={11} />
+                        <Copy size={12} />
                       </button>
                     )}
                   </span>

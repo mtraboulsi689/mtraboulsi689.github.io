@@ -1,95 +1,70 @@
-import { MapPin, Award, Languages, Building2, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
 import Section from '@/components/Section';
 import Reveal from '@/components/Reveal';
-import ContourLines from '@/components/ContourLines';
 
 const About = () => {
   const { t } = useLanguage();
 
-  const facts = [
-    { Icon: Languages, label: t('about.languages'), text: t('about.languagesText') },
-    { Icon: Building2, label: t('about.institutionsLabel'), text: t('about.institutionsList') },
-    { Icon: MapPin, label: t('contact.location'), text: t('about.basedInFrance') },
-  ];
-
   return (
-    <Section id="about" index="07" title={t('about.title')} lede={t('about.description')} variant="sunken">
-      <div className="grid gap-12 md:grid-cols-[minmax(0,300px)_1fr] md:gap-16 items-start max-w-5xl">
+    <Section id="about" index="07" title={t('about.title')}>
+      <div className="grid items-start gap-12 md:grid-cols-[minmax(0,340px)_1fr] md:gap-14">
         <Reveal>
-          <div className="relative">
-            {/* Contour accent behind the portrait */}
-            <div
-              className="absolute -left-6 -top-6 h-full w-full text-primary/40 pointer-events-none"
-              aria-hidden="true"
-            >
-              <ContourLines className="h-full w-full" />
-            </div>
-            <img
-              src="/headshot.jpg"
-              alt={t('about.photoAlt')}
-              className="relative w-56 md:w-full rounded-md object-cover shadow-ocean"
-            />
-          </div>
+          <img
+            src="/headshot.jpg"
+            alt={t('about.photoAlt')}
+            className="w-56 rounded-2xl object-cover shadow-ocean md:w-full"
+          />
         </Reveal>
 
-        <div className="space-y-8">
+        <div>
           <Reveal delay={80}>
-            <div>
-              <p className="eyebrow mb-3">{t('about.professionalFocus')}</p>
-              <p className="leading-relaxed text-muted-foreground mb-4">
-                {t('about.professionalFocusText1')}
-              </p>
-              <p className="leading-relaxed text-muted-foreground mb-4">
-                {t('about.professionalFocusText2')}
-              </p>
-              <p className="leading-relaxed text-foreground font-medium">
-                {t('about.professionalFocusText3')}
-              </p>
-            </div>
+            <p className="mb-7 font-display text-xl font-semibold leading-normal text-foreground md:text-2xl">
+              {t('about.description')}
+            </p>
+            <p className="mb-5 leading-relaxed text-muted-foreground">
+              {t('about.professionalFocusText1')}
+            </p>
+            <p className="mb-5 leading-relaxed text-muted-foreground">
+              {t('about.professionalFocusText2')}
+            </p>
+            <p className="mb-9 leading-relaxed text-muted-foreground">
+              {t('about.professionalFocusText3')}
+            </p>
           </Reveal>
 
           <Reveal delay={140}>
-            <dl className="grid gap-5 sm:grid-cols-2">
-              {facts.map(({ Icon, label, text }) => (
-                <div key={label} className="flex items-start gap-3">
-                  <Icon className="mt-0.5 shrink-0 text-accent" size={17} />
-                  <div>
-                    <dt className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                      {label}
-                    </dt>
-                    <dd className="mt-0.5 text-sm text-foreground">{text}</dd>
-                  </div>
-                </div>
-              ))}
-              <div className="flex items-start gap-3">
-                <Award className="mt-0.5 shrink-0 text-accent" size={17} />
-                <div>
-                  <dt className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                    {t('about.keyAchievements')}
-                  </dt>
-                  <dd className="mt-0.5 text-sm text-foreground">
-                    <ul className="space-y-0.5">
-                      <li>{t('about.highlight1')}</li>
-                      <li>{t('about.highlight2')}</li>
-                      <li>{t('about.highlight3')}</li>
-                    </ul>
-                  </dd>
-                </div>
+            <dl className="grid gap-6 border-t border-border pt-7 sm:grid-cols-2">
+              <div>
+                <dt className="eyebrow mb-2">{t('about.languages')}</dt>
+                <dd className="text-[14.5px] text-foreground">{t('about.languagesText')}</dd>
+              </div>
+              <div>
+                <dt className="eyebrow mb-2">{t('about.institutionsLabel')}</dt>
+                <dd className="text-[14.5px] text-foreground">{t('about.institutionsList')}</dd>
+              </div>
+              <div className="sm:col-span-2">
+                <dt className="eyebrow mb-2">{t('about.keyAchievements')}</dt>
+                <dd>
+                  <ul className="list-disc space-y-1 pl-5 text-[14.5px] leading-relaxed text-foreground">
+                    <li>{t('about.highlight1')}</li>
+                    <li>{t('about.highlight2')}</li>
+                    <li>{t('about.highlight3')}</li>
+                    <li>
+                      <a
+                        href="https://theses.fr/29332249X"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-medium text-accent transition-colors hover:text-accent/80"
+                      >
+                        {t('about.thesisLink')}
+                        <ExternalLink size={12} />
+                      </a>
+                    </li>
+                  </ul>
+                </dd>
               </div>
             </dl>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <a
-              href="https://theses.fr/29332249X"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-sm border border-border bg-background px-3 py-1.5 font-mono text-xs text-foreground transition-colors hover:border-accent/60 hover:text-accent"
-            >
-              {t('about.thesisLink')}
-              <ExternalLink size={12} />
-            </a>
           </Reveal>
         </div>
       </div>

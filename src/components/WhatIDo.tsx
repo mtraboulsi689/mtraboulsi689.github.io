@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
 import Section from '@/components/Section';
 import Reveal from '@/components/Reveal';
@@ -24,33 +23,21 @@ const WhatIDo = () => {
     },
   ];
 
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <Section id="services" index="01" title={t('whatIDo.title')} lede={t('whatIDo.description')}>
-      <div className="border-t border-border">
+      <div className="grid gap-7 md:grid-cols-3">
         {services.map((service, i) => (
           <Reveal key={service.index} delay={i * 80}>
-            <button
-              onClick={scrollToContact}
-              className="group grid w-full grid-cols-[auto_1fr_auto] items-baseline gap-x-5 md:gap-x-10 border-b border-border py-7 md:py-9 text-left transition-colors hover:bg-sunken"
-            >
-              <span className="font-mono text-sm text-accent">{service.index}</span>
-              <span>
-                <span className="block font-display text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors">
-                  {service.title}
-                </span>
-                <span className="mt-2 block max-w-2xl text-sm md:text-base leading-relaxed text-muted-foreground">
-                  {service.description}
-                </span>
+            <div className="flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-8 hover-raise">
+              <span
+                aria-hidden="true"
+                className="font-display text-4xl font-bold text-transparent [-webkit-text-stroke:1px_hsl(var(--accent))]"
+              >
+                {service.index}
               </span>
-              <ArrowRight
-                size={20}
-                className="self-center text-muted-foreground transition-all duration-300 group-hover:text-accent group-hover:translate-x-1"
-              />
-            </button>
+              <h3 className="font-display text-xl font-semibold text-foreground">{service.title}</h3>
+              <p className="text-[15px] leading-relaxed text-muted-foreground">{service.description}</p>
+            </div>
           </Reveal>
         ))}
       </div>

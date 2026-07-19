@@ -27,7 +27,6 @@ const translations = {
   en: {
     // Navigation
     "nav.services": "What I Do",
-    "nav.skills": "Skills",
     "nav.projects": "Projects",
     "nav.publications": "Publications",
     "nav.experience": "Case Studies",
@@ -42,10 +41,11 @@ const translations = {
     "hero.watchVideo": "See the model in action (3 min)",
     "hero.getInTouch": "Discuss your project",
     "hero.viewWork": "See how I work",
-    "hero.stats.modelled": "5 km of coastline modelled",
-    "hero.stats.horizon": "projections to 2100",
-    "hero.stats.scenarios": "3 climate scenarios",
+    "hero.stats.modelledLabel": "coastline modelled",
+    "hero.stats.horizonLabel": "projection horizon",
+    "hero.stats.scenariosLabel": "climate scenarios",
     "hero.stats.published": "Env. Modelling & Software, 2025",
+    "hero.stats.publishedLabel": "Latest publication",
 
     // What I Do Section
     "whatIDo.title": "What I Do",
@@ -187,7 +187,6 @@ const translations = {
   fr: {
     // Navigation
     "nav.services": "Ce Que Je Fais",
-    "nav.skills": "Compétences",
     "nav.projects": "Projets",
     "nav.publications": "Publications",
     "nav.experience": "Études de Cas",
@@ -202,10 +201,11 @@ const translations = {
     "hero.watchVideo": "Voir le modèle en action (3 min)",
     "hero.getInTouch": "Discuter de votre projet",
     "hero.viewWork": "Voir comment je travaille",
-    "hero.stats.modelled": "5 km de littoral modélisés",
-    "hero.stats.horizon": "projections jusqu'en 2100",
-    "hero.stats.scenarios": "3 scénarios climatiques",
+    "hero.stats.modelledLabel": "de littoral modélisés",
+    "hero.stats.horizonLabel": "horizon de projection",
+    "hero.stats.scenariosLabel": "scénarios climatiques",
     "hero.stats.published": "Env. Modelling & Software, 2025",
+    "hero.stats.publishedLabel": "Dernière publication",
 
     // What I Do Section
     "whatIDo.title": "Ce Que Je Fais",

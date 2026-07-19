@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FileText, Copy, ChevronDown, ChevronUp } from 'lucide-react';
 import PublicationsSkeleton from '@/components/skeletons/PublicationsSkeleton';
 import { useLanguage } from '@/components/language-provider';
+import Section from '@/components/Section';
 import Reveal from '@/components/Reveal';
 import { useCountUp } from '@/hooks/use-count-up';
 
@@ -61,8 +62,8 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
 
   return (
     <Reveal delay={Math.min(index * 60, 240)}>
-      <article className="grid grid-cols-[auto_1fr] gap-x-6 md:gap-x-10 border-b border-border py-8">
-        <span className="font-mono text-sm text-muted-foreground pt-1">
+      <article className="grid grid-cols-[auto_1fr] md:grid-cols-[64px_1fr_auto] gap-x-6 md:gap-x-8 border-b border-border py-7">
+        <span className="font-display text-base font-bold text-accent pt-0.5">
           {publication.year ?? '—'}
         </span>
 
@@ -84,7 +85,7 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
                 {' '}
                 <button
                   onClick={() => setShowAllAuthors(!showAllAuthors)}
-                  className="font-medium text-accent hover:text-accent-light"
+                  className="font-medium text-accent hover:text-accent/80"
                 >
                   {showAllAuthors ? 'show less' : `+${publication.authors.length - 3} more`}
                 </button>
@@ -98,7 +99,7 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
               {publication.abstract && publication.abstract !== publication.abstractTeaser && (
                 <button
                   onClick={() => setShowFullAbstract(!showFullAbstract)}
-                  className="mt-1.5 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent-light"
+                  className="mt-1.5 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent/80"
                 >
                   {showFullAbstract ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
                   {showFullAbstract ? 'Show less' : 'Read full abstract'}
@@ -108,23 +109,15 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
           )}
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
-            <span className="rounded-sm border border-border px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-muted-foreground">
-              {formatCategory(publication.category)}
-            </span>
-            {publication.isOpenAccess && (
-              <span className="rounded-sm border border-accent/40 px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-accent">
-                OA
-              </span>
-            )}
             {publication.citedByCount > 0 && (
-              <span className="rounded-sm border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+              <span className="rounded-full bg-muted px-2.5 py-0.5 text-[11px] font-semibold text-secondary-foreground">
                 {publication.citedByCount} cit.
               </span>
             )}
             {publication.doi && (
               <button
                 onClick={copyDOI}
-                className="inline-flex items-center gap-1.5 rounded-sm border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border px-2.5 py-0.5 font-mono text-[11px] text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent"
                 title={copied ? 'DOI copied!' : 'Click to copy DOI'}
               >
                 {publication.doi.length > 30 ? `${publication.doi.split('/')[0]}/…` : publication.doi}
@@ -132,6 +125,17 @@ const PublicationRow = ({ publication, index }: { publication: Publication; inde
               </button>
             )}
           </div>
+        </div>
+
+        <div className="col-start-2 row-start-2 mt-3 flex flex-wrap gap-2 md:col-start-3 md:row-start-1 md:mt-0 md:max-w-[150px] md:justify-end">
+          <span className="h-fit rounded-full bg-muted px-2.5 py-1 text-[11px] font-semibold text-secondary-foreground">
+            {formatCategory(publication.category)}
+          </span>
+          {publication.isOpenAccess && (
+            <span className="h-fit rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-semibold text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300">
+              OA
+            </span>
+          )}
         </div>
       </article>
     </Reveal>
@@ -185,70 +189,52 @@ const Publications = () => {
   ];
 
   return (
-    <section id="publications" className="py-20 md:py-28 bg-sunken">
-      <div className="container mx-auto px-4">
+    <Section
+      id="publications"
+      index="04"
+      title={t('publications.title')}
+      lede={t('publications.description')}
+      variant="sunken"
+      className="border-y border-border"
+    >
+      {/* Stats row */}
+      {!loading && !error && publications.length > 0 && (
         <Reveal>
-          <div className="flex items-center gap-4 mb-12 md:mb-16">
-            <span className="font-mono text-sm text-accent">04</span>
-            <span className="h-px flex-1 bg-border" />
-          </div>
-        </Reveal>
-
-        <div className="grid gap-12 lg:grid-cols-[300px_1fr] xl:grid-cols-[340px_1fr]">
-          {/* Sticky rail */}
-          <Reveal>
-            <div className="lg:sticky lg:top-24">
-              <h2 className="font-display font-semibold text-headline text-foreground">
-                {t('publications.title')}
-              </h2>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                {t('publications.description')}
+          <dl className="mb-12 flex flex-wrap items-end gap-x-12 gap-y-6">
+            {stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col">
+                <dt className="order-2 mt-1 text-[13px] text-muted-foreground">{stat.label}</dt>
+                <dd className="order-1 font-display text-3xl font-bold text-foreground">
+                  <StatValue value={stat.value} />
+                </dd>
+              </div>
+            ))}
+            {lastUpdated && (
+              <p className="ml-auto text-[13px] text-muted-foreground">
+                {t('publications.lastUpdated')} {new Date(lastUpdated).toLocaleDateString()}
               </p>
-
-              {!loading && !error && publications.length > 0 && (
-                <dl className="mt-8 grid grid-cols-2 gap-6">
-                  {stats.map((stat) => (
-                    <div key={stat.label} className="flex flex-col">
-                      <dt className="order-2 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                        {stat.label}
-                      </dt>
-                      <dd className="order-1 font-display text-3xl font-semibold text-foreground">
-                        <StatValue value={stat.value} />
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
-
-              {lastUpdated && (
-                <p className="mt-8 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                  {t('publications.lastUpdated')} {new Date(lastUpdated).toLocaleDateString()}
-                </p>
-              )}
-            </div>
-          </Reveal>
-
-          {/* Entry ledger */}
-          <div>
-            {loading && <PublicationsSkeleton items={4} showMetrics={false} showFilters={false} />}
-            {error && (
-              <div className="text-muted-foreground">
-                <FileText size={32} className="mb-3 text-destructive" />
-                <h3 className="font-medium text-foreground mb-1">{t('publications.unableToLoad')}</h3>
-                <p className="text-sm">{t('publications.dataUpdatedWeekly')}</p>
-              </div>
             )}
-            {!loading && !error && (
-              <div className="border-t border-border">
-                {publications.map((publication, index) => (
-                  <PublicationRow key={publication.id} publication={publication} index={index} />
-                ))}
-              </div>
-            )}
-          </div>
+          </dl>
+        </Reveal>
+      )}
+
+      {/* Entry ledger */}
+      {loading && <PublicationsSkeleton items={4} showMetrics={false} showFilters={false} />}
+      {error && (
+        <div className="text-muted-foreground">
+          <FileText size={32} className="mb-3 text-destructive" />
+          <h3 className="font-medium text-foreground mb-1">{t('publications.unableToLoad')}</h3>
+          <p className="text-sm">{t('publications.dataUpdatedWeekly')}</p>
         </div>
-      </div>
-    </section>
+      )}
+      {!loading && !error && (
+        <div className="border-t border-border">
+          {publications.map((publication, index) => (
+            <PublicationRow key={publication.id} publication={publication} index={index} />
+          ))}
+        </div>
+      )}
+    </Section>
   );
 };
 

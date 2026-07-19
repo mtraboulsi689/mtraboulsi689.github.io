@@ -24,7 +24,6 @@ src/
 │   ├── Footer.tsx       # Site footer
 │   ├── Header.tsx       # Navigation header
 │   ├── Hero.tsx         # Landing hero section
-│   ├── Skills.tsx       # Technical skills showcase
 │   └── ui/             # Reusable UI components (shadcn/ui)
 ├── hooks/              # Custom React hooks
 ├── lib/                # Utility functions
@@ -81,11 +80,12 @@ The website showcases Mohammad Traboulsi's expertise in:
 - PhD research at Université Grenoble Alpes
 
 ## Design Theme
-- **Color Scheme**: Ocean/coastal inspired with blues and gradients
-- **Typography**: Inter font family with custom sizing
-- **Animations**: Floating elements, fade-up transitions, smooth scrolling
-- **Layout**: Clean, professional, section-based navigation
+- **Color Scheme**: Warm cream paper base with deep navy bands, teal accent, gold highlights on dark surfaces
+- **Typography**: IBM Plex Sans (body), Space Grotesk (display), JetBrains Mono (data labels)
+- **Animations**: Scroll-reveal transitions, smooth scrolling, count-up stats
+- **Layout**: Numbered editorial sections (01–08), section-based navigation
 
 ## Recent Changes
+- Applied the warm-paper/navy/teal redesign from the user's demo mockup (palette, fonts, section layouts; Skills folded into the Open Source section)
 - Removed BrowserRouter wrapper from App component (routing now handled in main.tsx)
 - Maintained single-page portfolio structure with smooth scrolling navigation

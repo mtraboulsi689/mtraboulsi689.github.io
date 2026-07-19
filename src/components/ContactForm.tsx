@@ -200,43 +200,64 @@ const ContactForm = () => {
   const selectedPurpose = purposeOptions.find(p => p.value === formData.purpose);
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-background scroll-mt-20">
+    <section id="contact" className="py-20 md:py-28 bg-abyss scroll-mt-20">
       <div className="container mx-auto px-4">
         <Reveal>
-          <div className="flex items-center gap-4 mb-12 md:mb-16">
-            <span className="font-mono text-sm text-accent">08</span>
-            <span className="h-px flex-1 bg-border" />
+          <div className="mb-12 md:mb-16">
+            <div className="flex items-baseline gap-4">
+              <span className="font-display text-sm font-bold text-accent-light">08</span>
+              <h2 className="font-display font-bold text-headline text-white">{t('contact.title')}</h2>
+            </div>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-abyss-foreground/90">
+              {t('contact.description')}
+            </p>
+            <p className="mt-2 text-sm text-abyss-foreground/60">{t('contact.replyTime')}</p>
           </div>
         </Reveal>
 
-        <div className="grid gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
-          {/* Editorial left: headline + direct contact */}
+        <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+          {/* Editorial left: direct contact + documents */}
           <Reveal>
             <div>
-              <h2 className="font-display font-semibold text-headline text-foreground">
-                {t('contact.title')}
-              </h2>
-              <p className="mt-4 max-w-md text-lg leading-relaxed text-muted-foreground">
-                {t('contact.description')}
-              </p>
-              <p className="mt-3 font-mono text-xs text-muted-foreground">
-                {t('contact.replyTime')}
-              </p>
-
-              <div className="mt-10 space-y-5">
-                <div className="flex items-center gap-4">
-                  <Mail className="shrink-0 text-accent" size={18} />
+              <div className="space-y-6">
+                <div>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-abyss-foreground/60">
+                    {t('contact.formLabels.email')}
+                  </p>
                   <a
                     href="mailto:traboulsimohamed@gmail.com"
-                    className="text-foreground transition-colors hover:text-accent"
+                    className="inline-flex items-center gap-3 text-lg font-semibold text-white transition-colors hover:text-accent-light"
                   >
+                    <Mail className="shrink-0" size={18} />
                     traboulsimohamed@gmail.com
                   </a>
                 </div>
-                <div className="flex items-center gap-4">
-                  <MapPin className="shrink-0 text-accent" size={18} />
-                  <span className="text-muted-foreground">{t('contact.locationDetail')}</span>
+                <div>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-abyss-foreground/60">
+                    {t('contact.location')}
+                  </p>
+                  <p className="inline-flex items-center gap-3 text-lg font-semibold text-white">
+                    <MapPin className="shrink-0" size={18} />
+                    {t('contact.locationDetail')}
+                  </p>
                 </div>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-2.5">
+                <a
+                  href="/cv.pdf"
+                  download="Mohammad_Traboulsi_CV.pdf"
+                  className="rounded-md bg-abyss-card px-4 py-2 text-[13px] font-medium text-abyss-foreground transition-colors hover:text-white"
+                >
+                  {t('footer.cv')}
+                </a>
+                <a
+                  href="/capabilities.pdf"
+                  download="Mohammad_Traboulsi_Capability_Statement.pdf"
+                  className="rounded-md bg-abyss-card px-4 py-2 text-[13px] font-medium text-abyss-foreground transition-colors hover:text-white"
+                >
+                  {t('footer.capabilities')}
+                </a>
               </div>
 
               <div className="mt-10 flex gap-3">
@@ -245,7 +266,7 @@ const ContactForm = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackExternalLink('https://github.com/mtraboulsi689', 'contact_social')}
-                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-abyss-foreground/70 transition-colors hover:border-accent-light/60 hover:text-white focus:outline-none focus:ring-2 focus:ring-accent-light"
                   aria-label="GitHub Profile"
                 >
                   <Github size={18} />
@@ -255,7 +276,7 @@ const ContactForm = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackExternalLink('https://www.linkedin.com/in/mtraboulsi/', 'contact_social')}
-                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-abyss-foreground/70 transition-colors hover:border-accent-light/60 hover:text-white focus:outline-none focus:ring-2 focus:ring-accent-light"
                   aria-label="LinkedIn Profile"
                 >
                   <Linkedin size={18} />
@@ -265,7 +286,7 @@ const ContactForm = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackExternalLink('https://www.researchgate.net/profile/Mohammad-Traboulsi', 'contact_social')}
-                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-muted-foreground transition-colors hover:border-accent/60 hover:text-accent focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-abyss-foreground/70 transition-colors hover:border-accent-light/60 hover:text-white focus:outline-none focus:ring-2 focus:ring-accent-light"
                   aria-label="ResearchGate Profile"
                 >
                   <MessageSquare size={18} />
@@ -276,9 +297,9 @@ const ContactForm = () => {
 
           {/* Contact Form */}
           <Reveal delay={100}>
-            <div className="rounded-lg border border-border bg-card p-6 md:p-8">
-              <p className="eyebrow mb-6 flex items-center gap-2">
-                <Send size={13} className="text-accent" />
+            <div className="rounded-xl bg-abyss-card p-6 md:p-8">
+              <p className="mb-6 flex items-center gap-2 font-display text-lg font-semibold text-white">
+                <Send size={15} className="text-accent-light" />
                 {t('contact.sendMessage')}
               </p>
               {/* Status Message */}
@@ -337,8 +358,8 @@ const ContactForm = () => {
                 {/* Required Fields Row */}
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      {t('contact.formLabels.name')} <span className="text-red-500">{t('contact.formLabels.required')}</span>
+                    <label htmlFor="name" className="block text-sm font-medium mb-2 text-abyss-foreground">
+                      {t('contact.formLabels.name')} <span className="text-red-400">{t('contact.formLabels.required')}</span>
                     </label>
                     <Input
                       id="name"
@@ -347,18 +368,18 @@ const ContactForm = () => {
                       required
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
-                      className={`bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20 ${
+                      className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
                         validationErrors.name ? 'border-red-500' : ''
                       }`}
                       aria-describedby={validationErrors.name ? "name-error" : undefined}
                     />
                     {validationErrors.name && (
-                      <p id="name-error" className="text-red-500 text-sm mt-1">{validationErrors.name}</p>
+                      <p id="name-error" className="text-red-400 text-sm mt-1">{validationErrors.name}</p>
                     )}
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      {t('contact.formLabels.email')} <span className="text-red-500">{t('contact.formLabels.required')}</span>
+                    <label htmlFor="email" className="block text-sm font-medium mb-2 text-abyss-foreground">
+                      {t('contact.formLabels.email')} <span className="text-red-400">{t('contact.formLabels.required')}</span>
                     </label>
                     <Input
                       id="email"
@@ -367,20 +388,20 @@ const ContactForm = () => {
                       required
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      className={`bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20 ${
+                      className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
                         validationErrors.email ? 'border-red-500' : ''
                       }`}
                       aria-describedby={validationErrors.email ? "email-error" : undefined}
                     />
                     {validationErrors.email && (
-                      <p id="email-error" className="text-red-500 text-sm mt-1">{validationErrors.email}</p>
+                      <p id="email-error" className="text-red-400 text-sm mt-1">{validationErrors.email}</p>
                     )}
                   </div>
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium mb-2 text-abyss-foreground">
                     {t('contact.formLabels.phone')}
                   </label>
                   <Input
@@ -389,27 +410,27 @@ const ContactForm = () => {
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className={`bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20 ${
+                    className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
                       validationErrors.phone ? 'border-red-500' : ''
                     }`}
                     aria-describedby={validationErrors.phone ? "phone-error" : undefined}
                   />
                   {validationErrors.phone && (
-                    <p id="phone-error" className="text-red-500 text-sm mt-1">{validationErrors.phone}</p>
+                    <p id="phone-error" className="text-red-400 text-sm mt-1">{validationErrors.phone}</p>
                   )}
                 </div>
 
                 {/* Purpose Selector */}
                 <div>
-                  <label htmlFor="purpose" className="block text-sm font-medium mb-2">
-                    {t('contact.formLabels.purpose')} <span className="text-red-500">{t('contact.formLabels.required')}</span>
+                  <label htmlFor="purpose" className="block text-sm font-medium mb-2 text-abyss-foreground">
+                    {t('contact.formLabels.purpose')} <span className="text-red-400">{t('contact.formLabels.required')}</span>
                   </label>
                   <Select 
                     value={formData.purpose} 
                     onValueChange={(value) => handleInputChange('purpose', value)}
                   >
                     <SelectTrigger 
-                      className={`bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20 ${
+                      className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 ${
                         validationErrors.purpose ? 'border-red-500' : ''
                       }`}
                       aria-describedby={validationErrors.purpose ? "purpose-error" : selectedPurpose ? "purpose-hint" : undefined}
@@ -426,20 +447,20 @@ const ContactForm = () => {
                   </Select>
                   
                   {selectedPurpose && (
-                    <p id="purpose-hint" className="text-sm text-muted-foreground mt-2">
+                    <p id="purpose-hint" className="text-sm text-abyss-foreground/70 mt-2">
                       💡 {selectedPurpose.hint}
                     </p>
                   )}
                   
                   {validationErrors.purpose && (
-                    <p id="purpose-error" className="text-red-500 text-sm mt-1">{validationErrors.purpose}</p>
+                    <p id="purpose-error" className="text-red-400 text-sm mt-1">{validationErrors.purpose}</p>
                   )}
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    {t('contact.formLabels.message')} <span className="text-red-500">{t('contact.formLabels.required')}</span>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2 text-abyss-foreground">
+                    {t('contact.formLabels.message')} <span className="text-red-400">{t('contact.formLabels.required')}</span>
                   </label>
                   <Textarea
                     id="message"
@@ -448,21 +469,21 @@ const ContactForm = () => {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
-                    className={`bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20 resize-none ${
+                    className={`border-white/15 bg-abyss text-white focus:border-accent-light focus:ring-2 focus:ring-accent-light/20 resize-none ${
                       validationErrors.message ? 'border-red-500' : ''
                     }`}
                     placeholder={t('contact.form.messagePlaceholder')}
                     aria-describedby={validationErrors.message ? "message-error" : undefined}
                   />
                   {validationErrors.message && (
-                    <p id="message-error" className="text-red-500 text-sm mt-1">{validationErrors.message}</p>
+                    <p id="message-error" className="text-red-400 text-sm mt-1">{validationErrors.message}</p>
                   )}
                 </div>
 
                 <Button
                   type="submit"
                   disabled={formStatus.type === 'submitting'}
-                  className="w-full bg-accent hover:bg-accent-light text-accent-foreground font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  className="w-full bg-accent hover:bg-accent/85 text-accent-foreground font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-ring focus:ring-offset-2"
                 >
                   {formStatus.type === 'submitting' ? (
                     <>

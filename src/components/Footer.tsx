@@ -1,6 +1,5 @@
 import { Github, Linkedin, Mail, GraduationCap } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
-import ContourLines from '@/components/ContourLines';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -19,16 +18,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-abyss overflow-hidden">
-      <div className="absolute inset-0 text-abyss-foreground pointer-events-none" aria-hidden="true">
-        <ContourLines className="absolute -right-[30%] -bottom-[40%] h-[160%] w-[70%] opacity-40" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
+    <footer className="bg-abyss-deep text-abyss-foreground">
+      <div className="container mx-auto px-4">
         <div className="grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="font-display font-semibold text-xl text-abyss-foreground">
-              MT<span className="text-accent">.</span>
+            <p className="font-display font-bold text-xl text-white">
+              MT<span className="text-accent-light">.</span>
             </p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-abyss-foreground/60">
               {t('footer.description')}

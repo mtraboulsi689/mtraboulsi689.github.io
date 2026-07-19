@@ -32,3 +32,6 @@ public/data/linkedin-source.json
 *.njsproj
 *.sln
 *.sw?
+
+# local working notes
+mynotes.md

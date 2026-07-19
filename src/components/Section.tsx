@@ -19,9 +19,8 @@ const variantClasses: Record<SectionVariant, string> = {
   abyss: 'bg-abyss',
 };
 
-// Shared section shell: mono index + rule line, display title, optional lede.
-// Left-aligned; replaces the centered heading block previously copy-pasted
-// per component.
+// Shared section shell: teal display index on the heading baseline, optional
+// lede below. Left-aligned; shared by all numbered sections.
 const Section = ({ id, index, title, lede, variant = 'base', className = '', children }: SectionProps) => {
   const onAbyss = variant === 'abyss';
 
@@ -30,22 +29,21 @@ const Section = ({ id, index, title, lede, variant = 'base', className = '', chi
       <div className="container mx-auto px-4">
         <Reveal>
           <div className="mb-12 md:mb-16">
-            {index && (
-              <div className="flex items-center gap-4 mb-4">
-                <span className="font-mono text-sm text-accent">{index}</span>
-                <span className={`h-px flex-1 ${onAbyss ? 'bg-abyss-foreground/15' : 'bg-border'}`} />
-              </div>
-            )}
-            <div className="max-w-3xl">
-              <h2 className={`font-display font-semibold text-headline ${onAbyss ? 'text-abyss-foreground' : 'text-foreground'}`}>
+            <div className="flex items-baseline gap-4">
+              {index && (
+                <span className={`font-display text-sm font-bold ${onAbyss ? 'text-accent-light' : 'text-accent'}`}>
+                  {index}
+                </span>
+              )}
+              <h2 className={`font-display font-bold text-headline ${onAbyss ? 'text-white' : 'text-foreground'}`}>
                 {title}
               </h2>
-              {lede && (
-                <p className={`mt-4 text-lg leading-relaxed ${onAbyss ? 'text-abyss-foreground/70' : 'text-muted-foreground'}`}>
-                  {lede}
-                </p>
-              )}
             </div>
+            {lede && (
+              <p className={`mt-4 max-w-2xl text-lg leading-relaxed ${onAbyss ? 'text-abyss-foreground/80' : 'text-muted-foreground'}`}>
+                {lede}
+              </p>
+            )}
           </div>
         </Reveal>
         {children}
