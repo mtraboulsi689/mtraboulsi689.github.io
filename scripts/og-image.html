@@ -1,8 +1,7 @@
 <!--
   Source for public/og-image.png (1200x630 link-preview card), matching the
-  site's technical-editorial design: abyss gradient, bathymetric contours
-  (same generator as src/components/ContourLines.tsx), Space Grotesk +
-  JetBrains Mono.
+  site's warm-paper/navy/teal design: flat navy with a teal radial glow,
+  Space Grotesk display + IBM Plex Sans body, gold badge.
 
   Regenerate after a design or positioning change: open this file in a
   browser at exactly 1200x630 (or screenshot the .card element with a
@@ -22,8 +21,9 @@
     font-weight: 300 700;
   }
   @font-face {
-    font-family: 'JetBrains Mono';
-    src: url('../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+    font-family: 'IBM Plex Sans';
+    src: url('../node_modules/@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2') format('woff2');
+    font-weight: 100 700;
   }
   * { margin: 0; box-sizing: border-box; }
   body { width: 1200px; height: 630px; }
@@ -32,74 +32,67 @@
     width: 1200px;
     height: 630px;
     overflow: hidden;
-    background: linear-gradient(150deg, hsl(214, 95%, 12%) 0%, hsl(212, 85%, 18%) 55%, hsl(200, 70%, 24%) 100%);
+    background:
+      radial-gradient(circle at 88% -12%, rgba(45, 106, 126, 0.55) 0%, transparent 46%),
+      #091725;
     color: #fff;
     font-family: 'Space Grotesk', sans-serif;
-    padding: 70px 80px;
+    padding: 64px 80px 58px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  .contours {
-    position: absolute;
-    right: -14%;
-    top: 0;
-    height: 100%;
-    width: 62%;
-    color: #fff;
-  }
-  .eyebrow {
-    font-family: 'JetBrains Mono', monospace;
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 17px;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #d9af75;
+    border: 1.5px solid rgba(62, 160, 165, 0.5);
+    border-radius: 999px;
+    padding: 10px 22px;
   }
   h1 {
     position: relative;
-    font-size: 88px;
-    font-weight: 600;
+    font-size: 92px;
+    font-weight: 700;
     line-height: 1.04;
-    letter-spacing: -0.02em;
-    margin-top: 18px;
+    letter-spacing: -0.03em;
+    margin-top: 24px;
   }
-  h1 .dot { color: #e2552e; }
-  h1 .phd {
-    font-size: 34px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.5);
-    margin-left: 14px;
-  }
+  h1 .phd { color: #3ea0a5; }
   .positioning {
     position: relative;
-    margin-top: 26px;
-    max-width: 700px;
+    margin-top: 24px;
+    max-width: 720px;
     font-size: 27px;
     font-weight: 400;
-    line-height: 1.35;
-    color: rgba(255, 255, 255, 0.85);
-    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.4;
+    color: #c7cfd7;
+    font-family: 'IBM Plex Sans', sans-serif;
   }
   .strip {
     position: relative;
     display: flex;
-    gap: 42px;
+    gap: 44px;
     padding-top: 26px;
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 15px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(199, 207, 215, 0.75);
   }
+  .strip .site { margin-left: auto; color: #d9af75; }
 </style>
 </head>
 <body>
   <div class="card">
-    <svg class="contours" id="contours" viewBox="0 0 1100 600" fill="none" preserveAspectRatio="xMidYMid slice"></svg>
-
     <div>
-      <div class="eyebrow">Consulting engineer — coastal &amp; shoreline modelling</div>
-      <h1>Mohammad Traboulsi<span class="dot">.</span><span class="phd">PhD</span></h1>
+      <div class="badge">Consulting engineer — coastal &amp; shoreline modelling</div>
+      <h1>Mohammad Traboulsi<span class="phd">.PhD</span></h1>
       <div class="positioning">
         I help engineering firms and coastal territories quantify shoreline
         retreat under sea-level rise.
@@ -110,48 +103,8 @@
       <span>LX-ST model</span>
       <span>BRGM</span>
       <span>Horizon 2100</span>
-      <span>mtraboulsi689.github.io</span>
+      <span class="site">mtraboulsi689.github.io</span>
     </div>
   </div>
-
-  <script>
-    // Same ring generator as src/components/ContourLines.tsx.
-    const ringPath = (cx, cy, radius, seed) => {
-      const steps = 24;
-      const pts = [];
-      for (let i = 0; i < steps; i++) {
-        const a = (i / steps) * Math.PI * 2;
-        const wobble =
-          Math.sin(a * 2 + seed) * 0.1 +
-          Math.sin(a * 3 + seed * 2.7) * 0.06 +
-          Math.sin(a * 5 + seed * 1.3) * 0.035;
-        const r = radius * (1 + wobble);
-        pts.push({ x: cx + Math.cos(a) * r, y: cy + Math.sin(a) * r * 0.78 });
-      }
-      let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
-      for (let i = 0; i < steps; i++) {
-        const p0 = pts[(i - 1 + steps) % steps];
-        const p1 = pts[i];
-        const p2 = pts[(i + 1) % steps];
-        const p3 = pts[(i + 2) % steps];
-        const c1x = p1.x + (p2.x - p0.x) / 6;
-        const c1y = p1.y + (p2.y - p0.y) / 6;
-        const c2x = p2.x - (p3.x - p1.x) / 6;
-        const c2y = p2.y - (p3.y - p1.y) / 6;
-        d += ` C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
-      }
-      return `${d} Z`;
-    };
-
-    const svg = document.getElementById('contours');
-    for (let i = 0; i < 9; i++) {
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', ringPath(560, 300, 70 + i * 62, i * 1.7 + 0.9));
-      path.setAttribute('stroke', 'currentColor');
-      path.setAttribute('stroke-width', i === 0 ? '1.5' : '1');
-      path.setAttribute('opacity', String(0.32 - i * 0.028));
-      svg.appendChild(path);
-    }
-  </script>
 </body>
 </html>
