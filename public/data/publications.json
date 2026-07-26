@@ -1,7 +1,25 @@
 {
-  "updated_at": "2026-07-19T05:20:26.906Z",
-  "total_count": 6,
+  "updated_at": "2026-07-26T05:30:42.987Z",
+  "total_count": 7,
   "items": [
+    {
+      "id": "https://openalex.org/W7170252479",
+      "title": "Nested Tail Companions for Keller Maps",
+      "year": 2026,
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "doi": "10.5281/zenodo.21533457",
+      "url": "https://doi.org/10.5281/zenodo.21533457",
+      "isOpenAccess": true,
+      "openAccessUrl": "https://doi.org/10.5281/zenodo.21533457",
+      "type": "preprint",
+      "category": "preprint",
+      "authors": [
+        "Mohammad Traboulsi"
+      ],
+      "citedByCount": 0,
+      "abstract": "Exact constructions and reproducible certificates for compressed companions of Keller maps, with explicit applications to Zhao’s Vanishing Conjecture.",
+      "abstractTeaser": "Exact constructions and reproducible certificates for compressed companions of Keller maps, with explicit applications to Zhao’s Vanishing..."
+    },
     {
       "id": "https://openalex.org/W7159682741",
       "title": "Uncertainty analysis of shoreline and shoreface evolution under sea-level rise at a wave dominated sandy coast with seawall protection",
