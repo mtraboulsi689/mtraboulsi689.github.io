@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-02T05:25:23.962Z",
+  "updated_at": "2026-08-09T03:40:16.516Z",
   "total_count": 7,
   "items": [
     {
@@ -138,7 +138,7 @@
       "year": 2022,
       "venue": "Unknown Venue",
       "doi": "10.5150/jngcgc.2022.020",
-      "url": "http://doi.org/10.5150/jngcgc.2022.020",
+      "url": "https://doi.org/10.5150/jngcgc.2022.020",
       "isOpenAccess": true,
       "openAccessUrl": "http://dx.doi.org/10.5150/jngcgc.2022.020",
       "type": "conference-paper",
