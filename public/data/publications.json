@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-20T07:27:16.779Z",
+  "updated_at": "2026-09-27T07:37:10.721Z",
   "total_count": 8,
   "items": [
     {
@@ -62,7 +62,7 @@
         "Arthur Robinet",
         "Vincent Marieu",
         "Elsa Durand",
-        "R. Jak McCarroll"
+        "Robert Jak McCarroll"
       ],
       "citedByCount": 0,
       "abstract": "This study presents a modular modeling framework for simulating medium- to long-term (decadal to centennial) coastal evolution, focusing on shoreface translation under the combined effects of sea-level rise (SLR) and waves. On these timescales, short-term storm-driven processes are treated as noise superimposed on longer-term trends. We couple the one-dimensional ShoreTrans model, which simulates SLR-driven profile adjustment, with the two-dimensional reduced-complexity model LX-Shore, which captures longshore sediment transport gradients. This coupling enables efficient simulation of three-dimensional morphological change across diverse sandy coastal settings, including environments with dunes, barriers, and hard structures. The framework is first applied to synthetic test cases to explore sensitivity to coupling strategies, then tested on a 5-km beach-dune system in southwest France fronted by a 1.2-km seawall. Results show reasonable agreement with observed shoreline evolution and demonstrate the value of the coupled approach in capturing morphodynamic feedbacks and trajectory shifts not reproduced when shoreline and shoreface processes are modeled independently.",
@@ -97,8 +97,8 @@
       "venue": "Unknown Venue",
       "doi": "10.70675/16f281dfz2f5az4977zb0d3zc9c484b0cc6c",
       "url": "https://doi.org/10.70675/16f281dfz2f5az4977zb0d3zc9c484b0cc6c",
-      "isOpenAccess": false,
-      "openAccessUrl": null,
+      "isOpenAccess": true,
+      "openAccessUrl": "https://theses.fr/2025BORD0388/document",
       "type": "dissertation",
       "category": "article",
       "authors": [
