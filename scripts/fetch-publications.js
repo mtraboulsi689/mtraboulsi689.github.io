@@ -26,8 +26,8 @@ const PUBLICATION_LINK_OVERRIDES = {
     "openAccessUrl": "https://www.researchgate.net/publication/367449776_Impact_of_climate_change_on_the_hydrodynamic_patterns_of_the_Gironde_estuary"
   },
   "10.9753/icce.v38.currents.6": {
-    "url": "https://icce-ojs-tamu.tdl.org/icce/article/view/14090",
-    "openAccessUrl": "https://icce-ojs-tamu.tdl.org/icce/article/view/14090"
+    "url": "https://www.researchgate.net/publication/392222577_LX-ST_INTEGRATED_SHORELINE_AND_TOPO-BATHYMETRIC_ANALYSIS_MODEL",
+    "openAccessUrl": "https://www.researchgate.net/publication/392222577_LX-ST_INTEGRATED_SHORELINE_AND_TOPO-BATHYMETRIC_ANALYSIS_MODEL"
   }
 };
 
