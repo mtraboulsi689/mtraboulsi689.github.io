@@ -22,8 +22,8 @@ const EXCLUDED_WORK_IDS = new Set([
 // Keep these repairs when the weekly OpenAlex refresh regenerates the data.
 const PUBLICATION_LINK_OVERRIDES = {
   "10.5150/jngcgc.2022.020": {
-    "url": "http://www.paralia.fr/jngcgc/17_20_traboulsi.pdf",
-    "openAccessUrl": "http://www.paralia.fr/jngcgc/17_20_traboulsi.pdf"
+    "url": "https://www.researchgate.net/publication/367449776_Impact_of_climate_change_on_the_hydrodynamic_patterns_of_the_Gironde_estuary",
+    "openAccessUrl": "https://www.researchgate.net/publication/367449776_Impact_of_climate_change_on_the_hydrodynamic_patterns_of_the_Gironde_estuary"
   },
   "10.9753/icce.v38.currents.6": {
     "url": "https://icce-ojs-tamu.tdl.org/icce/article/view/14090",

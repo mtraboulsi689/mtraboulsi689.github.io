@@ -70,28 +70,3 @@ jobs:
                 `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}` +
                 '\n\n' + report,
             });
-
-  publisher-probe:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Verify publisher endpoint variants
-        run: |
-          python - <<'PY'
-          import concurrent.futures, subprocess, tempfile
-          urls = [
-              'http://www.paralia.fr/jngcgc/17_20_traboulsi.pdf',
-              'https://www.paralia.fr/jngcgc/17_20_traboulsi.pdf',
-              'http://paralia.fr/jngcgc/17_20_traboulsi.pdf',
-              'https://paralia.fr/jngcgc/17_20_traboulsi.pdf',
-              'https://www.researchgate.net/publication/367449776_Impact_of_climate_change_on_the_hydrodynamic_patterns_of_the_Gironde_estuary',
-          ]
-          def probe(url):
-              with tempfile.NamedTemporaryFile() as output:
-                  result = subprocess.run(['curl', '-sS', '-L', '--connect-timeout', '5', '--max-time', '20', '--range', '0-1023', '-o', output.name, '-w', '%{http_code} %{url_effective}', url], capture_output=True, text=True)
-                  body = output.read(32)
-                  return (url, result.returncode, result.stdout, result.stderr, repr(body))
-          with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
-              for result in pool.map(probe, urls):
-                  print(result)
-          PY
