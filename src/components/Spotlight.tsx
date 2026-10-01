@@ -6,9 +6,8 @@ import Reveal from '@/components/Reveal';
 const Spotlight = () => {
   const { t } = useLanguage();
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const videoId = 'wZBNd7qW7dA';
-  const videoUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
-  const posterUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  const videoUrl = 'https://www.youtube-nocookie.com/embed/wZBNd7qW7dA?autoplay=1&rel=0';
+  const posterUrl = 'https://i.ytimg.com/vi/wZBNd7qW7dA/hqdefault.jpg';
 
   const stats = [
     { value: '5 km', label: t('spotlight.coverage') },
@@ -78,7 +77,7 @@ const Spotlight = () => {
               </div>
 
               <a
-                href={`https://www.youtube.com/watch?v=${videoId}`}
+                href="https://www.youtube.com/watch?v=wZBNd7qW7dA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-gold hover:text-white transition-colors"

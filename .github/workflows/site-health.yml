@@ -11,6 +11,7 @@ on:
       - 'src/components/*.tsx'
       - 'index.html'
       - 'scripts/check-staleness.js'
+      - 'scripts/fetch-publications.js'
 
 permissions:
   contents: read
@@ -38,6 +39,7 @@ jobs:
         with:
           args: >-
             --no-progress
+            --root-dir public
             --accept 200,202,204,206,301,302,307,308,403,429
             --exclude 'localhost'
             --exclude 'formspree.io'

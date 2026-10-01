@@ -18,6 +18,19 @@ const EXCLUDED_WORK_IDS = new Set([
   'https://openalex.org/W4403148010',
 ]);
 
+// Publisher destinations for DOIs whose resolver targets are unavailable.
+// Keep these repairs when the weekly OpenAlex refresh regenerates the data.
+const PUBLICATION_LINK_OVERRIDES = {
+  "10.5150/jngcgc.2022.020": {
+    "url": "https://www.paralia.fr/jngcgc/17_20_traboulsi.pdf",
+    "openAccessUrl": "https://www.paralia.fr/jngcgc/17_20_traboulsi.pdf"
+  },
+  "10.9753/icce.v38.currents.6": {
+    "url": "https://icce-ojs-tamu.tdl.org/icce/article/view/14090",
+    "openAccessUrl": "https://icce-ojs-tamu.tdl.org/icce/article/view/14090"
+  }
+};
+
 /**
  * Fetches publications from OpenAlex API for a given author ID
  * Handles pagination and deduplication
@@ -130,7 +143,8 @@ class OpenAlexFetcher {
     }
 
     // Extract primary URL with fallback logic
-    const primaryUrl = this.extractPrimaryUrl(work, doi);
+    const linkOverride = PUBLICATION_LINK_OVERRIDES[doi];
+    const primaryUrl = linkOverride?.url || this.extractPrimaryUrl(work, doi);
     
     // Extract author names
     const authors = work.authorships
@@ -154,7 +168,7 @@ class OpenAlexFetcher {
       doi: doi,
       url: primaryUrl,
       isOpenAccess: work.open_access?.is_oa || false,
-      openAccessUrl: work.open_access?.oa_url || null,
+      openAccessUrl: linkOverride?.openAccessUrl || work.open_access?.oa_url || null,
       type: typeInfo.type,
       category: typeInfo.category,
       authors: authors,
