@@ -18,7 +18,7 @@ const EXCLUDED_WORK_IDS = new Set([
   'https://openalex.org/W4403148010',
 ]);
 
-// Publisher destinations for DOIs whose resolver targets are unavailable.
+// Alternate paper destinations for DOIs whose resolver targets are unavailable.
 // Keep these repairs when the weekly OpenAlex refresh regenerates the data.
 const PUBLICATION_LINK_OVERRIDES = {
   "10.5150/jngcgc.2022.020": {
