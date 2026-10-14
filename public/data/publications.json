@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-01T17:52:05.413Z",
+  "updated_at": "2026-10-11T08:19:39.764Z",
   "total_count": 8,
   "items": [
     {
-      "id": "https://openalex.org/W7170252479",
+      "id": "https://openalex.org/W7170936505",
       "title": "Nested Tail Companions for Keller Maps",
       "year": 2026,
       "venue": "Zenodo (CERN European Organization for Nuclear Research)",
@@ -171,4 +171,3 @@
       "abstractTeaser": "Within the Interreg-Sudoe European project ECCLIPSE (2019ECCLIPSE ( -2022)), several numerical tools are developed to forecast the..."
     }
   ]
-}
