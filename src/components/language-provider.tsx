@@ -153,7 +153,7 @@ const translations = {
     "about.highlight3": "Contributor to French national climate-adaptation studies",
     "about.institutionsLabel": "Institutions",
     "about.institutionsList": "BRGM · Cerema · University of Bordeaux · EPOC",
-    "about.thesisLink": "PhD Thesis (theses.fr)",
+    "about.thesisLink": "PhD Thesis (HAL)",
     "about.photoAlt": "Portrait of Mohammad Traboulsi",
 
     // Skills Section
@@ -323,7 +323,7 @@ const translations = {
     "about.highlight3": "Contributeur aux études nationales d'adaptation climatique",
     "about.institutionsLabel": "Institutions",
     "about.institutionsList": "BRGM · Cerema · Université de Bordeaux · EPOC",
-    "about.thesisLink": "Thèse de Doctorat (theses.fr)",
+    "about.thesisLink": "Thèse de Doctorat (HAL)",
     "about.photoAlt": "Portrait de Mohammad Traboulsi",
 
     // Skills Section

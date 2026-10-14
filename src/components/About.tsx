@@ -52,7 +52,7 @@ const About = () => {
                     <li>{t('about.highlight3')}</li>
                     <li>
                       <a
-                        href="https://theses.fr/29332249X"
+                        href="https://hal.science/tel-05720855v1"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 font-medium text-accent transition-colors hover:text-accent/80"

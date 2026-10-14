@@ -114,7 +114,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://theses.fr/29332249X"
+                  href="https://hal.science/tel-05720855v1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-abyss-foreground/60 transition-colors hover:text-abyss-foreground"
