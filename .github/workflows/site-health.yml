@@ -30,6 +30,10 @@ jobs:
             --no-progress
             --timeout 30
             --max-retries 3
+            --root-dir ${{ github.workspace }}/public
+            --exclude '\$(\{|%7B)'
+            --exclude 'theses\.fr'
+            --exclude 'doi\.org/10\.70675/'
             --accept 200,202,204,206,301,302,307,308,403,429
             --exclude 'localhost'
             --exclude 'formspree.io'
