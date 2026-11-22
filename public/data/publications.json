@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T08:43:01.434Z",
+  "updated_at": "2026-11-22T09:22:28.229Z",
   "total_count": 7,
   "items": [
     {
@@ -94,7 +94,7 @@
       "id": "https://openalex.org/W7152375875",
       "title": "Modeling past and future evolution of sandy coasts",
       "year": 2025,
-      "venue": "Unknown Venue",
+      "venue": "theses.fr (ABES)",
       "doi": "10.70675/16f281dfz2f5az4977zb0d3zc9c484b0cc6c",
       "url": "https://doi.org/10.70675/16f281dfz2f5az4977zb0d3zc9c484b0cc6c",
       "isOpenAccess": true,
@@ -116,7 +116,7 @@
       "doi": "10.2139/ssrn.5167192",
       "url": "https://doi.org/10.2139/ssrn.5167192",
       "isOpenAccess": true,
-      "openAccessUrl": "https://doi.org/10.2139/ssrn.5167192",
+      "openAccessUrl": "https://hal.science/hal-05004345v1/document",
       "type": "preprint",
       "category": "preprint",
       "authors": [
@@ -128,7 +128,7 @@
         "Elsa Durand",
         "Jak Mccarol"
       ],
-      "citedByCount": 0,
+      "citedByCount": 1,
       "abstract": null,
       "abstractTeaser": null
     },
